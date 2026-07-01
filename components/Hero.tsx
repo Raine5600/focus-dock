@@ -33,7 +33,7 @@ export function Hero() {
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-mint-lt">
             {BRAND.tagline} The {PRODUCT.name} is a 47-minute recovery protocol
             that installs a minimal 3-database system — built for ADHD brains
-            that&apos;ve plansturbated one too many Saturdays away.
+            stuck in one too many Saturday setup spirals.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
             <CheckoutButton size="lg" />

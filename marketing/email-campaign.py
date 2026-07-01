@@ -49,7 +49,7 @@ BODY_TEMPLATE = """Hi {name},
 
 {personalized_line}
 
-I'm launching Focus Dock, a PDF guide for people who've abandoned multiple ADHD Notion setups (the "plansturbation" crowd — spent Saturday building, ghosted it by Wednesday).
+I'm launching Focus Dock, a PDF guide for people who've abandoned multiple ADHD Notion setups (the template graveyard crowd — spent Saturday building, ghosted it by Wednesday).
 
 It's NOT a competing template. It's a 47-minute recovery protocol: 3 databases, task sequences for executive dysfunction, no streak shame. Complements what you already teach.
 

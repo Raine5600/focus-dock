@@ -11,7 +11,7 @@ const DEFAULT_KEYWORDS = [
   "ADHD Notion guide",
   "ADHD productivity PDF",
   "Notion template abandoned",
-  "plansturbation Notion",
+  "Notion setup spiral",
   "executive dysfunction Notion",
   "ADHD task management",
   "Notion recovery guide",
@@ -100,7 +100,7 @@ export function homeMetadata(): Metadata {
     path: "/",
     keywords: [
       "buy ADHD Notion PDF",
-      "Notion plansturbation fix",
+      "Notion template graveyard fix",
       "ADHD executive dysfunction guide",
     ],
   });

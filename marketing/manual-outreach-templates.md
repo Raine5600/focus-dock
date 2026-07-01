@@ -33,7 +33,7 @@ Hi Jenna,
 
 I've been following your Notion + digital organization content — especially how you balance structure with tools that don't become another project to maintain. That tension is exactly why I'm reaching out.
 
-I'm launching Focus Dock: a 29-page PDF recovery guide for ADHD adults stuck in the "template graveyard" (Saturday setup, ghosted by Wednesday — we call it plansturbation).
+I'm launching Focus Dock: a 29-page PDF recovery guide for ADHD adults stuck in the "template graveyard" (Saturday setup, ghosted by Wednesday — the setup spiral).
 
 It's NOT a competing template. It's a 47-minute install protocol: 3 databases, task sequences for executive dysfunction, daily 3-minute workflow, 11-minute Sunday reset. Complements the systems you already teach on the channel and newsletter.
 
@@ -60,7 +60,7 @@ Hi Marie,
 
 Your ADHD-friendly workspace philosophy in Notion Mastery is the gold standard — and I mean that sincerely. I'm not here to pitch another dashboard.
 
-I'm launching Focus Dock, a recovery guide for people who've *already* taken courses and bought templates but still can't keep a system alive. It's the "what to delete and install in 47 minutes" protocol for the plansturbation crowd — 3 databases, task sequences, no streak shame.
+I'm launching Focus Dock, a recovery guide for people who've *already* taken courses and bought templates but still can't keep a system alive. It's the "what to delete and install in 47 minutes" protocol for the template graveyard crowd — 3 databases, task sequences, no streak shame.
 
 Your graduates know *why* systems matter. Focus Dock is the narrow implementation bridge for folks who over-built and quit. Different product, same audience pain.
 
@@ -85,7 +85,7 @@ https://getfocusdock.com
 ```
 Hi Meredith,
 
-Your creator Notion workflow content hits a nerve I see constantly: brilliant content planners that become gorgeous museums of good intentions. Creators are especially prone to plansturbation — building the system instead of shipping the video.
+Your creator Notion workflow content hits a nerve I see constantly: brilliant content planners that become gorgeous museums of good intentions. Creators are especially prone to the setup spiral — building the system instead of shipping the video.
 
 I'm launching Focus Dock, a PDF recovery guide (not a template) for ADHD brains who've abandoned multiple Notion setups. 47-minute protocol: Brain Dump, Today, and Projects databases, task sequences, 3-minute daily maintenance, 11-minute Sunday reset.
 
@@ -220,7 +220,7 @@ Can I send a free PDF for the team to skim? One paragraph in the newsletter or a
 #### Generic (Red Gregory, ADHD Jesse, Tool Finder, etc.)
 
 ```
-Hi [Name] — I've been watching your [niche] content. Launching Focus Dock: a recovery guide for ADHD adults stuck in Notion template graveyards (plansturbation — real term, unfortunately).
+Hi [Name] — I've been watching your [niche] content. Launching Focus Dock: a recovery guide for ADHD adults stuck in Notion template graveyards (the setup spiral — we've all been there).
 
 Not competing with your products — complements them. 40% affiliate, free review copy.
 

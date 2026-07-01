@@ -61,7 +61,7 @@ export default async function SuccessPage({ searchParams }: Props) {
             ✓
           </div>
           <h1 className="mt-6 font-display text-3xl font-semibold text-navy-dark sm:text-4xl">
-            You&apos;re in — time to build, not plansturbate
+            You&apos;re in — time to build, not tweak
           </h1>
           <p className="mt-4 text-lg text-ink-mid">
             Thank you for purchasing the {PRODUCT.fullName}. Your download is

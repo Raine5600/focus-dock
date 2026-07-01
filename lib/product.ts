@@ -1,6 +1,6 @@
 export const BRAND = {
   name: "Focus Dock",
-  tagline: "Stop plansturbating. Start doing.",
+  tagline: "Stop the setup spiral. Start doing.",
   domain: "getfocusdock.com",
 } as const;
 
@@ -17,7 +17,7 @@ export const PRODUCT = {
   name: "ADHD Notion Recovery Guide",
   fullName: "Focus Dock — ADHD Notion Recovery Guide",
   description:
-    "A 29-page PDF protocol for ADHD adults who've abandoned too many Notion templates — install a 3-database system in 47 minutes with minute-by-minute steps, copy-paste formulas, task sequences, and an 11-minute Sunday reset.",
+    "A PDF protocol for ADHD adults who've abandoned too many Notion templates — install a 3-database system in 47 minutes with minute-by-minute steps, copy-paste formulas, task sequences, and an 11-minute Sunday reset.",
   price: 27,
   compareAt: 49,
   currency: "usd",
@@ -68,7 +68,7 @@ export const FAQ_ITEMS = [
   },
   {
     q: "I've failed at Notion before. Will this work?",
-    a: "This guide is specifically for the 'template graveyard' crowd. It addresses plansturbation, choice overload, and streak shame — the three reasons ADHD brains abandon Notion.",
+    a: "This guide is specifically for the 'template graveyard' crowd. It addresses setup spirals, choice overload, and streak shame — the three reasons ADHD brains abandon Notion.",
   },
   {
     q: "Do I need Notion paid plan?",

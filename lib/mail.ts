@@ -62,7 +62,7 @@ function formatPurchaseDeliveryBody(data: PurchaseDeliveryPayload): string {
     "Need help? Reply to this email or contact support@getfocusdock.com.",
     "",
     "— Focus Dock",
-    "Stop plansturbating. Start doing.",
+    "Stop the setup spiral. Start doing.",
   ];
 
   return lines.join("\n");
