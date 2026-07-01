@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #1a1f3d;
+  --navy-dark: #12152a;
+  --coral: #ff6b4a;
+  --coral-lt: #ffe8e3;
+  --mint: #3dd6c3;
+  --mint-lt: #e0faf6;
+  --yellow: #ffd93d;
+  --cream: #f8f9fc;
+  --cream-dk: #eef1f8;
+  --ink: #1a1a2e;
+  --ink-mid: #3d3d5c;
+  --ink-lt: #6b6b8a;
+  --border: #d4d8e8;
+  --sage: var(--mint);
+  --sage-lt: var(--mint-lt);
+  --moon: var(--mint);
+  --moon-lt: var(--mint-lt);
+  --amber: var(--yellow);
+  --rose: var(--coral);
+  --background: var(--cream);
+  --foreground: var(--ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy: var(--navy);
+  --color-navy-dark: var(--navy-dark);
+  --color-coral: var(--coral);
+  --color-coral-lt: var(--coral-lt);
+  --color-mint: var(--mint);
+  --color-mint-lt: var(--mint-lt);
+  --color-yellow: var(--yellow);
+  --color-cream: var(--cream);
+  --color-cream-dk: var(--cream-dk);
+  --color-ink: var(--ink);
+  --color-ink-mid: var(--ink-mid);
+  --color-ink-lt: var(--ink-lt);
+  --color-border: var(--border);
+  --color-sage: var(--sage);
+  --color-sage-lt: var(--sage-lt);
+  --color-moon: var(--moon);
+  --color-moon-lt: var(--moon-lt);
+  --color-amber: var(--amber);
+  --color-rose: var(--rose);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-fraunces);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--mint) 35%, white);
+  color: var(--navy-dark);
+}

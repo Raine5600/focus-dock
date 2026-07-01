@@ -1,0 +1,49 @@
+FOCUS DOCK — NOTION FORMULA REFERENCE (COPY-PASTE)
+==================================================
+
+Create these as Formula properties in the [TODAY] Today database.
+Property names must match exactly.
+
+-------------------------------------------------------------------------------
+HIDE SEQUENCE (Formula checkbox)
+-------------------------------------------------------------------------------
+Property name: Hide Sequence
+Type: Formula
+Return type: Checkbox
+
+Paste this formula:
+
+if(empty(prop("Task Before")), false, if(prop("Before Done") > 0, false, if(prop("Due") < prop("Before Due"), false, true)))
+
+What it does:
+Returns true when a sequenced task should be hidden (predecessor not done,
+or due date conflict).
+
+-------------------------------------------------------------------------------
+HIDE (Formula)
+-------------------------------------------------------------------------------
+Property name: Hide
+Type: Formula
+
+Paste this formula:
+
+prop("Hide Sequence")
+
+What it does:
+Pass-through used by Do This Next view filter (Hide = unchecked).
+
+-------------------------------------------------------------------------------
+REQUIRED ROLLUPS (create before formulas)
+-------------------------------------------------------------------------------
+• Before Done — Rollup on Task Before → property Done → Calculate: Count checked
+• Before Due — Rollup on Task Before → property Due → Calculate: Latest date
+
+-------------------------------------------------------------------------------
+DO THIS NEXT VIEW
+-------------------------------------------------------------------------------
+• Filter: Hide is unchecked
+• Filter: Done is unchecked
+• Sort: Due ascending
+
+>> If too many tasks show: verify Hide Sequence formula exists and view
+   filters Hide, not Hide Sequence directly.
