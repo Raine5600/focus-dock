@@ -1,5 +1,9 @@
 # Focus Dock — Digital Product Storefront
 
+**Repository:** https://github.com/Raine5600/focus-dock
+
+**Affiliate database:** 261 verified contacts in `marketing/affiliate-contacts-by-type.xlsx` (148 email · 113 contact form)
+
 A Next.js storefront for selling the **Focus Dock ADHD Notion Recovery Guide** PDF. Built for [Vercel](https://vercel.com) with [Stripe Checkout](https://stripe.com) payments, secure post-purchase downloads, and an affiliate application flow.
 
 ## Features
