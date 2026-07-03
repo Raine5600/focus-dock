@@ -17,7 +17,7 @@ export const PRODUCT = {
   name: "ADHD Notion Recovery Guide",
   fullName: "Focus Dock — ADHD Notion Recovery Guide",
   description:
-    "A PDF protocol for ADHD adults who've abandoned too many Notion templates — install a 3-database system in 47 minutes with minute-by-minute steps, copy-paste formulas, task sequences, and an 11-minute Sunday reset.",
+    "A PDF protocol for ADHD adults who've abandoned too many Notion templates — install a 3-database system with step-by-step guidance, copy-paste formulas, task sequences, and a short Sunday reset.",
   price: 27,
   compareAt: 49,
   currency: "usd",
@@ -29,7 +29,7 @@ export const PRODUCT = {
 export const PACKAGE_ITEMS = [
   {
     num: "01",
-    title: "47-Minute Install Protocol",
+    title: "Install Protocol",
     description:
       "Step-by-step setup: Brain Dump, Today, and Projects databases — with exact property names and zero fluff.",
     accent: "navy",
@@ -43,14 +43,14 @@ export const PACKAGE_ITEMS = [
   },
   {
     num: "03",
-    title: "Daily 3-Minute Workflow",
+    title: "Daily Workflow",
     description: "Morning, midday capture, and evening rules designed for ADHD brains that hate maintenance.",
     accent: "mint",
   },
   {
     num: "04",
-    title: "11-Minute Sunday Reset",
-    description: "Weekly triage without guilt dashboards, streaks, or 45-minute reviews.",
+    title: "Sunday Reset",
+    description: "Weekly triage without guilt dashboards, streaks, or marathon reviews.",
     accent: "amber",
   },
   {
@@ -64,7 +64,7 @@ export const PACKAGE_ITEMS = [
 export const FAQ_ITEMS = [
   {
     q: "Is this another Notion template?",
-    a: "No — and that's the point. Focus Dock is an implementation guide. You build a minimal 3-database system yourself in 47 minutes. No template file to abandon in three weeks.",
+    a: "No — and that's the point. Focus Dock is an implementation guide. You build a minimal 3-database system yourself in one sitting. No template file to abandon in three weeks.",
   },
   {
     q: "I've failed at Notion before. Will this work?",

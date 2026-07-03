@@ -31,7 +31,7 @@ export function Hero() {
             Your Notion graveyard ends here
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-mint-lt">
-            {BRAND.tagline} The {PRODUCT.name} is a 47-minute recovery protocol
+            {BRAND.tagline} The {PRODUCT.name} is a step-by-step recovery protocol
             that installs a minimal 3-database system — built for ADHD brains
             stuck in one too many Saturday setup spirals.
           </p>
@@ -45,11 +45,11 @@ export function Hero() {
           </div>
           <ul className="mt-10 grid gap-3 text-sm text-mint-lt sm:grid-cols-2">
             {[
-              "47-minute install protocol",
+              "Step-by-step install protocol",
               "What to delete from old setup",
-              "Daily 3-minute workflow",
+              "Daily workflow",
               "Task sequences + formulas",
-              "11-min Sunday reset",
+              "Sunday reset",
               "Emergency overwhelm card",
             ].map((item) => (
               <li key={item} className="flex items-center gap-2">

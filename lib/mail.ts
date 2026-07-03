@@ -57,7 +57,7 @@ function formatPurchaseDeliveryBody(data: PurchaseDeliveryPayload): string {
     `- ${PRODUCT.fileName} (the full recovery guide)`,
     "- Focus_Dock_Formulas.txt (copy-paste Notion formulas)",
     "",
-    "Start with the 47-minute install protocol in the PDF. The formulas file is there when you reach the formula pages.",
+    "Start with the install protocol in the PDF. The formulas file is there when you reach the formula pages.",
     "",
     "Need help? Reply to this email or contact support@getfocusdock.com.",
     "",

@@ -67,20 +67,14 @@ def generate() -> Path:
     tg = draw.textlength(tagline, font=tag_font)
     draw.text(((W - tg) / 2, 330), tagline, fill=CORAL, font=tag_font)
 
-    # 47-min badge — top right of band, no overlap with title
-    badge_x, badge_y = W - 260, 120
-    draw.rounded_rectangle([badge_x, badge_y, badge_x + 200, badge_y + 100], radius=14, fill=MINT)
-    draw.text((badge_x + 28, badge_y + 18), "47 MIN", fill=NAVY, font=_font(34, bold=True))
-    draw.text((badge_x + 22, badge_y + 58), "INSTALL", fill=NAVY, font=_font(22, bold=True))
-
     # Body zone — promise bullets with clear spacing
     bullets = [
-        "[OK]  47-minute recovery install",
+        "[OK]  Step-by-step recovery install",
         "[OK]  3 databases — not 14",
         "[OK]  One visible next task, always",
         "[OK]  Task sequences for when you can't start",
         "[OK]  Copy-paste formulas included",
-        "[OK]  No streak shame · 11-min Sunday reset",
+        "[OK]  No streak shame · short Sunday reset",
     ]
     y = BAND_H + 80
     for b in bullets:

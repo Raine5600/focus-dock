@@ -17,10 +17,10 @@
 > I have a graveyard of ADHD Notion templates. Like, archaeologists could study them. They all had habit trackers, mood logs, fourteen databases named after acronyms I'd forget by Tuesday. Gorgeous screenshots. Zero completed tasks.
 >
 > **PIVOT**
-> So instead of downloading template number six, I grabbed this guide called **Focus Dock**. And — hear me out — it's *not* another template. It's a 47-minute recovery protocol that walks you through ripping out the complexity and installing a three-database system that actually matches how ADHD brains work.
+> So instead of downloading template number six, I grabbed this guide called **Focus Dock**. And — hear me out — it's *not* another template. It's a step-by-step recovery protocol that walks you through ripping out the complexity and installing a three-database system that actually matches how ADHD brains work.
 >
 > **PROOF / SPECIFICS**
-> Brain dump inbox. One visible "do this next" task. Task sequences for stuff like "do laundry" that is secretly eight tasks. No streak shame. An 11-minute Sunday reset instead of a guilt-inducing weekly review. They literally tell you what to delete from your old setup.
+> Brain dump inbox. One visible "do this next" task. Task sequences for stuff like "do laundry" that is secretly eight tasks. No streak shame. An short Sunday reset instead of a guilt-inducing weekly review. They literally tell you what to delete from your old setup.
 >
 > **CTA**
 > It's twenty-seven bucks right now — link in the description. If you've been stuck in the setup spiral, this is the intervention. …I'm calling myself out too. We're in this together.
@@ -38,7 +38,7 @@
 ```
 POV: Saturday night Notion setup ✨ → Wednesday: never opened it again 💀
 
-Focus Dock isn't another template. It's a 47-min recovery guide for ADHD brains who've been stuck in the setup spiral.
+Focus Dock isn't another template. It's a guided recovery guide for ADHD brains who've been stuck in the setup spiral.
 
 → 3 databases (not 14)
 → One visible next task
@@ -56,14 +56,14 @@ Hot take: your ADHD Notion template isn't failing because you're lazy.
 
 It's failing because you spent the dopamine budget on setup instead of tasks.
 
-Focus Dock = 47-min recovery protocol (not another template).
+Focus Dock = guided recovery protocol (not another template).
 $27 → getfocusdock.com
 ```
 
 ### YouTube description block
 ```
 📌 FOCUS DOCK — ADHD Notion Recovery Guide
-Stop the setup spiral. Install a 3-database system in 47 minutes.
+Stop the setup spiral. Install a 3-database system in one session.
 → https://getfocusdock.com/?ref=CREATOR_CODE
 
 Summer sale: $27 (reg. $49) · Instant PDF · 14-day guarantee
@@ -89,7 +89,7 @@ I've been watching your [specific video title] content — especially [one speci
 
 I'm launching Focus Dock, a PDF guide for people who've abandoned multiple ADHD Notion setups (the template graveyard crowd — spent Saturday building, ghosted it by Wednesday).
 
-It's NOT a competing template. It's a 47-minute recovery protocol: 3 databases, task sequences for executive dysfunction, no streak shame. Complements what you already teach.
+It's NOT a competing template. It's a step-by-step recovery protocol: 3 databases, task sequences for executive dysfunction, no streak shame. Complements what you already teach.
 
 Would you be open to a paid mention or dedicated segment? Happy to send a free copy first — no strings.
 

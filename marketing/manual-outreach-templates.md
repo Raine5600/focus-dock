@@ -35,7 +35,7 @@ I've been following your Notion + digital organization content — especially ho
 
 I'm launching Focus Dock: a 29-page PDF recovery guide for ADHD adults stuck in the "template graveyard" (Saturday setup, ghosted by Wednesday — the setup spiral).
 
-It's NOT a competing template. It's a 47-minute install protocol: 3 databases, task sequences for executive dysfunction, daily 3-minute workflow, 11-minute Sunday reset. Complements the systems you already teach on the channel and newsletter.
+It's NOT a competing template. It's a step-by-step install protocol: 3 databases, task sequences for executive dysfunction, daily simple workflow, short Sunday reset. Complements the systems you already teach on the channel and newsletter.
 
 Would you be open to a paid mention, newsletter blurb, or podcast segment? Happy to send a free copy first — zero strings.
 
@@ -60,7 +60,7 @@ Hi Marie,
 
 Your ADHD-friendly workspace philosophy in Notion Mastery is the gold standard — and I mean that sincerely. I'm not here to pitch another dashboard.
 
-I'm launching Focus Dock, a recovery guide for people who've *already* taken courses and bought templates but still can't keep a system alive. It's the "what to delete and install in 47 minutes" protocol for the template graveyard crowd — 3 databases, task sequences, no streak shame.
+I'm launching Focus Dock, a recovery guide for people who've *already* taken courses and bought templates but still can't keep a system alive. It's the "what to delete and install in one session" protocol for the template graveyard crowd — 3 databases, task sequences, no streak shame.
 
 Your graduates know *why* systems matter. Focus Dock is the narrow implementation bridge for folks who over-built and quit. Different product, same audience pain.
 
@@ -87,7 +87,7 @@ Hi Meredith,
 
 Your creator Notion workflow content hits a nerve I see constantly: brilliant content planners that become gorgeous museums of good intentions. Creators are especially prone to the setup spiral — building the system instead of shipping the video.
 
-I'm launching Focus Dock, a PDF recovery guide (not a template) for ADHD brains who've abandoned multiple Notion setups. 47-minute protocol: Brain Dump, Today, and Projects databases, task sequences, 3-minute daily maintenance, 11-minute Sunday reset.
+I'm launching Focus Dock, a PDF recovery guide (not a template) for ADHD brains who've abandoned multiple Notion setups. step-by-step protocol: Brain Dump, Today, and Projects databases, task sequences, simple daily maintenance, short Sunday reset.
 
 It pairs well with your content planner audience — people who need a *minimal* execution layer, not another 14-database Life OS.
 
@@ -114,7 +114,7 @@ Hi Stuart,
 
 I came across your Notion productivity coaching work — the UK audience building systems that actually stick. Quick partnership idea.
 
-Focus Dock is a PDF recovery guide I built for ADHD clients who've over-engineered Notion and quit. Not a template to sell alongside yours — a 47-minute "rip out complexity, install 3 databases" protocol with task sequences and an overwhelm card for bad days.
+Focus Dock is a PDF recovery guide I built for ADHD clients who've over-engineered Notion and quit. Not a template to sell alongside yours — a step-by-step "rip out complexity, install 3 databases" protocol with task sequences and an overwhelm card for bad days.
 
 Feels like a natural recommendation *after* someone realizes their current workspace isn't working — before they buy template #7.
 
@@ -141,7 +141,7 @@ Your ADHD task sequences piece in Notion is one of the most cited resources in t
 
 Focus Dock is a 29-page recovery guide with copy-paste formulas for task sequences, rollups, and hide logic — plus the surrounding system (Brain Dump inbox, one visible next task, Sunday reset) so the sequences actually get used daily.
 
-It's implementation documentation, not a competing template. Technical overlap with your work, but packaged as a guided 47-minute install for people who've already failed at fancier setups.
+It's implementation documentation, not a competing template. Technical overlap with your work, but packaged as a guided step-by-step install for people who've already failed at fancier setups.
 
 Would you be open to a mention, article cross-link, or affiliate partnership? Free PDF to review — no call required.
 
@@ -166,7 +166,7 @@ Hi Eric,
 
 ADHD reWired is where people go when they understand executive dysfunction but still can't *start* — that gap between insight and action is exactly what Focus Dock targets.
 
-It's a PDF recovery guide for adults who've abandoned multiple Notion setups. Not another ADHD app or template — a 47-minute protocol: minimal databases, task sequences (only see the next physical step), no streak shame, printable overwhelm card for days when Notion feels like too much.
+It's a PDF recovery guide for adults who've abandoned multiple Notion setups. Not another ADHD app or template — a step-by-step protocol: minimal databases, task sequences (only see the next physical step), no streak shame, printable overwhelm card for days when Notion feels like too much.
 
 Your audience already knows the psychology. This is the narrow "here's what to build and what to delete" guide for the Notion crowd in your community.
 
@@ -198,7 +198,7 @@ Hi [Name] — love your [Notion/ADHD] content. Launching a recovery guide (not a
 ```
 Hi Stuart — sent this via LinkedIn since I couldn't find a direct email.
 
-Focus Dock = PDF recovery guide for ADHD folks who've abandoned Notion setups. 47-min protocol, task sequences, no competing template. 40% affiliate ($10.80/sale).
+Focus Dock = PDF recovery guide for ADHD folks who've abandoned Notion setups. guided protocol, task sequences, no competing template. 40% affiliate ($10.80/sale).
 
 Happy to email a free review copy if you're open to a quick look. No pressure if it's not a fit.
 
@@ -252,7 +252,7 @@ I built Focus Dock specifically so it doesn't compete with [PRODUCT — e.g., "y
 
 Here's the split:
 - **You teach** [their value: structure, philosophy, comprehensive system, coaching accountability]
-- **Focus Dock handles** the narrow recovery moment: "I already failed at Notion, what do I delete and install in 47 minutes?"
+- **Focus Dock handles** the narrow recovery moment: "I already failed at Notion, what do I delete and install in one session?"
 
 Your audience has likely already bought [templates/courses] from you or others. Focus Dock catches the people who need a *minimal* implementation protocol — 3 databases, task sequences, no streak dashboards — before they churn to the next shiny template.
 

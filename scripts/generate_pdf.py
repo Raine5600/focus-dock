@@ -246,10 +246,9 @@ def inline_callout(text, styles):
     return _callout_table(">>", text, styles, CORAL, LIGHT_BG, NAVY, border_width=1)
 
 
-def anchor_box(you_are_here, time_min, win, styles, skip_if=None):
+def anchor_box(you_are_here, win, styles, skip_if=None):
     lines = [
         f"<b>YOU ARE HERE:</b> {you_are_here}",
-        f"<b>TIME:</b> {time_min}",
         f"<b>WIN:</b> {win}",
     ]
     if skip_if:
@@ -274,7 +273,7 @@ def if_you_drift(signal, recovery, fallback, styles):
     body = (
         f"Noticed yourself {signal}?<br/>"
         f"→ {recovery}<br/>"
-        f"→ Timer still running? Skip to <b>{fallback}</b>."
+        f"→ Still in this section? Skip to <b>{fallback}</b>."
     )
     return _callout_table(
         "⚠ IF YOU DRIFT", body, styles, WARN_AMBER, BOX_YELLOW, WARN_AMBER
@@ -371,7 +370,6 @@ def start_here_page(styles, doc):
     story.append(Spacer(1, 18))
     story.append(anchor_box(
         "Lane 1 → Reading map",
-        "1 min",
         "You know which lane to enter and when to stop reading.",
         styles,
         skip_if="You already finished install — jump to Lane 4.",
@@ -379,7 +377,7 @@ def start_here_page(styles, doc):
     story.append(Spacer(1, 8))
     story.append(
         Paragraph(
-            "<b>Don't read cover to cover.</b> Pick a lane. Set a timer. Stop when the timer ends.",
+            "<b>Don't read cover to cover.</b> Pick a lane. Stop when you hit the checkpoint.",
             styles["body"],
         )
     )
@@ -387,28 +385,21 @@ def start_here_page(styles, doc):
 
     rows = [
         [Paragraph("<b>If you…</b>", styles["table_header"]),
-         Paragraph("<b>Go to</b>", styles["table_header"]),
-         Paragraph("<b>Timer</b>", styles["table_header"])],
+         Paragraph("<b>Go to</b>", styles["table_header"])],
         [Paragraph("Need proof this is for you", styles["toc"]),
-         Paragraph("Lane 1 → 30-sec self-check", styles["toc"]),
-         Paragraph("1 min", styles["toc"])],
+         Paragraph("Lane 1 → Self-check", styles["toc"])],
         [Paragraph("Want a win RIGHT NOW", styles["toc"]),
-         Paragraph("Lane 2 — 5-Min Win", styles["toc"]),
-         Paragraph("5 min", styles["toc"])],
+         Paragraph("Lane 2 — Quick Win", styles["toc"])],
         [Paragraph("Ready to build", styles["toc"]),
-         Paragraph("Lane 3 — Install", styles["toc"]),
-         Paragraph("47 min", styles["toc"])],
+         Paragraph("Lane 3 — Install", styles["toc"])],
         [Paragraph("Already installed", styles["toc"]),
-         Paragraph("Lane 4 — Daily Use", styles["toc"]),
-         Paragraph("3 min", styles["toc"])],
+         Paragraph("Lane 4 — Daily Use", styles["toc"])],
         [Paragraph("Something broke / drowning", styles["toc"]),
-         Paragraph("Lane 4 → Emergency or Lane 5", styles["toc"]),
-         Paragraph("4–11 min", styles["toc"])],
+         Paragraph("Lane 4 → Emergency or Lane 5", styles["toc"])],
         [Paragraph("Looking something up", styles["toc"]),
-         Paragraph("Lane 5 — Reference", styles["toc"]),
-         Paragraph("skim", styles["toc"])],
+         Paragraph("Lane 5 — Reference", styles["toc"])],
     ]
-    toc_table = Table(rows, colWidths=[2.0 * inch, 2.5 * inch, 2.0 * inch])
+    toc_table = Table(rows, colWidths=[2.5 * inch, 4.0 * inch])
     toc_table.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), NAVY),
         ("TEXTCOLOR", (0, 0), (-1, 0), WHITE),
@@ -423,14 +414,14 @@ def start_here_page(styles, doc):
     story.append(toc_table)
     story.append(Spacer(1, 10))
     story.append(inline_callout(
-        "<b>Default path:</b> Self-check (30 sec) → 5-Min Win → Install → "
+        "<b>Default path:</b> Self-check → Quick Win → Install → "
         "one visible task → close Notion.",
         styles,
     ))
     story.append(do_this_now([
         "Pick your lane from the table above.",
-        "Set a timer for that lane.",
-        "Open only that lane. Close the PDF when the timer rings.",
+        "Open only that lane.",
+        "Close the PDF when you hit the checkpoint.",
     ], styles))
     return story
 
@@ -441,8 +432,7 @@ def build_content(styles, doc):
     # Lane 1 continued — self-check + preview
     story.append(PageBreak())
     story.append(anchor_box(
-        "Lane 1 → 30-second self-check",
-        "30 sec",
+        "Lane 1 → Self-check",
         "You know if Focus Dock is for you.",
         styles,
     ))
@@ -467,7 +457,7 @@ def build_content(styles, doc):
     story.append(if_you_drift(
         "reading FAQ before doing anything",
         "Lane 2 first. FAQ is R-13. Win before walls of text.",
-        "Lane 2 — 5-Min Win",
+        "Lane 2 — Quick Win",
         styles,
     ))
     story.append(Spacer(1, 10))
@@ -476,14 +466,13 @@ def build_content(styles, doc):
         ("body", "<b>Database 2 — [TODAY] Today:</b> ONE visible next action. Task sequences hide future steps."),
         ("body", "<b>Database 3 — [PROJECTS] Projects:</b> Parking lot for someday. You visit weekly, not daily."),
         ("body", "<b>[HOME] Home Screen:</b> Single page. No sidebar maze. Open → see next task → do it."),
-        ("do_now", ["Do NOT build yet. Finish Lane 2 first.", "Set a 5-minute timer when ready for Lane 2."]),
+        ("do_now", ["Do NOT build yet. Finish Lane 2 first.", "Open Lane 2 when ready."]),
     ])
 
-    # Lane 2 — 5-minute win
-    begin_lane(story, styles, doc, "LANE 2 — 5-MINUTE WIN")
+    # Lane 2 — quick win
+    begin_lane(story, styles, doc, "LANE 2 — QUICK WIN")
     section(story, styles, "THE ONE-TASK RULE", [
-        ("anchor", {"you_are_here": "Lane 2 → One-task rule", "time_min": "2 min",
-                    "win": "You picked one avoided task.", "skip_if": None}),
+        ("anchor", {"you_are_here": "Lane 2 → One-task rule",                    "win": "You picked one avoided task.", "skip_if": None}),
         ("body", "Twelve databases = twelve decisions before breakfast. Your brain is already tired."),
         ("body", "We're cutting that to <b>one visible task</b>. Notion comes later. Task completion comes now."),
         ("do_now", [
@@ -492,58 +481,54 @@ def build_content(styles, doc):
             "Say it out loud once.",
         ]),
     ])
-    section(story, styles, "SHRINK IT (2-MINUTE VERSION)", [
-        ("anchor", {"you_are_here": "Lane 2 → Shrink task", "time_min": "2 min",
-                    "win": "Your task fits in 2 minutes.", "skip_if": None}),
+    section(story, styles, "SHRINK IT SMALL", [
+        ("anchor", {"you_are_here": "Lane 2 → Shrink task",                    "win": "Your task is small enough to start.", "skip_if": None}),
         ("body", "<b>Laundry</b> → put 3 items in hamper.<br/><b>Email boss</b> → open draft.<br/><b>Clean kitchen</b> → put 3 dishes in sink."),
-        ("do_now", ["Rewrite YOUR task as a 2-minute version.", "If still too big, shrink again."]),
-        ("checkpoint", {"lines": ["Could do the shrunk version in 2 min?"],
+        ("do_now", ["Rewrite YOUR task as the smallest version.", "If still too big, shrink again."]),
+        ("checkpoint", {"lines": ["Could do the shrunk version right now?"],
                         "stuck_pointer": "Shrink again — smaller is better"}),
     ])
     section(story, styles, "DO IT ON PAPER (NO NOTION YET)", [
-        ("anchor", {"you_are_here": "Lane 2 → Do the task", "time_min": "2 min",
-                    "win": "One real task finished.", "skip_if": None}),
+        ("anchor", {"you_are_here": "Lane 2 → Do the task",                    "win": "One real task finished.", "skip_if": None}),
         ("do_now", [
-            "Set a 2-minute timer.",
+            "Do it now — phone in another room.",
             "Do the shrunk task. Phone in another room.",
             "Mark a check on paper when done.",
         ]),
-        ("checkpoint", {"lines": ["Task done or timer rang"], "stuck_pointer": "Lane 4 → Emergency"}),
+        ("checkpoint", {"lines": ["Task done or you stopped"], "stuck_pointer": "Lane 4 → Emergency"}),
         ("drift", {"signal": "customizing your phone notes app",
                    "recovery": "Defaults are fine. Sticky note works.",
-                   "fallback": "Do the 2-minute task on paper"}),
+                   "fallback": "Do the tiny task on paper"}),
     ])
     section(story, styles, "BRIDGE TO INSTALL", [
         ("callout", ">> <b>You just did the hard part.</b> Starting beats any dashboard. Notion only holds the task — you already proved you can finish one."),
-        ("body", "When you're ready: Lane 3 — 47-minute install. Same one-task energy."),
-        ("do_now", ["Set a 47-minute timer when ready for Lane 3.", "Phone in another room. Open Notion only."]),
+        ("body", "When you're ready: Lane 3 — Install. Same one-task energy."),
+        ("do_now", ["Open Lane 3 when ready.", "Phone in another room. Open Notion only."]),
     ], page_break_after=True)
 
     # Lane 3 — Install
-    begin_lane(story, styles, doc, "LANE 3 — 47-MINUTE INSTALL")
+    begin_lane(story, styles, doc, "LANE 3 — INSTALL")
     section(story, styles, "INSTALL PREAMBLE", [
-        ("anchor", {"you_are_here": "Lane 3 → Before timer", "time_min": "2 min",
-                    "win": "You know the rules before building.", "skip_if": "Already installed → Lane 4"}),
+        ("anchor", {"you_are_here": "Lane 3 → Before you start",                    "win": "You know the rules before building.", "skip_if": "Already installed → Lane 4"}),
         ("body", "This is not a template to admire. It is a <b>recovery protocol</b>. Zero philosophy until Lane 4."),
         ("h2", "What you need"),
         ("step", "• Notion account (free tier works)"),
-        ("step", "• 47 uninterrupted minutes (phone in another room)"),
+        ("step", "• One uninterrupted session (phone in another room)"),
         ("step", "• Permission to quarantine your template graveyard"),
         ("callout", ">> RULE ZERO: Urge to add a 4th database? <b>Setup spiral.</b> Close Notion. Do one real task."),
         ("drift", {"signal": "watching Notion tutorial videos",
                    "recovery": "Close YouTube. Open R-2 UI Map. Find the button.",
-                   "fallback": "Minutes 0–5 in this lane"}),
+                   "fallback": "Quarantine the graveyard (start of install)"}),
     ])
 
-    section(story, styles, "THE 47-MINUTE INSTALL", [
-        ("anchor", {"you_are_here": "Lane 3 → Install", "time_min": "47 min",
-                    "win": "3 databases + homepage + one task done.", "skip_if": None}),
-        ("h3", "Minutes 0–5: Quarantine the graveyard"),
+    section(story, styles, "THE INSTALL", [
+        ("anchor", {"you_are_here": "Lane 3 → Install",                    "win": "3 databases + homepage + one task done.", "skip_if": None}),
+        ("h3", "Quarantine the graveyard"),
         ("step", "1. Open Notion sidebar. Count your productivity-related pages."),
         ("step", "2. If more than 5: create page titled <b>[GRAVEYARD] Template Graveyard</b>."),
         ("step", "3. Drag every abandoned dashboard, habit tracker, and PARA clone into it. Do not open them."),
         ("step", "4. Collapse the graveyard. You are not deleting — you're quarantining shame."),
-        ("h3", "Minutes 5–15: Create Database 1 — [BRAIN] Brain Dump"),
+        ("h3", "Create Database 1 — [BRAIN] Brain Dump"),
         ("step", "1. New page: <b>[BRAIN] Brain Dump</b> → type /table → Full page database."),
         ("step", "2. Rename default title property to <b>Thought</b>."),
         ("step", "3. Add property: <b>Captured</b> (Created time — auto)."),
@@ -552,7 +537,7 @@ def build_content(styles, doc):
         ("step", "6. Create view <b>Inbox</b>: filter Processed? is unchecked. Sort: Captured ascending."),
         ("callout", "Usage rule: Capture in 2 seconds. Thought only. No tags. Process during Sunday reset or when Today is empty."),
         ("break", ""),
-        ("h3", "Minutes 15–30: Create Database 2 — [TODAY] Today"),
+        ("h3", "Create Database 2 — [TODAY] Today"),
         ("step", "1. New page: <b>[TODAY] Today</b> → /table → Full page database."),
         ("step", "2. Properties to create:"),
         ("body", "• <b>Task</b> (Title)<br/>• <b>Done</b> (Checkbox)<br/>• <b>Due</b> (Date)<br/>• <b>Energy</b> (Select: [HIGH] High / [MED] Medium / [LOW] Low)<br/>• <b>Task Before</b> (Relation → Today, two-way)<br/>• <b>Task After</b> (Relation → Today, two-way)"),
@@ -567,19 +552,19 @@ def build_content(styles, doc):
         ("formula", 'prop("Hide Sequence")'),
         ("step", "7. View <b>Do This Next</b>: Filter Hide = unchecked AND Done = unchecked. Sort: Due ascending. Show 1 card if using gallery, or limit to top row."),
         ("callout", "This view is your entire daily driver. One task visible. Everything else is hidden by sequence logic."),
-        ("h3", "Minutes 30–40: Create Database 3 — [PROJECTS] Projects"),
+        ("h3", "Create Database 3 — [PROJECTS] Projects"),
         ("step", "1. New page: <b>[PROJECTS] Projects</b> → /table → Full page database."),
         ("step", "2. Properties: <b>Name</b> (Title), <b>Status</b> (Select: [IDEA] Idea / [ACTIVE] Active / [LOW] Paused / [DONE] Done), <b>Next Action</b> (Text)."),
         ("step", "3. View <b>Active</b>: Status = Active. Sort: manual (drag what matters to top)."),
         ("body", "You do NOT work from this database daily. During Sunday reset, pick one Next Action and move it to Today."),
-        ("h3", "Minutes 40–47: Build [HOME] Home Screen"),
+        ("h3", "Build [HOME] Home Screen"),
         ("step", "1. New page: <b>[HOME] Focus Dock</b> (make this your Notion home)."),
         ("step", "2. Add heading: <b>Right now:</b>"),
         ("step", "3. Type /linked → link <b>Do This Next</b> view from Today (embedded, not full database)."),
         ("step", "4. Add heading: <b>Brain dump (2 sec):</b> → /linked → Brain Dump Inbox view."),
         ("step", "5. Add toggle: <b>Projects (Sunday only)</b> → link Active view."),
         ("step", "6. Settings → set <b>[HOME] Focus Dock</b> as homepage."),
-        ("callout", "Done. Close Notion. Do the one visible task. Timer stops. You win."),
+        ("callout", "Done. Close Notion. Do the one visible task. You win."),
         ("do_now", ["Do one real task from Do This Next.", "Mark Done. Close Notion."]),
     ], page_break_after=True)
 
@@ -587,21 +572,20 @@ def build_content(styles, doc):
 
     # Lane 4 — Daily use
     begin_lane(story, styles, doc, "LANE 4 — DAILY USE")
-    section(story, styles, "DAILY WORKFLOW (3 MINUTES)", [
-        ("anchor", {"you_are_here": "Lane 4 → Daily workflow", "time_min": "3 min",
-                    "win": "You know the morning/evening rhythm.", "skip_if": None}),
-        ("h2", "Morning (90 seconds)"),
+    section(story, styles, "DAILY WORKFLOW", [
+        ("anchor", {"you_are_here": "Lane 4 → Daily workflow",                    "win": "You know the morning/evening rhythm.", "skip_if": None}),
+        ("h2", "Morning"),
         ("step", "1. Open [HOME] Focus Dock."),
         ("step", "2. Read the one task in Do This Next."),
         ("step", "3. Do it before opening email, Slack, or TikTok."),
-        ("h2", "During the day (30 seconds each)"),
+        ("h2", "During the day"),
         ("step", "• Intrusive thought? → Brain Dump. One line. Close."),
         ("step", "• Finished task? → Check Done. Next sequence step appears automatically."),
-        ("h2", "Evening (60 seconds)"),
+        ("h2", "Evening"),
         ("step", "• If Today is empty: pull ONE task from Brain Dump or Projects."),
         ("step", "• Do NOT rebuild your dashboard. Do NOT add properties. Go to bed."),
         ("callout", "If you did nothing else today but open Focus Dock once and complete one task: <b>system success.</b>"),
-        ("checkpoint", {"lines": ["You can describe the 3-minute flow"],
+        ("checkpoint", {"lines": ["You can describe the daily flow"],
                         "stuck_pointer": "R-4 When to Use What table"}),
     ])
 
@@ -631,36 +615,34 @@ def build_content(styles, doc):
                    "fallback": "Laundry example above"}),
     ], page_break_after=True)
 
-    section(story, styles, "11-MINUTE SUNDAY RESET", [
-        ("anchor", {"you_are_here": "Lane 4 → Sunday reset", "time_min": "11 min",
-                    "win": "Week prepped without guilt dashboard.", "skip_if": None}),
-        ("body", "No 45-minute weekly review. No streak accounting. Eleven minutes, timer visible."),
-        ("h2", "Minutes 0–3: Brain Dump triage"),
+    section(story, styles, "SUNDAY RESET", [
+        ("anchor", {"you_are_here": "Lane 4 → Sunday reset",                    "win": "Week prepped without guilt dashboard.", "skip_if": None}),
+        ("body", "No guilt weekly review. No streak accounting."),
+        ("h2", "Brain Dump triage"),
         ("step", "• Open Inbox. For each item: delete, move to Today, or move to Projects Next Action."),
         ("step", "• Check Processed? on handled items."),
-        ("h2", "Minutes 3–7: Today prep"),
+        ("h2", "Today prep"),
         ("step", "• Clear Done tasks (archive or delete — your choice)."),
         ("step", "• Ensure 3–5 tasks max for the week, sequenced where needed."),
         ("step", "• Pick Monday's first task. Set Due = Monday."),
-        ("h2", "Minutes 7–11: Projects glance"),
+        ("h2", "Projects glance"),
         ("step", "• Open Active projects. Max 3 Active at once. Pause the rest."),
         ("step", "• Update one Next Action per active project."),
-        ("callout", "Stop at 11 minutes even if unfinished. Consistency beats completeness."),
-        ("checkpoint", {"lines": ["Timer stopped at 11 min"], "stuck_pointer": "R-7 Sunday Reset printable"}),
-        ("drift", {"signal": "Sunday reset past 11 min",
-                   "recovery": "Timer's done. Stop. Incomplete beats skipped.",
+        ("callout", "Stop even if unfinished. Consistency beats completeness."),
+        ("checkpoint", {"lines": ["Reset feels complete enough"], "stuck_pointer": "R-7 Sunday Reset printable"}),
+        ("drift", {"signal": "Sunday reset running long",
+                   "recovery": "Stop here. Incomplete beats skipped.",
                    "fallback": "R-7 printable checklist"}),
     ])
 
     section(story, styles, "EMERGENCY OVERWHELM PROTOCOL", [
-        ("anchor", {"you_are_here": "Lane 4 → Emergency", "time_min": "4 min",
-                    "win": "You survived overwhelm with one tiny action.", "skip_if": None}),
+        ("anchor", {"you_are_here": "Lane 4 → Emergency",                    "win": "You survived overwhelm with one tiny action.", "skip_if": None}),
         ("body", "For days when everything feels loud. Print Part 15. Tape it to your monitor."),
         ("callout", "[ALERT] OVERWHELM MODE — Do only these 4 steps:"),
         ("step", "1. <b>Box breathing:</b> 4 sec in, 4 hold, 4 out. Twice."),
         ("step", "2. <b>Brain dump 3 words</b> — not sentences. What's loudest?"),
-        ("step", "3. <b>Shrink to 2-minute version:</b> 'Clean kitchen' → 'put 3 dishes in sink.'"),
-        ("step", "4. <b>Do the 2-minute version.</b> Mark done. Stop. You survived."),
+        ("step", "3. <b>Shrink to smallest version:</b> 'Clean kitchen' → 'put 3 dishes in sink.'"),
+        ("step", "4. <b>Do the smallest version.</b> Mark done. Stop. You survived."),
         ("body", "Do NOT: reorganize Notion, watch setup videos, download a new template, or redesign colors. That is the trap."),
         ("h2", "When to skip Notion entirely"),
         ("body", "If you haven't opened Focus Dock in 5+ days: use a sticky note for one task. Return to Notion only when the sticky works for 2 days straight."),
@@ -686,8 +668,7 @@ def build_content(styles, doc):
     story.extend(build_days_2_7_playbook(styles))
 
     section(story, styles, "WHY YOUR OLD SYSTEM FAILED (OPTIONAL)", [
-        ("anchor", {"you_are_here": "Lane 4 → Context", "time_min": "3 min",
-                    "win": "You understand why templates failed — without shame.",
+        ("anchor", {"you_are_here": "Lane 4 → Context",                    "win": "You understand why templates failed — without shame.",
                     "skip_if": "Read when curious, not before install."}),
         ("body", "You are not lazy. Your old system was designed to produce screenshots, not completed tasks."),
         ("h2", "1. Dopamine spent on setup"),
@@ -700,8 +681,7 @@ def build_content(styles, doc):
     ])
 
     section(story, styles, "TASK SEQUENCE LIBRARY", [
-        ("anchor", {"you_are_here": "Lane 4 → Sequence library", "time_min": "5 min",
-                    "win": "You picked one pre-built sequence to copy.", "skip_if": None}),
+        ("anchor", {"you_are_here": "Lane 4 → Sequence library",                    "win": "You picked one pre-built sequence to copy.", "skip_if": None}),
         ("body", "Copy these into Today database. Link with Task Before relations. Adjust names to your life."),
         ("h2", "[HOME] Clean kitchen (8 steps)"),
         ("step", "1. Put 3 dishes in sink → 2. Fill sink with soap water → 3. Scrub dishes → 4. Rinse → 5. Load dishwasher → 6. Wipe counter → 7. Take out trash → 8. Sweep floor"),
@@ -713,8 +693,8 @@ def build_content(styles, doc):
         ("step", "1. Pick topic → 2. Outline 5 bullets → 3. Write script → 4. Set up camera → 5. Record → 6. Transfer files → 7. Rough cut → 8. Thumbnail → 9. Upload → 10. Description + tags"),
         ("h2", "[RX] Refill prescription (7 steps)"),
         ("step", "1. Check pill bottle date → 2. Call pharmacy → 3. Confirm insurance → 4. Wait for ready text → 5. Drive/walk → 6. Pick up → 7. Put in weekly organizer"),
-        ("h2", "[CLEAN] 10-minute room rescue"),
-        ("step", "1. Trash bag in hand → 2. Pick up 5 items → 3. Put away 3 items → 4. Clear one surface → 5. Stop (timer done)"),
+        ("h2", "[CLEAN] Quick room rescue"),
+        ("step", "1. Trash bag in hand → 2. Pick up 5 items → 3. Put away 3 items → 4. Clear one surface → 5. Stop (done)"),
         ("callout", "Pre-build sequences on a good day. Reuse forever. This is your dopamine investment — not color palettes."),
         ("do_now", ["Pick one sequence on a good day.", "Copy into Today with Task Before links."]),
     ])
@@ -722,8 +702,7 @@ def build_content(styles, doc):
     story.extend(build_sequence_worksheets(styles))
 
     section(story, styles, "WEEK 1–4 ROLLOUT", [
-        ("anchor", {"you_are_here": "Lane 4 → Week rollout", "time_min": "2 min skim",
-                    "win": "You know what each week adds.", "skip_if": None}),
+        ("anchor", {"you_are_here": "Lane 4 → Week rollout",                    "win": "You know what each week adds.", "skip_if": None}),
         ("h2", "Week 1: Survival mode"),
         ("step", "• Day 1: Install only. No customization."),
         ("step", "• Days 2–7: One task per day minimum. Brain dump only when intrusive."),
@@ -732,7 +711,7 @@ def build_content(styles, doc):
         ("step", "• Pick your most-delayed task. Break into sequence."),
         ("step", "• Add 2nd sequence only after first works 3 times"),
         ("h2", "Week 3: Sunday reset habit"),
-        ("step", "• First 11-minute reset. Timer visible. Stop at 11 even if messy."),
+        ("step", "• First Sunday reset. Stop even if messy."),
         ("step", "• If you skip: no catch-up. Next Sunday, fresh start."),
         ("h2", "Week 4: Evaluate"),
         ("body", "Ask: Am I opening Focus Dock without dread? If yes: success. If no: delete one more feature."),
@@ -750,14 +729,14 @@ def build_content(styles, doc):
         ("body", "<b>Capture:</b> Brain Dump → Thought → close (2 sec)"),
         ("body", "<b>Work:</b> [HOME] Focus Dock → Do This Next → one task"),
         ("body", "<b>Sequence:</b> Task Before relation + Hide Sequence formula"),
-        ("body", "<b>Weekly:</b> 11-min Sunday reset"),
-        ("body", "<b>Emergency:</b> 2-minute shrink → do → stop"),
+        ("body", "<b>Weekly:</b> Sunday reset"),
+        ("body", "<b>Emergency:</b> smallest-step shrink → do → stop"),
         ("body", "<b>Homepage:</b> [HOME] Focus Dock (not sidebar maze)"),
     ], ref=True)
 
     section(story, styles, "TROUBLESHOOTING", [
         ("h2", "I keep customizing instead of doing"),
-        ("body", "Set a 'build budget': 0 minutes on weekdays. Customization is Sunday minutes 10–11 only."),
+        ("body", "Set a build budget: zero customizing on weekdays. Customization is Sunday only."),
         ("h2", "Too many tasks visible"),
         ("body", "Check Hide formula is applied. Filter Do This Next: Hide = unchecked."),
         ("h2", "Sequences not hiding"),
@@ -771,7 +750,7 @@ def build_content(styles, doc):
         ("h2", "Do This Next is empty but I have tasks"),
         ("body", "Uncheck Done on active tasks. Confirm Due dates exist. If using sequences, ensure step 1 has no Task Before link."),
         ("h2", "Brain Dump inbox never empties"),
-        ("body", "Normal. Inbox is capture, not completion. Process during Sunday reset only — max 11 minutes."),
+        ("body", "Normal. Inbox is capture, not completion. Process during Sunday reset only — max your reset window."),
         ("h2", "I added a 4th database"),
         ("body", "Delete it today. Move any useful items to Brain Dump or Projects. Do not migrate relations."),
     ], page_break_after=True, ref=True)
@@ -809,8 +788,8 @@ def build_content(styles, doc):
         ("body", "Fix: Check Hide formula. Gallery view with 1 card. Or table view sorted with only top row visible."),
         ("h2", "Mistake 3: Skipping Brain Dump"),
         ("body", "Fix: Intrusive thoughts will hijack focus. 2-second capture prevents 'I'll remember' lies."),
-        ("h2", "Mistake 4: Sunday reset becomes 45 minutes"),
-        ("body", "Fix: Hard stop at 11 min. Incomplete reset beats skipped reset."),
+        ("h2", "Mistake 4: Sunday reset becomes too long"),
+        ("body", "Fix: Hard stop at reset. Incomplete reset beats skipped reset."),
         ("h2", "Mistake 5: Rebuilding instead of using"),
         ("body", "Fix: If you haven't done a task today but you've opened Notion, close it. Setup spiral detected."),
         ("h2", "Mistake 6: Energy tags become a project"),
@@ -824,12 +803,12 @@ def build_content(styles, doc):
         ("h2", "[MED] Medium energy"),
         ("body", "Email, errands, admin, routine chores, continuing in-progress work."),
         ("h2", "[LOW] Low energy"),
-        ("body", "Brain dump triage, 2-minute tasks, reading one paragraph, putting one item away."),
+        ("body", "Brain dump triage, tiny tasks, reading one paragraph, putting one item away."),
         ("callout", "On low days: filter Do This Next by Low energy OR ignore filter and do the smallest visible task."),
     ], ref=True)
 
     section(story, styles, "SUNDAY RESET CHECKLIST (PRINTABLE)", [
-        ("body", "Print this page. Check boxes with pen during your 11-minute reset. Stop when timer rings."),
+        ("body", "Print this page. Check boxes with pen during your Sunday reset. Stop when done."),
         ("step", "[ ] Open [BRAIN] Brain Dump Inbox — triage each item (delete / Today / Projects)"),
         ("step", "[ ] Mark Processed? on handled Brain Dump items"),
         ("step", "[ ] Archive or delete completed Today tasks"),
@@ -838,7 +817,7 @@ def build_content(styles, doc):
         ("step", "[ ] Max 3 [PROJECTS] Active — pause the rest"),
         ("step", "[ ] Each Active project has one Next Action written"),
         ("step", "[ ] Did NOT add properties, views, or databases"),
-        ("step", "[ ] Timer stopped at 11 minutes (even if unfinished)"),
+        ("step", "[ ] Reset feels complete enoughutes (even if unfinished)"),
         ("callout", ">> Incomplete reset beats skipped reset. Same time next Sunday — no catch-up guilt."),
     ], page_break_after=True, ref=True)
 
@@ -847,7 +826,7 @@ def build_content(styles, doc):
         ("h2", "[ALERT] OVERWHELM MODE"),
         ("step", "1. Box breathe: 4 in, 4 hold, 4 out × 2"),
         ("step", "2. Brain dump 3 WORDS (not sentences)"),
-        ("step", "3. Shrink to 2-MINUTE version"),
+        ("step", "3. Shrink to SMALLEST version"),
         ("step", "4. Do it. Mark done. STOP."),
         ("body", "<b>DO NOT:</b> Open Notion · Download templates · Reorganize · Watch setup videos"),
         ("body", "<b>IF 5+ DAYS AWAY:</b> Sticky note with ONE task. Return when sticky works 2 days."),
@@ -904,55 +883,55 @@ def build_content(styles, doc):
     return story
 
 
-INSTALL_MINUTES = [
-    ("0", "Start 47-minute timer. Phone in another room. Open Notion desktop or browser only."),
-    ("1", "Sidebar audit: count productivity pages. If 5+, create [GRAVEYARD] Template Graveyard page."),
-    ("2", "Drag abandoned dashboards into graveyard. Do NOT open them. Collapse graveyard."),
-    ("3", "Create new page: [BRAIN] Brain Dump. Type /table → Full page database."),
-    ("4", "Rename title column to Thought. Delete all other default properties."),
-    ("5", "Add Captured (Created time). Add Processed? (Checkbox). Save."),
-    ("6", "Create Inbox view. Filter: Processed? unchecked. Sort: Captured ascending."),
-    ("7", "Test capture: add 'test thought'. Confirm it appears in Inbox. Delete test."),
-    ("8", "Create page [TODAY] Today. /table → Full page database."),
-    ("9", "Add Task (title), Done (checkbox), Due (date), Energy (select)."),
-    ("10", "Energy options: [HIGH] High, [MED] Medium, [LOW] Low. Save."),
-    ("11", "Add Task Before relation to Today (two-way). Auto-creates Task After."),
-    ("12", "Add Before Done rollup: Task Before → Done → Count checked."),
-    ("13", "Add Before Due rollup: Task Before → Due → Latest date."),
-    ("14", "Add Hide Sequence formula property (see Part 2 for formula)."),
-    ("15", "Add Hide formula: prop(\"Hide Sequence\")."),
-    ("16", "Create Do This Next view. Filter Hide unchecked, Done unchecked."),
-    ("17", "Sort Do This Next by Due ascending. This is your daily driver."),
-    ("18", "Add one test task 'Put 3 dishes in sink'. Confirm it shows in Do This Next."),
-    ("19", "Create page [PROJECTS] Projects. /table → Full page database."),
-    ("20", "Add Name, Status (Idea/Active/Paused/Done), Next Action (text)."),
-    ("21", "Create Active view: Status = Active. Manual sort enabled."),
-    ("22", "Add one project with Next Action text only. Do not add tasks here yet."),
-    ("23", "Create page [HOME] Focus Dock. This becomes your home."),
-    ("24", "Add heading: Right now. Embed linked Do This Next view from Today."),
-    ("25", "Add heading: Brain dump. Embed linked Inbox view from Brain Dump."),
-    ("26", "Add toggle: Projects (Sunday only). Embed Active view inside."),
-    ("27", "Settings → set homepage to [HOME] Focus Dock."),
-    ("28", "Close every other Notion tab. Only Focus Dock remains."),
-    ("29", "Add first real task to Today. Not a test — something you've avoided."),
-    ("30", "If task is big: stop. Break into 3-step sequence with Task Before links."),
-    ("31", "Verify only step 1 visible in Do This Next. Steps 2-3 hidden."),
-    ("32", "Move 3 Brain Dump items from old notes if any. Max 3. Check Processed."),
-    ("33", "Review Projects: max 1 Active. Pause others."),
-    ("34", "Delete any extra views you created during setup. Keep only essentials."),
-    ("35", "Do NOT change colors, icons, or covers. Aesthetic trap — defaults are fine."),
-    ("36", "Read Emergency Overwhelm Card (Part 6). Bookmark mentally."),
-    ("37", "Screenshot Focus Dock home for accountability. Do not post — private record."),
-    ("38", "Write on paper: 'One task is enough.' Tape near desk."),
-    ("39", "Calendar: recurring Sunday 11-min reset reminder."),
-    ("40", "Do the one visible task NOW before closing guide."),
-    ("41", "Mark Done. Watch next sequence step appear (if applicable)."),
-    ("42", "If no next step: pull one item from Brain Dump to Today."),
-    ("43", "Close Notion. Do not reopen until tomorrow morning."),
-    ("44", "Journal one sentence: what made starting hard today?"),
-    ("45", "Put guide PDF in easy-to-find folder. Name: Focus Dock Recovery."),
-    ("46", "Text accountability buddy: 'Installed Focus Dock. One task done.'"),
-    ("47", "Stop timer. You recovered. The graveyard can wait."),
+INSTALL_STEPS = [
+    ("1", "Phone in another room. Open Notion desktop or browser only."),
+    ("2", "Sidebar audit: count productivity pages. If 5+, create [GRAVEYARD] Template Graveyard page."),
+    ("3", "Drag abandoned dashboards into graveyard. Do NOT open them. Collapse graveyard."),
+    ("4", "Create new page: [BRAIN] Brain Dump. Type /table → Full page database."),
+    ("5", "Rename title column to Thought. Delete all other default properties."),
+    ("6", "Add Captured (Created time). Add Processed? (Checkbox). Save."),
+    ("7", "Create Inbox view. Filter: Processed? unchecked. Sort: Captured ascending."),
+    ("8", "Test capture: add 'test thought'. Confirm it appears in Inbox. Delete test."),
+    ("9", "Create page [TODAY] Today. /table → Full page database."),
+    ("10", "Add Task (title), Done (checkbox), Due (date), Energy (select)."),
+    ("11", "Energy options: [HIGH] High, [MED] Medium, [LOW] Low. Save."),
+    ("12", "Add Task Before relation to Today (two-way). Auto-creates Task After."),
+    ("13", "Add Before Done rollup: Task Before → Done → Count checked."),
+    ("14", "Add Before Due rollup: Task Before → Due → Latest date."),
+    ("15", "Add Hide Sequence formula property (see R-1 Formula Reference)."),
+    ("16", "Add Hide formula: prop(\"Hide Sequence\")."),
+    ("17", "Create Do This Next view. Filter Hide unchecked, Done unchecked."),
+    ("18", "Sort Do This Next by Due ascending. This is your daily driver."),
+    ("19", "Add one test task 'Put 3 dishes in sink'. Confirm it shows in Do This Next."),
+    ("20", "Create page [PROJECTS] Projects. /table → Full page database."),
+    ("21", "Add Name, Status (Idea/Active/Paused/Done), Next Action (text)."),
+    ("22", "Create Active view: Status = Active. Manual sort enabled."),
+    ("23", "Add one project with Next Action text only. Do not add tasks here yet."),
+    ("24", "Create page [HOME] Focus Dock. This becomes your home."),
+    ("25", "Add heading: Right now. Embed linked Do This Next view from Today."),
+    ("26", "Add heading: Brain dump. Embed linked Inbox view from Brain Dump."),
+    ("27", "Add toggle: Projects (Sunday only). Embed Active view inside."),
+    ("28", "Settings → set homepage to [HOME] Focus Dock."),
+    ("29", "Close every other Notion tab. Only Focus Dock remains."),
+    ("30", "Add first real task to Today. Not a test — something you've avoided."),
+    ("31", "If task is big: stop. Break into 3-step sequence with Task Before links."),
+    ("32", "Verify only step 1 visible in Do This Next. Steps 2-3 hidden."),
+    ("33", "Move 3 Brain Dump items from old notes if any. Max 3. Check Processed."),
+    ("34", "Review Projects: max 1 Active. Pause others."),
+    ("35", "Delete any extra views you created during setup. Keep only essentials."),
+    ("36", "Do NOT change colors, icons, or covers. Aesthetic trap — defaults are fine."),
+    ("37", "Read Emergency Overwhelm Card. Bookmark mentally."),
+    ("38", "Screenshot Focus Dock home for accountability. Do not post — private record."),
+    ("39", "Write on paper: 'One task is enough.' Tape near desk."),
+    ("40", "Calendar: recurring Sunday reset reminder."),
+    ("41", "Do the one visible task NOW before closing guide."),
+    ("42", "Mark Done. Watch next sequence step appear (if applicable)."),
+    ("43", "If no next step: pull one item from Brain Dump to Today."),
+    ("44", "Close Notion. Do not reopen until tomorrow morning."),
+    ("45", "Journal one sentence: what made starting hard today?"),
+    ("46", "Put guide PDF in easy-to-find folder. Name: Focus Dock Recovery."),
+    ("47", "Text accountability buddy: 'Installed Focus Dock. One task done.'"),
+    ("48", "You recovered. The graveyard can wait."),
 ]
 
 
@@ -960,8 +939,8 @@ SEQUENCE_WORKSHEETS = [
     ("GROCERIES", ["Check fridge", "Write 5-item list max", "Grab bags", "Drive/walk", "Buy only list items", "Unload 3 items"]),
     ("SHOWER", ["Get towel", "Get clean clothes", "Start water", "Shower", "Dry off", "Dress", "Hang towel"]),
     ("TAXES", ["Find login", "Download one form", "Fill name/address", "One deduction section", "Save draft", "Schedule finish date"]),
-    ("CALL MOM", ["Write 2 topics", "Find quiet spot", "Dial", "Talk 10 min max", "Set next call date"]),
-    ("WORKOUT", ["Put on shoes", "Fill water", "5-min warmup", "Main exercise 10 min", "Cooldown", "Shower after"]),
+    ("CALL MOM", ["Write 2 topics", "Find quiet spot", "Dial", "Talk briefly", "Set next call date"]),
+    ("WORKOUT", ["Put on shoes", "Fill water", "Short warmup", "Main exercise brief", "Cooldown", "Shower after"]),
 ]
 
 
@@ -977,7 +956,7 @@ def build_brain_dump_guide(styles):
         ("h2", "What NOT to do during triage"),
         ("step", "• Do not tag, categorize, or assign priority"),
         ("step", "• Do not create sub-pages or linked databases"),
-        ("step", "• Do not process more than 11 minutes total"),
+        ("step", "• Do not process more than your reset window total"),
         ("h2", "When to capture (2 seconds)"),
         ("step", "• Intrusive thought during focused work"),
         ("step", "• 'I'll remember this' lie detected"),
@@ -1035,11 +1014,11 @@ def build_setup_spiral_red_flags(styles):
     story = []
     flags = [
         ("New database idea", "You 'just need' a Reading List or Habits db. Use Brain Dump or Projects instead."),
-        ("Color/icon session", "30+ minutes on aesthetics, zero tasks completed. Close Notion."),
+        ("Color/icon session", "too long on aesthetics, zero tasks completed. Close Notion."),
         ("Tutorial spiral", "Watching 'ultimate Notion setup' videos during install week. Banned until Day 30."),
         ("Filter rabbit hole", "Adding 4th filter to Do This Next. Max one optional filter after Day 8."),
         ("Migration fantasy", "Planning to merge old PARA system into Focus Dock. Quarantine old system instead."),
-        ("Weekly review creep", "Sunday reset hits 25 minutes. Hard stop at 11 — set timer visible."),
+        ("Weekly review creep", "Sunday reset running long. Hard stop — good enough beats perfect."),
         ("Streak mechanic", "Adding habit tracker to prove you're consistent. Streaks create shame monuments."),
         ("Property sprawl", "New properties: Priority, Context, Effort, Mood. Today has enough. Stop."),
     ]
@@ -1079,7 +1058,7 @@ def build_when_to_use_what(styles):
     rows = [
         [Paragraph("<b>Situation</b>", styles["table_header"]),
          Paragraph("<b>Use this</b>", styles["table_header"]),
-         Paragraph("<b>Time budget</b>", styles["table_header"])],
+         Paragraph("<b>Keep it</b>", styles["table_header"])],
         [Paragraph("Random thought while working", styles["table_cell"]),
          Paragraph("[BRAIN] Brain Dump — one line, close", styles["table_cell"]),
          Paragraph("2 seconds", styles["table_cell"])],
@@ -1088,16 +1067,16 @@ def build_when_to_use_what(styles):
          Paragraph("90 seconds", styles["table_cell"])],
         [Paragraph("Big project with many steps", styles["table_cell"]),
          Paragraph("[TODAY] Today — break into sequence", styles["table_cell"]),
-         Paragraph("5 min setup, then 1 step/day", styles["table_cell"])],
+         Paragraph("Quick setup, then 1 step/day", styles["table_cell"])],
         [Paragraph("Someday idea, not this week", styles["table_cell"]),
          Paragraph("[PROJECTS] Projects — Idea status", styles["table_cell"]),
          Paragraph("Sunday reset only", styles["table_cell"])],
         [Paragraph("Overwhelmed, can't start", styles["table_cell"]),
          Paragraph("Part 15 emergency card — 2-min shrink", styles["table_cell"]),
-         Paragraph("4 minutes max", styles["table_cell"])],
+         Paragraph("Keep it tiny", styles["table_cell"])],
         [Paragraph("Sunday weekly prep", styles["table_cell"]),
-         Paragraph("Part 15A checklist — 11 min timer", styles["table_cell"]),
-         Paragraph("11 minutes hard stop", styles["table_cell"])],
+         Paragraph("Sunday reset checklist", styles["table_cell"]),
+         Paragraph("your reset window hard stop", styles["table_cell"])],
         [Paragraph("Urge to add 4th database", styles["table_cell"]),
          Paragraph("Close Notion. Do one real task.", styles["table_cell"]),
          Paragraph("Now", styles["table_cell"])],
@@ -1126,7 +1105,7 @@ def build_migration_checklist(styles):
     """Fresh-start migration from old Notion templates."""
     story = []
     section(story, styles, "MIGRATION CHECKLIST (FROM OLD TEMPLATES)", [
-        ("body", "Do not migrate relations or dashboards. Quarantine and cherry-pick. Timer: 15 minutes max."),
+        ("body", "Do not migrate relations or dashboards. Quarantine and cherry-pick. Keep it short."),
         ("step", "[ ] Create [GRAVEYARD] Template Graveyard page"),
         ("step", "[ ] Drag old dashboards, habit trackers, PARA clones into graveyard"),
         ("step", "[ ] Collapse graveyard — do not open old pages during install week"),
@@ -1147,7 +1126,7 @@ def build_accountability_guide(styles):
     story = []
     section(story, styles, "ACCOUNTABILITY WITHOUT SHAME", [
         ("body", "ADHD brains respond to external structure, not internal guilt. Use these without streak counters."),
-        ("h2", "Body doubling (5 minutes)"),
+        ("h2", "Body doubling"),
         ("step", "• Video call or in-person: both work silently on one task"),
         ("step", "• No progress reports required — presence is the cue"),
         ("h2", "Text ping (not a streak)"),
@@ -1238,7 +1217,7 @@ def build_days_2_7_playbook(styles):
         ("Day 4", "Pull one item from Brain Dump to Today if Do This Next is empty. Still one visible task."),
         ("Day 5", "Midweek check: count Notion tabs open. Target = 1 (Focus Dock). Close the rest."),
         ("Day 6", "Optional: add one pre-built sequence from Part 10. Max one new sequence this week."),
-        ("Day 7", "First Sunday reset (11 min). Timer visible. Stop at 11 even if messy."),
+        ("Day 7", "First Sunday reset. Stop even if messy."),
     ]
     rows = [
         [Paragraph("<b>Day</b>", styles["table_header"]),
@@ -1265,22 +1244,22 @@ def build_days_2_7_playbook(styles):
     section(story, styles, "DAYS 2–7 PLAYBOOK", [
         ("body", "Install day is Day 1. Days 2–7 are survival mode — no rebuilding, no tutorials, no new views."),
         ("table", table),
-        ("callout", ">> Success metric: opened Focus Dock and finished one task. Notion time under 5 minutes/day."),
+        ("callout", ">> Success metric: opened Focus Dock and finished one task. Notion time under minimal time/day."),
     ])
     return story
 
 
-def _minute_checklist_table(styles, minutes_slice, header_label):
-    """Build a dense two-column table for a slice of install minutes."""
+def _step_checklist_table(styles, steps_slice, header_label):
+    """Build a dense two-column table for a slice of install steps."""
     rows = [
         [
             Paragraph(f"<b>{header_label}</b>", styles["table_header"]),
             Paragraph("<b>Action</b>", styles["table_header"]),
         ]
     ]
-    for minute, instruction in minutes_slice:
+    for step_num, instruction in steps_slice:
         rows.append([
-            Paragraph(f"<b>{minute}</b>", styles["table_cell"]),
+            Paragraph(f"<b>{step_num}</b>", styles["table_cell"]),
             Paragraph(instruction, styles["table_cell"]),
         ])
 
@@ -1300,17 +1279,17 @@ def _minute_checklist_table(styles, minutes_slice, header_label):
 
 
 def build_install_checklist(styles):
-    """Dense 2-page checklist replacing 48 one-minute-per-page sections."""
+    """Dense 2-page install checklist."""
     story = []
-    section(story, styles, "DEEP DIVE — 47-MINUTE INSTALL CHECKLIST (PAGE 1 OF 2)", [
-        ("body", "Minutes 0–23. Follow in order during first install. If a step takes longer, keep going — do not add unlisted features."),
+    section(story, styles, "INSTALL CHECKLIST (PAGE 1 OF 2)", [
+        ("body", "Steps 1–24. Follow in order during first install. If a step takes longer, keep going — do not add unlisted features."),
         ("callout", ">> Stuck? Skip aesthetics. Defaults are fine. Good enough beats perfect."),
-        ("table", _minute_checklist_table(styles, INSTALL_MINUTES[:24], "Min")),
+        ("table", _step_checklist_table(styles, INSTALL_STEPS[:24], "Step")),
     ], page_break_after=True)
 
-    section(story, styles, "DEEP DIVE — 47-MINUTE INSTALL CHECKLIST (PAGE 2 OF 2)", [
-        ("body", "Minutes 24–47. Finish install, do one real task, close Notion."),
-        ("table", _minute_checklist_table(styles, INSTALL_MINUTES[24:], "Min")),
+    section(story, styles, "INSTALL CHECKLIST (PAGE 2 OF 2)", [
+        ("body", "Steps 25–48. Finish install, do one real task, close Notion."),
+        ("table", _step_checklist_table(styles, INSTALL_STEPS[24:], "Step")),
         ("callout", ">> Done when: one task visible in Do This Next, one task marked Done, Notion closed."),
     ], page_break_after=True)
     return story
