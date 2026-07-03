@@ -13,7 +13,6 @@ from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
 from reportlab.platypus import (
     HRFlowable,
-    KeepTogether,
     PageBreak,
     Paragraph,
     SimpleDocTemplate,
@@ -70,35 +69,43 @@ def build_styles():
             spaceAfter=20,
             fontName="Helvetica",
         ),
-        "h1": ParagraphStyle(
-            "h1",
+        "lane_title": ParagraphStyle(
+            "lane_title",
             parent=base["Heading1"],
-            fontSize=20,
-            leading=24,
-            textColor=NAVY,
-            spaceBefore=16,
-            spaceAfter=10,
+            fontSize=16,
+            leading=20,
+            textColor=WHITE,
+            spaceBefore=0,
+            spaceAfter=0,
             fontName="Helvetica-Bold",
-            backColor=YELLOW,
-            borderPadding=8,
         ),
         "h2": ParagraphStyle(
             "h2",
             parent=base["Heading2"],
-            fontSize=15,
-            leading=19,
-            textColor=CORAL,
-            spaceBefore=14,
-            spaceAfter=8,
+            fontSize=14,
+            leading=20,
+            textColor=NAVY,
+            spaceBefore=4,
+            spaceAfter=6,
+            fontName="Helvetica-Bold",
+        ),
+        "ref_h2": ParagraphStyle(
+            "ref_h2",
+            parent=base["Heading2"],
+            fontSize=13,
+            leading=18,
+            textColor=NAVY,
+            spaceBefore=4,
+            spaceAfter=6,
             fontName="Helvetica-Bold",
         ),
         "h3": ParagraphStyle(
             "h3",
             parent=base["Heading3"],
             fontSize=12,
-            leading=15,
-            textColor=NAVY,
-            spaceBefore=10,
+            leading=18,
+            textColor=CORAL,
+            spaceBefore=12,
             spaceAfter=6,
             fontName="Helvetica-Bold",
         ),
@@ -139,14 +146,10 @@ def build_styles():
             "callout",
             parent=base["Normal"],
             fontSize=11,
-            leading=15,
+            leading=17,
             textColor=NAVY,
-            backColor=LIGHT_BG,
-            borderColor=CORAL,
-            borderWidth=2,
-            borderPadding=10,
-            spaceBefore=8,
-            spaceAfter=8,
+            spaceBefore=4,
+            spaceAfter=4,
             fontName="Helvetica-Bold",
         ),
         "step": ParagraphStyle(
@@ -206,23 +209,41 @@ def build_styles():
     return styles
 
 
-def _callout_table(label, body_html, styles, border_color, bg_color, label_color):
+def _callout_table(label, body_html, styles, border_color, bg_color, label_color, border_width=2):
     label_para = Paragraph(
         f'<font color="{label_color.hexval()}"><b>{label}</b></font>',
         styles["callout_label"],
     )
     body_para = Paragraph(body_html, styles["callout_body"])
-    t = Table([[label_para], [body_para]], colWidths=[CONTENT_W])
+    t = Table([[label_para], [body_para]], colWidths=[CONTENT_W], splitByRow=1)
     t.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, -1), bg_color),
-        ("BOX", (0, 0), (-1, -1), 2, border_color),
+        ("BOX", (0, 0), (-1, -1), border_width, border_color),
         ("LEFTPADDING", (0, 0), (-1, -1), 12),
         ("RIGHTPADDING", (0, 0), (-1, -1), 12),
-        ("TOPPADDING", (0, 0), (-1, 0), 8),
-        ("BOTTOMPADDING", (0, -1), (-1, -1), 10),
+        ("TOPPADDING", (0, 0), (-1, 0), 10),
+        ("BOTTOMPADDING", (0, -1), (-1, -1), 12),
+        ("TOPPADDING", (0, 1), (-1, 1), 4),
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
     ]))
     return t
+
+
+def lane_banner(label, styles):
+    """Single full-width lane header — avoids stacked yellow paragraph backgrounds."""
+    t = Table([[Paragraph(label, styles["lane_title"])]], colWidths=[CONTENT_W])
+    t.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, -1), NAVY),
+        ("LEFTPADDING", (0, 0), (-1, -1), 14),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 14),
+        ("TOPPADDING", (0, 0), (-1, -1), 11),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 11),
+    ]))
+    return t
+
+
+def inline_callout(text, styles):
+    return _callout_table(">>", text, styles, CORAL, LIGHT_BG, NAVY, border_width=1)
 
 
 def anchor_box(you_are_here, time_min, win, styles, skip_if=None):
@@ -233,24 +254,20 @@ def anchor_box(you_are_here, time_min, win, styles, skip_if=None):
     ]
     if skip_if:
         lines.append(f"<b>SKIP IF:</b> {skip_if}")
-    return KeepTogether([_callout_table(
-        "ANCHOR", "<br/>".join(lines), styles, CORAL, BOX_CORAL, CORAL
-    )])
+    return _callout_table("ANCHOR", "<br/>".join(lines), styles, CORAL, BOX_CORAL, CORAL)
 
 
 def do_this_now(steps, styles):
     items = "".join(f"{i + 1}. {s}<br/>" for i, s in enumerate(steps))
-    return KeepTogether([_callout_table(
-        "DO THIS NOW", items, styles, MINT, BOX_MINT, NAVY
-    )])
+    return _callout_table("DO THIS NOW", items, styles, MINT, BOX_MINT, NAVY)
 
 
 def checkpoint(lines, stuck_pointer, styles):
     body = "<br/>".join(f"✓ {l}" for l in lines)
     body += f"<br/><b>Stuck?</b> → {stuck_pointer}"
-    return KeepTogether([_callout_table(
-        "CHECKPOINT", body, styles, NAVY, LIGHT_BG, CHECK_GREEN
-    )])
+    return _callout_table(
+        "CHECKPOINT", body, styles, NAVY, LIGHT_BG, CHECK_GREEN, border_width=1
+    )
 
 
 def if_you_drift(signal, recovery, fallback, styles):
@@ -259,16 +276,16 @@ def if_you_drift(signal, recovery, fallback, styles):
         f"→ {recovery}<br/>"
         f"→ Timer still running? Skip to <b>{fallback}</b>."
     )
-    return KeepTogether([_callout_table(
+    return _callout_table(
         "⚠ IF YOU DRIFT", body, styles, WARN_AMBER, BOX_YELLOW, WARN_AMBER
-    )])
+    )
 
 
 def begin_lane(story, styles, doc, lane_label):
     doc.current_lane = lane_label
     story.append(PageBreak())
-    story.append(Paragraph(lane_label, styles["h1"]))
-    story.append(HRFlowable(width="100%", thickness=2, color=CORAL, spaceAfter=10))
+    story.append(lane_banner(lane_label, styles))
+    story.append(Spacer(1, 18))
 
 
 def emit_blocks(story, styles, blocks):
@@ -292,7 +309,8 @@ def emit_blocks(story, styles, blocks):
         elif kind == "h3":
             story.append(Paragraph(text, styles["h3"]))
         elif kind == "callout":
-            story.append(Paragraph(text, styles["callout"]))
+            story.append(inline_callout(text, styles))
+            story.append(Spacer(1, 8))
         elif kind == "formula":
             story.append(Paragraph(text.replace("\n", "<br/>"), styles["formula"]))
         elif kind == "step":
@@ -305,11 +323,18 @@ def emit_blocks(story, styles, blocks):
             story.append(Paragraph(text, styles["body"]))
 
 
-def section(story, styles, title, blocks, page_break_after=False):
-    story.append(Paragraph(title, styles["h1"]))
-    story.append(HRFlowable(width="100%", thickness=2, color=CORAL, spaceAfter=10))
+def section(story, styles, title, blocks, page_break_after=False, ref=False):
+    story.append(Spacer(1, 14))
+    story.append(Paragraph(title, styles["ref_h2" if ref else "h2"]))
+    story.append(HRFlowable(
+        width="20%" if not ref else "100%",
+        thickness=1.5 if not ref else 0.5,
+        color=CORAL if not ref else LIGHT_BG,
+        spaceBefore=2,
+        spaceAfter=12,
+    ))
     emit_blocks(story, styles, blocks)
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 6))
     if page_break_after:
         story.append(PageBreak())
 
@@ -342,8 +367,8 @@ def start_here_page(styles, doc):
     """Lane 1 opening — reading map + lane picker."""
     doc.current_lane = "LANE 1 — START HERE"
     story = []
-    story.append(Paragraph("LANE 1 — START HERE", styles["h1"]))
-    story.append(HRFlowable(width="100%", thickness=2, color=CORAL, spaceAfter=10))
+    story.append(lane_banner("LANE 1 — START HERE", styles))
+    story.append(Spacer(1, 18))
     story.append(anchor_box(
         "Lane 1 → Reading map",
         "1 min",
@@ -397,13 +422,11 @@ def start_here_page(styles, doc):
     ]))
     story.append(toc_table)
     story.append(Spacer(1, 10))
-    story.append(
-        Paragraph(
-            ">> <b>Default path:</b> Self-check (30 sec) → 5-Min Win → Install → "
-            "one visible task → close Notion.",
-            styles["callout"],
-        )
-    )
+    story.append(inline_callout(
+        "<b>Default path:</b> Self-check (30 sec) → 5-Min Win → Install → "
+        "one visible task → close Notion.",
+        styles,
+    ))
     story.append(do_this_now([
         "Pick your lane from the table above.",
         "Set a timer for that lane.",
@@ -515,12 +538,12 @@ def build_content(styles, doc):
     section(story, styles, "THE 47-MINUTE INSTALL", [
         ("anchor", {"you_are_here": "Lane 3 → Install", "time_min": "47 min",
                     "win": "3 databases + homepage + one task done.", "skip_if": None}),
-        ("h2", "Minutes 0–5: Quarantine the graveyard"),
+        ("h3", "Minutes 0–5: Quarantine the graveyard"),
         ("step", "1. Open Notion sidebar. Count your productivity-related pages."),
         ("step", "2. If more than 5: create page titled <b>[GRAVEYARD] Template Graveyard</b>."),
         ("step", "3. Drag every abandoned dashboard, habit tracker, and PARA clone into it. Do not open them."),
         ("step", "4. Collapse the graveyard. You are not deleting — you're quarantining shame."),
-        ("h2", "Minutes 5–15: Create Database 1 — [BRAIN] Brain Dump"),
+        ("h3", "Minutes 5–15: Create Database 1 — [BRAIN] Brain Dump"),
         ("step", "1. New page: <b>[BRAIN] Brain Dump</b> → type /table → Full page database."),
         ("step", "2. Rename default title property to <b>Thought</b>."),
         ("step", "3. Add property: <b>Captured</b> (Created time — auto)."),
@@ -528,7 +551,8 @@ def build_content(styles, doc):
         ("step", "5. Delete every other property. Yes, all of them."),
         ("step", "6. Create view <b>Inbox</b>: filter Processed? is unchecked. Sort: Captured ascending."),
         ("callout", "Usage rule: Capture in 2 seconds. Thought only. No tags. Process during Sunday reset or when Today is empty."),
-        ("h2", "Minutes 15–30: Create Database 2 — [TODAY] Today"),
+        ("break", ""),
+        ("h3", "Minutes 15–30: Create Database 2 — [TODAY] Today"),
         ("step", "1. New page: <b>[TODAY] Today</b> → /table → Full page database."),
         ("step", "2. Properties to create:"),
         ("body", "• <b>Task</b> (Title)<br/>• <b>Done</b> (Checkbox)<br/>• <b>Due</b> (Date)<br/>• <b>Energy</b> (Select: [HIGH] High / [MED] Medium / [LOW] Low)<br/>• <b>Task Before</b> (Relation → Today, two-way)<br/>• <b>Task After</b> (Relation → Today, two-way)"),
@@ -543,12 +567,12 @@ def build_content(styles, doc):
         ("formula", 'prop("Hide Sequence")'),
         ("step", "7. View <b>Do This Next</b>: Filter Hide = unchecked AND Done = unchecked. Sort: Due ascending. Show 1 card if using gallery, or limit to top row."),
         ("callout", "This view is your entire daily driver. One task visible. Everything else is hidden by sequence logic."),
-        ("h2", "Minutes 30–40: Create Database 3 — [PROJECTS] Projects"),
+        ("h3", "Minutes 30–40: Create Database 3 — [PROJECTS] Projects"),
         ("step", "1. New page: <b>[PROJECTS] Projects</b> → /table → Full page database."),
         ("step", "2. Properties: <b>Name</b> (Title), <b>Status</b> (Select: [IDEA] Idea / [ACTIVE] Active / [LOW] Paused / [DONE] Done), <b>Next Action</b> (Text)."),
         ("step", "3. View <b>Active</b>: Status = Active. Sort: manual (drag what matters to top)."),
         ("body", "You do NOT work from this database daily. During Sunday reset, pick one Next Action and move it to Today."),
-        ("h2", "Minutes 40–47: Build [HOME] Home Screen"),
+        ("h3", "Minutes 40–47: Build [HOME] Home Screen"),
         ("step", "1. New page: <b>[HOME] Focus Dock</b> (make this your Notion home)."),
         ("step", "2. Add heading: <b>Right now:</b>"),
         ("step", "3. Type /linked → link <b>Do This Next</b> view from Today (embedded, not full database)."),
@@ -729,7 +753,7 @@ def build_content(styles, doc):
         ("body", "<b>Weekly:</b> 11-min Sunday reset"),
         ("body", "<b>Emergency:</b> 2-minute shrink → do → stop"),
         ("body", "<b>Homepage:</b> [HOME] Focus Dock (not sidebar maze)"),
-    ])
+    ], ref=True)
 
     section(story, styles, "TROUBLESHOOTING", [
         ("h2", "I keep customizing instead of doing"),
@@ -750,7 +774,7 @@ def build_content(styles, doc):
         ("body", "Normal. Inbox is capture, not completion. Process during Sunday reset only — max 11 minutes."),
         ("h2", "I added a 4th database"),
         ("body", "Delete it today. Move any useful items to Brain Dump or Projects. Do not migrate relations."),
-    ], page_break_after=True)
+    ], page_break_after=True, ref=True)
 
     section(story, styles, "WHAT TO DELETE FROM OLD TEMPLATES", [
         ("body", "When quarantining your Template Graveyard, these features are banned in Focus Dock:"),
@@ -765,7 +789,7 @@ def build_content(styles, doc):
         ("h2", "Why each one fails ADHD brains"),
         ("body", "<b>Streaks:</b> One miss = shame monument.<br/><b>PARA:</b> 'Is this a Project or Area?' = decision paralysis.<br/><b>Weekly reviews:</b> 45 min of facing failure.<br/><b>Mood logs:</b> Evidence you're 'inconsistent.'"),
         ("callout", "If a feature requires daily maintenance to avoid looking broken, delete it."),
-    ])
+    ], ref=True)
 
     section(story, styles, "PROPERTY REFERENCE CARD", [
         ("h2", "Brain Dump database"),
@@ -776,9 +800,9 @@ def build_content(styles, doc):
         ("body", "• <b>Name</b> (Title)<br/>• <b>Status</b> (Select: Idea/Active/Paused/Done)<br/>• <b>Next Action</b> (Text)"),
         ("h2", "Do This Next view filters"),
         ("body", "Filter 1: Hide = unchecked<br/>Filter 2: Done = unchecked<br/>Sort: Due ascending"),
-    ])
+    ], ref=True)
 
-    section(story, styles, "PART 13 — COMMON MISTAKES", [
+    section(story, styles, "COMMON MISTAKES", [
         ("h2", "Mistake 1: Adding a 4th database"),
         ("body", "Fix: Delete it. You don't need a 'Someday/Maybe' or 'Reading List.' Brain Dump handles capture."),
         ("h2", "Mistake 2: Showing all tasks, not one"),
@@ -791,9 +815,9 @@ def build_content(styles, doc):
         ("body", "Fix: If you haven't done a task today but you've opened Notion, close it. Setup spiral detected."),
         ("h2", "Mistake 6: Energy tags become a project"),
         ("body", "Fix: Energy is optional. Ignore it if choosing energy level causes decisions."),
-    ])
+    ], ref=True)
 
-    section(story, styles, "PART 14 — ENERGY MATCHING (OPTIONAL)", [
+    section(story, styles, "ENERGY MATCHING (OPTIONAL)", [
         ("body", "Only use Energy tags if they help, not if choosing one causes paralysis."),
         ("h2", "[HIGH] High energy"),
         ("body", "Creative work, hard conversations, complex sequences, starting new projects."),
@@ -802,9 +826,9 @@ def build_content(styles, doc):
         ("h2", "[LOW] Low energy"),
         ("body", "Brain dump triage, 2-minute tasks, reading one paragraph, putting one item away."),
         ("callout", "On low days: filter Do This Next by Low energy OR ignore filter and do the smallest visible task."),
-    ])
+    ], ref=True)
 
-    section(story, styles, "PART 15A — SUNDAY RESET CHECKLIST (PRINTABLE)", [
+    section(story, styles, "SUNDAY RESET CHECKLIST (PRINTABLE)", [
         ("body", "Print this page. Check boxes with pen during your 11-minute reset. Stop when timer rings."),
         ("step", "[ ] Open [BRAIN] Brain Dump Inbox — triage each item (delete / Today / Projects)"),
         ("step", "[ ] Mark Processed? on handled Brain Dump items"),
@@ -816,9 +840,9 @@ def build_content(styles, doc):
         ("step", "[ ] Did NOT add properties, views, or databases"),
         ("step", "[ ] Timer stopped at 11 minutes (even if unfinished)"),
         ("callout", ">> Incomplete reset beats skipped reset. Same time next Sunday — no catch-up guilt."),
-    ], page_break_after=True)
+    ], page_break_after=True, ref=True)
 
-    section(story, styles, "PART 15 — PRINTABLE EMERGENCY CARD", [
+    section(story, styles, "PRINTABLE EMERGENCY CARD", [
         ("callout", "[CUT] CUT HERE — TAPE TO MONITOR [CUT]"),
         ("h2", "[ALERT] OVERWHELM MODE"),
         ("step", "1. Box breathe: 4 in, 4 hold, 4 out × 2"),
@@ -828,9 +852,9 @@ def build_content(styles, doc):
         ("body", "<b>DO NOT:</b> Open Notion · Download templates · Reorganize · Watch setup videos"),
         ("body", "<b>IF 5+ DAYS AWAY:</b> Sticky note with ONE task. Return when sticky works 2 days."),
         ("callout", "You are not behind. You are not broken. One task is enough."),
-    ], page_break_after=True)
+    ], page_break_after=True, ref=True)
 
-    section(story, styles, "PART 16 — FAQ", [
+    section(story, styles, "FAQ", [
         ("h2", "Can I use this with medication?"),
         ("body", "Yes. Focus Dock is organizational, not medical. Keep your treatment plan."),
         ("h2", "What about mobile?"),
@@ -843,9 +867,9 @@ def build_content(styles, doc):
         ("body", "Don't migrate. Quarantine old system. Fresh start prevents relation nightmares."),
         ("h2", "What if I need more than 3 databases eventually?"),
         ("body", "After 30 successful days, add ONE database. Not before. Prove the minimum works first."),
-    ])
+    ], ref=True)
 
-    section(story, styles, "PART 17 — GLOSSARY", [
+    section(story, styles, "GLOSSARY", [
         ("body", "<b>Setup spiral:</b> Tweaking your system instead of doing the task the system was for."),
         ("body", "<b>Task sequence:</b> Linked sub-tasks where only the next step is visible."),
         ("body", "<b>Brain dump:</b> Frictionless capture inbox with no organization required."),
@@ -853,9 +877,9 @@ def build_content(styles, doc):
         ("body", "<b>Executive dysfunction:</b> Knowing what to do but unable to initiate at the moment."),
         ("body", "<b>Template graveyard:</b> Collection of abandoned Notion setups you avoid opening."),
         ("body", "<b>Visible state:</b> Dashboard elements that break or look bad when not maintained."),
-    ])
+    ], ref=True)
 
-    section(story, styles, "PART 18 — RESEARCH NOTES", [
+    section(story, styles, "RESEARCH NOTES", [
         ("body", "Focus Dock design is informed by:"),
         ("step", "• Iyengar & Lepper (2000) — choice overload reduces action"),
         ("step", "• Volkow et al. (2009) — ADHD dopamine pathway differences"),
@@ -863,7 +887,7 @@ def build_content(styles, doc):
         ("step", "• Tuckman — externalize executive function to environment"),
         ("step", "• Lived experience: setup spiral threads in r/Notion and r/ADHD"),
         ("body", "This guide externalizes 'what's next' so your brain doesn't have to hold it."),
-    ], page_break_after=True)
+    ], page_break_after=True, ref=True)
 
     story.extend(build_brain_dump_guide(styles))
     story.extend(build_setup_spiral_red_flags(styles))
@@ -875,7 +899,7 @@ def build_content(styles, doc):
         ("body", "Focus Dock isn't about perfect Notion. It's about <b>one visible next step</b> when your brain feels like static."),
         ("callout", "Questions? hello@getfocusdock.com · 14-day refund if it doesn't help — no guilt, same as the system."),
         ("body", "Now close this PDF and do the one task. [HOME]"),
-    ])
+    ], ref=True)
 
     return story
 
@@ -959,7 +983,7 @@ def build_brain_dump_guide(styles):
         ("step", "• 'I'll remember this' lie detected"),
         ("step", "• Partner asks you to do something while you're busy"),
         ("callout", ">> Capture is not commitment. Processing is not urgent. Today is the only daily driver."),
-    ], page_break_after=True)
+    ], page_break_after=True, ref=True)
     return story
 
 
@@ -1002,7 +1026,7 @@ def build_notion_ui_map(styles):
     section(story, styles, "NOTION UI QUICK MAP", [
         ("body", "Lookup while installing. Do not watch tutorial videos — use this table instead."),
         ("table", table),
-    ], page_break_after=True)
+    ], page_break_after=True, ref=True)
     return story
 
 
@@ -1045,7 +1069,7 @@ def build_setup_spiral_red_flags(styles):
         ("body", "Catch these urges early. Each one feels productive. None complete tasks."),
         ("table", table),
         ("callout", ">> Ask: 'Will this help me see ONE next task tomorrow?' If no, don't do it."),
-    ], page_break_after=True)
+    ], page_break_after=True, ref=True)
     return story
 
 
@@ -1094,7 +1118,7 @@ def build_when_to_use_what(styles):
     section(story, styles, "WHEN TO USE WHAT — DECISION TABLE", [
         ("body", "If you're unsure where something goes, use this table. Wrong choice is fixable during Sunday reset."),
         ("table", table),
-    ], page_break_after=True)
+    ], page_break_after=True, ref=True)
     return story
 
 
@@ -1114,7 +1138,7 @@ def build_migration_checklist(styles):
         ("h2", "What to salvage vs leave behind"),
         ("body", "<b>Salvage:</b> Open tasks, project names, one-line next actions.<br/><b>Leave:</b> Relations, rollups, aesthetic layouts, archived 'someday' lists, broken streaks."),
         ("callout", ">> Fresh start beats perfect migration. Old system is quarantined, not deleted — you can retrieve later if needed."),
-    ])
+    ], ref=True)
     return story
 
 
@@ -1201,7 +1225,7 @@ def build_formula_reference(styles):
         ("step", "• Filter: Done is unchecked"),
         ("step", "• Sort: Due ascending"),
         ("callout", ">> If too many tasks show: verify Hide Sequence formula exists and view filters Hide, not Hide Sequence directly."),
-    ], page_break_after=True)
+    ], page_break_after=True, ref=True)
     return story
 
 
@@ -1300,7 +1324,7 @@ def main():
         leftMargin=MARGIN,
         rightMargin=MARGIN,
         topMargin=MARGIN,
-        bottomMargin=MARGIN,
+        bottomMargin=0.85 * inch,
         title="Focus Dock — ADHD Notion Recovery Guide",
         author="Focus Dock",
     )
