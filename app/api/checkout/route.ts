@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { getAppUrl, getStripe } from "@/lib/stripe";
+import { AFFILIATE_COOKIE, normalizeRef } from "@/lib/affiliates";
 import { PRODUCT } from "@/lib/product";
 
 export async function POST(req: Request) {
@@ -11,11 +13,18 @@ export async function POST(req: Request) {
     try {
       const body = await req.json();
       const raw = body?.affiliateRef;
-      if (typeof raw === "string" && raw.trim()) {
-        affiliateRef = raw.trim().slice(0, 64);
+      if (typeof raw === "string") {
+        affiliateRef = normalizeRef(raw) ?? undefined;
       }
     } catch {
       // Empty body is fine for direct checkout.
+    }
+
+    // Fallback: attribution cookie set by /a/<code> links (30-day last touch).
+    if (!affiliateRef) {
+      const cookieStore = await cookies();
+      affiliateRef =
+        normalizeRef(cookieStore.get(AFFILIATE_COOKIE)?.value) ?? undefined;
     }
 
     const metadata: Record<string, string> = {
