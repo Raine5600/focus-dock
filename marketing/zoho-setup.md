@@ -1,5 +1,9 @@
 # Zoho Email Setup for Focus Dock
 
+**Affiliate cold outreach** sends from Gmail (`blacksheepdesignscontact@gmail.com`) — see `gmail-setup.md`.
+
+Zoho handles **site email**: purchase delivery, affiliate applications, support.
+
 ## 1. Register domain
 - Register `getfocusdock.com` at Cloudflare or Namecheap
 - Point DNS to Vercel for website
@@ -29,27 +33,9 @@
 - [ ] Campaign script spaces emails 90 seconds apart
 - [ ] Max 15 emails per day
 
-## 5. Send outreach (ONLY after domain + site are live)
+## 5. Affiliate outreach (Gmail)
 
-See `LAUNCH_CHECKLIST.md` Steps 1–5 first. Emails are **blocked** until then.
-
-```bash
-cd /Users/cameron/focus-dock/marketing
-
-# Verify domain gate
-python3 email-campaign.py --check-domain
-
-# Preview (always safe)
-python3 email-campaign.py --dry-run
-
-# Send after getfocusdock.com is live:
-export DOMAIN_READY=true
-export SMTP_USER=hello@getfocusdock.com
-export SMTP_APP_PASSWORD=your_password
-python3 email-campaign.py --send --limit 4
-```
-
-Manual outreach for contact-form creators: `manual-outreach-templates.md`
+See `gmail-setup.md` and `LAUNCH_CHECKLIST.md` Step 6.
 
 ## 6. Manual outreach (contact_form creators)
 Use personalized templates in `manual-outreach-templates.md` via:

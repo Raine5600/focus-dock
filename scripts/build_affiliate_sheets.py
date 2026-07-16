@@ -18,6 +18,7 @@ HEADERS = [
     "platform",
     "profile_url",
     "subscribers_or_audience",
+    "in_target_range",
     "niche_focus",
     "contact_email",
     "contact_type",
@@ -29,7 +30,7 @@ HEADERS = [
 
 HEADER_FILL = PatternFill("solid", fgColor="1a1f3d")
 HEADER_FONT = Font(bold=True, color="FFFFFF", name="Arial")
-WIDTHS = [28, 16, 12, 42, 14, 32, 28, 14, 42, 8, 10, 40]
+WIDTHS = [28, 16, 12, 42, 14, 12, 32, 28, 14, 42, 8, 10, 40]
 
 
 def load_contacts():

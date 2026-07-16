@@ -64,3 +64,96 @@ body {
   background: color-mix(in srgb, var(--mint) 35%, white);
   color: var(--navy-dark);
 }
+
+/* --- Aurora blobs (hero / pricing backgrounds) ------------------------- */
+
+@keyframes aurora-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(4%, 6%) scale(1.12);
+  }
+}
+
+@keyframes aurora-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1.08);
+  }
+  50% {
+    transform: translate(-5%, -4%) scale(1);
+  }
+}
+
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.aurora-a {
+  animation: aurora-a 16s ease-in-out infinite;
+}
+
+.aurora-b {
+  animation: aurora-b 20s ease-in-out infinite;
+}
+
+/* --- Dot grid texture --------------------------------------------------- */
+
+.dot-grid {
+  background-image: radial-gradient(
+    color-mix(in srgb, white 14%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+.dot-grid-dark {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--navy) 12%, transparent) 1.2px,
+    transparent 1.2px
+  );
+  background-size: 24px 24px;
+}
+
+/* --- Page preview cards -------------------------------------------------- */
+
+.preview-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.preview-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.preview-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 9999px;
+}
+
+/* --- Calm-by-default: kill decorative motion for reduced-motion users --- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .aurora-a,
+  .aurora-b {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

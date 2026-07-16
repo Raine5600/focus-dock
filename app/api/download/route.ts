@@ -55,9 +55,12 @@ export async function GET(req: NextRequest) {
     });
   } catch (error) {
     console.error("Download error:", error);
+    const isInvalidSession =
+      error instanceof Error && "type" in error &&
+      (error as { type?: string }).type === "StripeInvalidRequestError";
     return NextResponse.json(
       { error: "Unable to verify purchase" },
-      { status: 500 }
+      { status: isInvalidSession ? 403 : 500 }
     );
   }
 }

@@ -147,9 +147,11 @@ Full detail: `marketing/zoho-setup.md`
 
 ## Step 6 — Enable email campaign (ONLY after Steps 1–5)
 
-**Do not run automated sends until domain, Zoho, Vercel, and Stripe are verified.**
+**Do not run automated sends until domain, Vercel, and Stripe are verified.**
 
-Automated outreach targets creators with verified emails in `marketing/creator-outreach-list.json` (e.g., Mynd, Systems Made Better, August Bradley, Ruri Ohama).
+Outreach sends from **blacksheepdesignscontact@gmail.com** (Gmail). Full setup: `marketing/gmail-setup.md`.
+
+Automated outreach targets creators with verified emails in `marketing/creator-outreach-list.json` (e.g., Mynd, Systems Made Better, August Bradley, Ruri Ohama). Future research should prioritize **5k–100k subscribers** — see `research/04-outreach-targeting.md`. Existing contacts stay sendable regardless of size.
 
 ```bash
 cd /Users/cameron/focus-dock/marketing
@@ -160,14 +162,14 @@ python3 email-campaign.py --check-domain
 # Preview first — always safe, no domain required
 python3 email-campaign.py --dry-run
 
-# Send ONLY after domain + Zoho + site are live:
+# Send ONLY after getfocusdock.com is live:
 export DOMAIN_READY=true
-export SMTP_USER=hello@getfocusdock.com
-export SMTP_APP_PASSWORD=<your-app-password>
+export SMTP_USER=blacksheepdesignscontact@gmail.com
+export SMTP_APP_PASSWORD=<gmail-app-password>
 python3 email-campaign.py --send --limit 4
 ```
 
-**Hard gate:** `--send` is blocked unless `DOMAIN_READY=true`, `https://getfocusdock.com` responds, and `SMTP_USER` is `@getfocusdock.com`.
+**Hard gate:** `--send` is blocked unless `DOMAIN_READY=true`, `https://getfocusdock.com` responds, and `SMTP_APP_PASSWORD` is set.
 
 **Manual outreach (contact forms + LinkedIn)** — same day or after automated batch:
 
@@ -242,7 +244,9 @@ All must be true:
 |------|---------|
 | `marketing/manual-outreach-templates.md` | Contact form + LinkedIn copy |
 | `marketing/affiliate-assets.md` | Scripts, follow-ups, ad copy |
-| `marketing/zoho-setup.md` | Email DNS detail |
+| `marketing/gmail-setup.md` | Gmail outreach SMTP |
+| `marketing/zoho-setup.md` | Zoho DNS (site email) |
+| `research/04-outreach-targeting.md` | 5k–100k subscriber criteria |
 | `marketing/email-campaign.py` | Automated email sends |
 | `marketing/creator-outreach-list.json` | Full creator roster |
 | `.env.example` | Required environment variables |

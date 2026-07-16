@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 import json
 import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent.parent / "marketing"))
+from outreach_utils import in_target_range, parse_subscribers
 
 MARKETING = Path(__file__).parent.parent / "marketing"
 BATCHES = [
@@ -10,6 +14,8 @@ BATCHES = [
     MARKETING / "_batch_notion.json",
     MARKETING / "_batch_productivity.json",
     MARKETING / "_batch_misc.json",
+    MARKETING / "_batch_ring_expansion.json",
+    MARKETING / "_batch_ring7_expansion.json",
 ]
 OUT = MARKETING / "affiliate-contacts-master.json"
 
@@ -48,12 +54,16 @@ def normalize(c):
     if ct == "email" and not url:
         url = f"mailto:{email}"
 
+    subs_raw = c.get("subscribers_or_audience", c.get("subscribers", ""))
+    subs_parsed = parse_subscribers(subs_raw)
+    target = in_target_range(subs_raw)
+
     out = {
         "channel_name": c.get("channel_name", "").strip(),
         "contact_name": c.get("contact_name", "").strip(),
         "platform": c.get("platform", c.get("youtube_url") and "youtube" or "").strip() or "other",
         "profile_url": c.get("profile_url", c.get("youtube_url", "")).strip(),
-        "subscribers_or_audience": c.get("subscribers_or_audience", c.get("subscribers", "")),
+        "subscribers_or_audience": subs_parsed if subs_parsed is not None else subs_raw,
         "niche_focus": c.get("niche_focus", "").strip(),
         "contact_email": email,
         "contact_type": ct,
@@ -62,6 +72,11 @@ def normalize(c):
         "outreach_priority": c.get("outreach_priority", "medium"),
         "notes": c.get("notes", "").strip(),
     }
+    if target is not None:
+        out["in_target_range"] = target
+    ring = c.get("research_ring")
+    if ring is not None and ring != "":
+        out["research_ring"] = ring
     if not out["channel_name"]:
         return None
     return out

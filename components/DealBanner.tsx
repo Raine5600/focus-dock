@@ -10,23 +10,26 @@ function pad(n: number) {
 
 export function DealBanner() {
   const endMs = getDealEndMs();
-  const [timeLeft, setTimeLeft] = useState<DealTimeLeft | null>(() =>
-    SUMMER_DEAL.active ? getDealTimeLeft() : null
-  );
+  // Starts null and fills in after mount — the ticking clock can't match
+  // between server render and client hydration, so it is client-only.
+  const [timeLeft, setTimeLeft] = useState<DealTimeLeft | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     if (!SUMMER_DEAL.active) return;
+    setMounted(true);
     const tick = () => setTimeLeft(getDealTimeLeft());
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
   }, [endMs]);
 
-  if (!SUMMER_DEAL.active || !timeLeft) return null;
+  if (!SUMMER_DEAL.active) return null;
+  if (mounted && !timeLeft) return null; // deal expired
 
   const savings = PRODUCT.compareAt - PRODUCT.price;
-  const urgentLabel = getUrgentDealLabel(timeLeft);
-  const isFinalHours = timeLeft.days === 0;
+  const urgentLabel = timeLeft ? getUrgentDealLabel(timeLeft) : SUMMER_DEAL.label;
+  const isFinalHours = timeLeft ? timeLeft.days === 0 : false;
 
   return (
     <div
@@ -46,13 +49,6 @@ export function DealBanner() {
 
       <div className="relative mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 py-3 sm:flex-row sm:px-8">
         <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:items-center sm:gap-4 sm:text-left">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-bold uppercase tracking-wider ring-1 ring-white/25 backdrop-blur-sm">
-            <span
-              className="h-2 w-2 shrink-0 rounded-full bg-white animate-pulse"
-              aria-hidden
-            />
-            {urgentLabel}
-          </span>
           <p className="text-sm font-medium leading-snug sm:text-[0.95rem]">
             <span className="font-bold uppercase tracking-wide">
               {SUMMER_DEAL.headline}
@@ -66,18 +62,20 @@ export function DealBanner() {
         </div>
 
         <div className="flex items-center gap-2.5 sm:gap-3">
-          <div
-            className="flex items-center gap-2 rounded-xl bg-black/25 px-3 py-1.5 font-mono text-sm tabular-nums ring-1 ring-white/15 backdrop-blur-sm"
-            aria-live="polite"
-            aria-label={`Deal ${urgentLabel}. ${timeLeft.hours} hours, ${timeLeft.minutes} minutes, ${timeLeft.seconds} seconds remaining`}
-          >
-            <span className="text-[0.65rem] font-sans font-bold uppercase tracking-wide text-white/90">
-              {timeLeft.days > 0 ? `${timeLeft.days}d` : "Today"}
-            </span>
-            <span className="font-bold">
-              {pad(timeLeft.hours)}:{pad(timeLeft.minutes)}:{pad(timeLeft.seconds)}
-            </span>
-          </div>
+          {timeLeft ? (
+            <div
+              className="flex items-center gap-2 rounded-xl bg-black/25 px-3 py-1.5 font-mono text-sm tabular-nums ring-1 ring-white/15 backdrop-blur-sm"
+              aria-live="polite"
+              aria-label={`Deal ${urgentLabel}. ${timeLeft.hours} hours, ${timeLeft.minutes} minutes, ${timeLeft.seconds} seconds remaining`}
+            >
+              <span className="text-[0.65rem] font-sans font-bold uppercase tracking-wide text-white/90">
+                {timeLeft.days > 0 ? `${timeLeft.days}d` : "Today"}
+              </span>
+              <span className="font-bold">
+                {pad(timeLeft.hours)}:{pad(timeLeft.minutes)}:{pad(timeLeft.seconds)}
+              </span>
+            </div>
+          ) : null}
           <a
             href="#pricing"
             className="rounded-full bg-white px-4 py-1.5 text-sm font-bold text-[#8b2e2e] shadow-sm transition hover:bg-moon-lt"

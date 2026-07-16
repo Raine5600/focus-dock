@@ -8,15 +8,18 @@ export type DealTimeLeft = {
   totalMs: number;
 };
 
-export function getDealEndMs(): number {
-  return new Date(SUMMER_DEAL.endsAt).getTime();
+/** End of the current rolling cycle — always in the future. */
+export function getDealEndMs(now = Date.now()): number {
+  const anchor = new Date(SUMMER_DEAL.cycleAnchor).getTime();
+  const cycleMs = SUMMER_DEAL.cycleDays * 24 * 60 * 60 * 1000;
+  const elapsed = Math.max(0, now - anchor);
+  return anchor + (Math.floor(elapsed / cycleMs) + 1) * cycleMs;
 }
 
 export function getDealTimeLeft(now = Date.now()): DealTimeLeft | null {
   if (!SUMMER_DEAL.active) return null;
 
-  const totalMs = getDealEndMs() - now;
-  if (totalMs <= 0) return null;
+  const totalMs = getDealEndMs(now) - now;
 
   return {
     totalMs,

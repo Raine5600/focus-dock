@@ -1,4 +1,2205 @@
 {
-  "sent": [],
+  "sent": [
+    {
+      "creator": "Extra Focus Newsletter",
+      "email": "jesse@adhdjesse.com",
+      "date": "2026-07-13T18:47:36.893307"
+    },
+    {
+      "creator": "Chris Punt",
+      "email": "contact@chrisnotion.com",
+      "date": "2026-07-13T18:49:07.374841"
+    },
+    {
+      "creator": "Marie Poulin",
+      "email": "hello@mariepoulin.com",
+      "date": "2026-07-13T18:50:37.883117"
+    },
+    {
+      "creator": "ADHD for Smart Ass Women",
+      "email": "mgmt@lilletblanc.com",
+      "date": "2026-07-13T18:50:47.706378"
+    },
+    {
+      "creator": "Girl in Dungarees",
+      "email": "u003eguidelines@patreon.com",
+      "date": "2026-07-13T18:51:13.951501"
+    },
+    {
+      "creator": "ADHD Women's Wellbeing Podcast",
+      "email": "katemoryoussef@gmail.com",
+      "date": "2026-07-13T18:53:15.623665"
+    },
+    {
+      "creator": "Systems Made Better",
+      "email": "hello@bettercreating.com",
+      "date": "2026-07-13T18:55:20.122727"
+    },
+    {
+      "creator": "ADHD Girls",
+      "email": "gill.sugapong@gmail.com",
+      "date": "2026-07-13T18:57:17.799784"
+    },
+    {
+      "creator": "Jennifer | ADHD systems",
+      "email": "vegantechnomad@gmail.com",
+      "date": "2026-07-13T18:59:14.343823"
+    },
+    {
+      "creator": "Nick Lafferty",
+      "email": "hey@nicklafferty.com",
+      "date": "2026-07-13T19:01:13.026668"
+    },
+    {
+      "creator": "Thrive ADHD Coach",
+      "email": "emily@thriveadhdcoach.co.uk",
+      "date": "2026-07-13T19:02:45.635427"
+    },
+    {
+      "creator": "ADHD Vision",
+      "email": "nik@adhdvision.com",
+      "date": "2026-07-13T19:04:11.262224"
+    },
+    {
+      "creator": "Stuart Ridout",
+      "email": "noreply@stuartridout.com",
+      "date": "2026-07-13T19:05:46.778720"
+    },
+    {
+      "creator": "Translating ADHD",
+      "email": "hello@translatingadhd.com",
+      "date": "2026-07-13T19:07:19.417344"
+    },
+    {
+      "creator": "Focusmate",
+      "email": "hi@focusmate.com",
+      "date": "2026-07-13T19:08:58.026440"
+    },
+    {
+      "creator": "Beyond BookSmart",
+      "email": "media@beyondbooksmart.com",
+      "date": "2026-07-13T19:10:23.664005"
+    },
+    {
+      "creator": "Focus Bear",
+      "email": "support@focusbear.io",
+      "date": "2026-07-13T19:12:02.236343"
+    },
+    {
+      "creator": "Useful Planner",
+      "email": "usefulplannershop@gmail.com",
+      "date": "2026-07-13T19:13:37.707714"
+    },
+    {
+      "creator": "Mynd | Systems For ADHD",
+      "email": "braelyn@myndforadhd.com",
+      "date": "2026-07-13T19:15:14.339284"
+    },
+    {
+      "creator": "Pascio",
+      "email": "notionpascio@gmail.com",
+      "date": "2026-07-13T19:16:52.864322"
+    },
+    {
+      "creator": "Planner Lover",
+      "email": "hello@plannerlover.com",
+      "date": "2026-07-13T19:18:23.465376"
+    },
+    {
+      "creator": "The Goodies Lab",
+      "email": "theapperallab@gmail.com",
+      "date": "2026-07-13T19:19:50.947501"
+    },
+    {
+      "creator": "Chris Punt Newsletter",
+      "email": "chris@systemiz.com",
+      "date": "2026-07-13T19:21:17.491112"
+    },
+    {
+      "creator": "Pascio Gumroad",
+      "email": "hello@creatorpascal.com",
+      "date": "2026-07-13T19:22:44.070699"
+    },
+    {
+      "creator": "Carl Pullein",
+      "email": "carl@carlpullein.com",
+      "date": "2026-07-13T19:24:22.914577"
+    },
+    {
+      "creator": "Adulting with ADHD",
+      "email": "rach@adulting-adhd.com",
+      "date": "2026-07-13T19:25:58.590926"
+    },
+    {
+      "creator": "Julie Bjelland",
+      "email": "info@juliebjelland.com",
+      "date": "2026-07-13T19:27:34.284666"
+    },
+    {
+      "creator": "Cal Newport",
+      "email": "cn248@georgetown.edu",
+      "date": "2026-07-13T19:29:12.806367"
+    },
+    {
+      "creator": "Tiimo",
+      "email": "hello@tiimo.dk",
+      "date": "2026-07-13T19:30:50.474331"
+    },
+    {
+      "creator": "August Bradley",
+      "email": "hello@missiondrive.com",
+      "date": "2026-07-13T19:35:20.183236"
+    },
+    {
+      "creator": "Phil Drinkwater",
+      "email": "phil@phildrinkwater.coach",
+      "date": "2026-07-13T19:36:58.981105"
+    },
+    {
+      "creator": "Brain.fm",
+      "email": "support@brain.fm",
+      "date": "2026-07-13T19:38:37.815282"
+    },
+    {
+      "creator": "Totally ADD",
+      "email": "customersupport@totallyadd.com",
+      "date": "2026-07-13T19:40:11.664822"
+    },
+    {
+      "creator": "Brili",
+      "email": "feedback@brili.com",
+      "date": "2026-07-13T19:41:40.345342"
+    },
+    {
+      "creator": "Catieosaurus",
+      "email": "micah@micahrich.com",
+      "date": "2026-07-13T19:43:07.134469"
+    },
+    {
+      "creator": "Order Out of Chaos",
+      "email": "info@orderoochaos.com",
+      "date": "2026-07-13T19:44:38.103177"
+    },
+    {
+      "creator": "Catieosaurus",
+      "email": "cate@catieosaurus.com",
+      "date": "2026-07-13T19:46:13.925256"
+    },
+    {
+      "creator": "Jesper Dramsch",
+      "email": "jesper@dramsch.net",
+      "date": "2026-07-13T19:47:49.068425"
+    },
+    {
+      "creator": "ADHD Friendly Lifestyle",
+      "email": "ask@adhdfriendly.com",
+      "date": "2026-07-13T19:49:19.727619"
+    },
+    {
+      "creator": "Milo | Notion4Teachers",
+      "email": "milo@notion4teachers.com",
+      "date": "2026-07-13T19:50:49.280641"
+    },
+    {
+      "creator": "Patricia Sung",
+      "email": "hello@patriciasung.com",
+      "date": "2026-07-14T22:50:59.073267"
+    },
+    {
+      "creator": "ND Out Loud",
+      "email": "danielle@ndhive.com",
+      "date": "2026-07-14T22:53:07.597397"
+    },
+    {
+      "creator": "Faissal Sharif",
+      "email": "notion@faissalsharif.com",
+      "date": "2026-07-14T22:55:03.829396"
+    },
+    {
+      "creator": "ADHD Essentials",
+      "email": "bmahan@brendanmahan.com",
+      "date": "2026-07-14T22:57:07.077616"
+    },
+    {
+      "creator": "Dysfunctional Creative",
+      "email": "alex@dysfunctionalcreative.com",
+      "date": "2026-07-14T22:59:04.329044"
+    },
+    {
+      "creator": "Hafsah",
+      "email": "hafsahi.business@gmail.com",
+      "date": "2026-07-14T23:01:08.760870"
+    },
+    {
+      "creator": "Ideala Templates",
+      "email": "ideala.template@gmail.com",
+      "date": "2026-07-14T23:03:12.134604"
+    },
+    {
+      "creator": "Notomantra",
+      "email": "hello@notomantra.com",
+      "date": "2026-07-14T23:05:14.301699"
+    },
+    {
+      "creator": "Desby Seb",
+      "email": "desbyseb@gmail.com",
+      "date": "2026-07-14T23:07:19.849552"
+    },
+    {
+      "creator": "Mike and Matty",
+      "email": "info@mikeandmatty.com",
+      "date": "2026-07-14T23:11:52.647167"
+    },
+    {
+      "creator": "Aarna Stargirl",
+      "email": "aarnathakourzz@gmail.com",
+      "date": "2026-07-14T23:13:28.938907"
+    },
+    {
+      "creator": "Aaron",
+      "email": "aarontheproductiveguy@gmail.com",
+      "date": "2026-07-14T23:15:04.618239"
+    },
+    {
+      "creator": "Acquire Os",
+      "email": "ujjwal@adoptai.ca",
+      "date": "2026-07-14T23:16:43.619475"
+    },
+    {
+      "creator": "Adnanchr",
+      "email": "chrimni-adnan@hotmail.com",
+      "date": "2026-07-14T23:18:17.000736"
+    },
+    {
+      "creator": "Ahkxwork",
+      "email": "ahkroyal0@gmail.com",
+      "date": "2026-07-14T23:19:51.401054"
+    },
+    {
+      "creator": "Ahmedm",
+      "email": "ahmedelezaby1990@gmail.com",
+      "date": "2026-07-14T23:21:31.339118"
+    },
+    {
+      "creator": "Ai  Ruth",
+      "email": "helloruthng@gmail.com",
+      "date": "2026-07-14T23:23:07.363741"
+    },
+    {
+      "creator": "Akshaya",
+      "email": "akshayasridhar2003@gmail.com",
+      "date": "2026-07-14T23:24:43.647048"
+    },
+    {
+      "creator": "Akshyraveendran",
+      "email": "akshayraveendran84@gmail.com",
+      "date": "2026-07-14T23:26:16.682113"
+    },
+    {
+      "creator": "Alext",
+      "email": "alexandre.trzmiel@gmail.com",
+      "date": "2026-07-14T23:27:47.148298"
+    },
+    {
+      "creator": "Alizswonderland",
+      "email": "krammeraliz@gmail.com",
+      "date": "2026-07-14T23:29:22.791481"
+    },
+    {
+      "creator": "Altitudeworkspace",
+      "email": "altitude.workspace1@gmail.com",
+      "date": "2026-07-14T23:31:01.172368"
+    },
+    {
+      "creator": "Amiicwealth",
+      "email": "ahmedmaamoun2025@gmail.com",
+      "date": "2026-07-14T23:32:36.308398"
+    },
+    {
+      "creator": "Aminanah",
+      "email": "aminanahkami@gmail.com",
+      "date": "2026-07-14T23:34:12.670332"
+    },
+    {
+      "creator": "Annanewchurch",
+      "email": "anna.newchurch@gmail.com",
+      "date": "2026-07-14T23:35:49.851756"
+    },
+    {
+      "creator": "Annanova",
+      "email": "anicka.novackova@icloud.com",
+      "date": "2026-07-14T23:40:26.909334"
+    },
+    {
+      "creator": "Anthonytoday",
+      "email": "info@anthonytoday.com",
+      "date": "2026-07-14T23:41:58.278745"
+    },
+    {
+      "creator": "Aparna",
+      "email": "9.aparna@gmail.com",
+      "date": "2026-07-14T23:43:34.666669"
+    },
+    {
+      "creator": "Aviralfreelance",
+      "email": "aviralpoudal@gmail.com",
+      "date": "2026-07-14T23:45:02.903911"
+    },
+    {
+      "creator": "Basiclea",
+      "email": "alan.lea08@outlook.com",
+      "date": "2026-07-14T23:46:37.165878"
+    },
+    {
+      "creator": "Bearsthy",
+      "email": "bearsthy@gmail.com",
+      "date": "2026-07-14T23:48:13.263018"
+    },
+    {
+      "creator": "Benjamin Taylor",
+      "email": "ben.taylor@optiopp.com",
+      "date": "2026-07-14T23:49:49.038576"
+    },
+    {
+      "creator": "Bogdancozma",
+      "email": "hello@bogdancozma.co",
+      "date": "2026-07-14T23:51:22.156069"
+    },
+    {
+      "creator": "Brainblocs",
+      "email": "brainblocs@gmail.com",
+      "date": "2026-07-14T23:52:53.241414"
+    },
+    {
+      "creator": "Brio",
+      "email": "liamtf1216@outlook.com",
+      "date": "2026-07-14T23:54:24.405515"
+    },
+    {
+      "creator": "Bycarissa",
+      "email": "isbn13.books@gmail.com",
+      "date": "2026-07-14T23:55:56.521298"
+    },
+    {
+      "creator": "Candetemplates",
+      "email": "coffeeandcatslife@gmail.com",
+      "date": "2026-07-14T23:57:33.964505"
+    },
+    {
+      "creator": "Carocbd",
+      "email": "caroline.cerbelaud@gmail.com",
+      "date": "2026-07-14T23:59:12.673391"
+    },
+    {
+      "creator": "Carolinescorner",
+      "email": "quirkly.life@gmail.com",
+      "date": "2026-07-15T00:00:40.890057"
+    },
+    {
+      "creator": "Cheese",
+      "email": "cheese.notion@gmail.com",
+      "date": "2026-07-15T00:02:14.046968"
+    },
+    {
+      "creator": "Creatdbyjay",
+      "email": "creatdbyjay@gmail.com",
+      "date": "2026-07-15T00:03:34.350705"
+    },
+    {
+      "creator": "Creator Schmidt",
+      "email": "creatordrschmidt@gmail.com",
+      "date": "2026-07-15T00:04:54.699478"
+    },
+    {
+      "creator": "Creatortadeas",
+      "email": "tadeascontact@gmail.com",
+      "date": "2026-07-15T00:06:06.915328"
+    },
+    {
+      "creator": "Danyanovich",
+      "email": "danilaputintsev2512@gmail.com",
+      "date": "2026-07-15T00:07:22.084876"
+    },
+    {
+      "creator": "Dashsmith",
+      "email": "dashsmith.studio@gmail.com",
+      "date": "2026-07-15T00:08:32.295753"
+    },
+    {
+      "creator": "Dearpluto",
+      "email": "contact@dearpluto.xyz",
+      "date": "2026-07-15T00:09:53.766480"
+    },
+    {
+      "creator": "Debbie Lee",
+      "email": "hey@debbielee.co.uk",
+      "date": "2026-07-15T00:11:03.765714"
+    },
+    {
+      "creator": "Digitalodes",
+      "email": "hello@digitalodes.com",
+      "date": "2026-07-15T00:12:22.053210"
+    },
+    {
+      "creator": "Dolorsitemet",
+      "email": "contact@cyclonic.fr",
+      "date": "2026-07-15T00:13:36.262161"
+    },
+    {
+      "creator": "Doristudio",
+      "email": "doridoriss.sun@gmail.com",
+      "date": "2026-07-15T00:14:56.277780"
+    },
+    {
+      "creator": "Dr Osama Optimize",
+      "email": "dr.osama.optimize@gmail.com",
+      "date": "2026-07-15T00:19:05.413239"
+    },
+    {
+      "creator": "Dreamteamsystems",
+      "email": "officialgoodlife365@gmail.com",
+      "date": "2026-07-15T00:20:24.511984"
+    },
+    {
+      "creator": "Ducha",
+      "email": "stranatic.browsing348@passmail.net",
+      "date": "2026-07-15T00:21:39.657260"
+    },
+    {
+      "creator": "Ellecreates",
+      "email": "ellenyanduko@gmail.com",
+      "date": "2026-07-15T00:22:54.744936"
+    },
+    {
+      "creator": "Emp Consulting",
+      "email": "emmett.patton@gmail.com",
+      "date": "2026-07-15T00:24:04.768861"
+    },
+    {
+      "creator": "Everdeer",
+      "email": "everdeerstudio@gmail.com",
+      "date": "2026-07-15T00:25:21.110576"
+    },
+    {
+      "creator": "Ewingyangs",
+      "email": "kingandwede136@gmail.com",
+      "date": "2026-07-15T00:26:32.229351"
+    },
+    {
+      "creator": "Fabiosangregorio",
+      "email": "fabio.sangregorio+notiontemplates@gmail.com",
+      "date": "2026-07-15T00:27:51.424199"
+    },
+    {
+      "creator": "Fayed",
+      "email": "medoo.ua82@gmail.com",
+      "date": "2026-07-15T00:29:10.587286"
+    },
+    {
+      "creator": "Fieldingnotes",
+      "email": "katie@fieldingnotes.com",
+      "date": "2026-07-15T00:30:25.822708"
+    },
+    {
+      "creator": "Finalavenue",
+      "email": "viktoweb@proton.me",
+      "date": "2026-07-15T00:31:38.290729"
+    },
+    {
+      "creator": "Finanzasaldia",
+      "email": "notion.growl812@passfwd.com",
+      "date": "2026-07-15T00:32:51.818479"
+    },
+    {
+      "creator": "Fire006713",
+      "email": "fire006713@gmail.com",
+      "date": "2026-07-15T00:34:02.069007"
+    },
+    {
+      "creator": "Focusry",
+      "email": "so.zera.ds@gmail.com",
+      "date": "2026-07-15T00:35:19.153232"
+    },
+    {
+      "creator": "Forms",
+      "email": "rich@generousforms.com",
+      "date": "2026-07-15T00:36:29.187494"
+    },
+    {
+      "creator": "Fouzia Creatrice",
+      "email": "abidatfouziya@gmail.com",
+      "date": "2026-07-15T00:37:45.492511"
+    },
+    {
+      "creator": "Freelance Os",
+      "email": "chenxing556@gmail.com",
+      "date": "2026-07-15T00:38:53.596068"
+    },
+    {
+      "creator": "Fynk",
+      "email": "golestaneh@fynk.com",
+      "date": "2026-07-15T00:40:05.714466"
+    },
+    {
+      "creator": "Gearstore",
+      "email": "gearstore943@gmail.com",
+      "date": "2026-07-15T00:41:25.372226"
+    },
+    {
+      "creator": "Geekcodeq",
+      "email": "geekcodeq@gmail.com",
+      "date": "2026-07-15T00:46:29.181197"
+    },
+    {
+      "creator": "Greg Rastkelenian",
+      "email": "greg.rastkelenian@gmail.com",
+      "date": "2026-07-15T00:48:12.490747"
+    },
+    {
+      "creator": "Groundctrl",
+      "email": "guillaumedaniel@outlook.com",
+      "date": "2026-07-15T00:52:17.055999"
+    },
+    {
+      "creator": "Hannah",
+      "email": "customersuccessteam@saasdesign.io",
+      "date": "2026-07-15T01:10:16.153392"
+    },
+    {
+      "creator": "Heyalbert",
+      "email": "contact@heyalbert.co",
+      "date": "2026-07-15T01:11:33.504811"
+    },
+    {
+      "creator": "Heymsyo",
+      "email": "heymsyo@gmail.com",
+      "date": "2026-07-15T01:12:50.734733"
+    },
+    {
+      "creator": "Humaniaq",
+      "email": "humaniaq.com@gmail.com",
+      "date": "2026-07-15T01:17:12.068529"
+    },
+    {
+      "creator": "Iamkira",
+      "email": "kira.contactme@gmail.com",
+      "date": "2026-07-15T01:18:25.048010"
+    },
+    {
+      "creator": "Imenemellal",
+      "email": "imene@thedigicrafters.com",
+      "date": "2026-07-15T01:19:35.126096"
+    },
+    {
+      "creator": "Immistudio",
+      "email": "imminotion@gmail.com",
+      "date": "2026-07-15T01:20:51.315959"
+    },
+    {
+      "creator": "Isabela Pascoal",
+      "email": "isabela.pdigital@gmail.com",
+      "date": "2026-07-15T01:22:09.847777"
+    },
+    {
+      "creator": "Isabellaneffy",
+      "email": "info@offmap.co",
+      "date": "2026-07-15T01:23:26.064222"
+    },
+    {
+      "creator": "Islom Product",
+      "email": "kislombek98@gmail.com",
+      "date": "2026-07-15T01:24:35.133696"
+    },
+    {
+      "creator": "Ismail Saleem",
+      "email": "hamsaitech@gmail.com",
+      "date": "2026-07-15T01:25:56.417726"
+    },
+    {
+      "creator": "Jadelearns",
+      "email": "contact@jadelearns.com",
+      "date": "2026-07-15T01:27:04.662940"
+    },
+    {
+      "creator": "Jaque",
+      "email": "jaquelineantunesdeoliveira@gmail.com",
+      "date": "2026-07-15T01:28:12.739596"
+    },
+    {
+      "creator": "Jessicayankell",
+      "email": "jessica@jessicayankell.com",
+      "date": "2026-07-15T01:29:33.767547"
+    },
+    {
+      "creator": "Jithinrajiv",
+      "email": "templates@jithinrajiv.com",
+      "date": "2026-07-15T01:30:42.997006"
+    },
+    {
+      "creator": "Joe Templates",
+      "email": "fxjournalstats@gmail.com",
+      "date": "2026-07-15T01:32:00.214750"
+    },
+    {
+      "creator": "Jonahwirths",
+      "email": "jonah@wirths-automation.de",
+      "date": "2026-07-15T01:33:18.324783"
+    },
+    {
+      "creator": "Joni Silvennoinen",
+      "email": "joni.m.silvennoinen@gmail.com",
+      "date": "2026-07-15T02:06:05.696922"
+    },
+    {
+      "creator": "Kaluroos",
+      "email": "cmcvldz231@gmail.com",
+      "date": "2026-07-15T02:07:21.138696"
+    },
+    {
+      "creator": "Karinz Wei",
+      "email": "its.karin.wei@gmail.com",
+      "date": "2026-07-15T02:08:33.601107"
+    },
+    {
+      "creator": "Katiacreates",
+      "email": "katiacreatestemplates@gmail.com",
+      "date": "2026-07-15T02:09:42.904286"
+    },
+    {
+      "creator": "Katren",
+      "email": "keerthana25selvi@gmail.com",
+      "date": "2026-07-15T02:10:56.043908"
+    },
+    {
+      "creator": "Kb Designs24",
+      "email": "kb.customdesign24@gmail.com",
+      "date": "2026-07-15T02:12:10.302234"
+    },
+    {
+      "creator": "Kim Pinelli",
+      "email": "info@kimpinelli.com",
+      "date": "2026-07-15T02:13:21.411771"
+    },
+    {
+      "creator": "Kitchen Os",
+      "email": "andrewm4452@gmail.com",
+      "date": "2026-07-15T02:14:32.567349"
+    },
+    {
+      "creator": "Kitrose",
+      "email": "kitrose.templates@gmail.com",
+      "date": "2026-07-15T02:15:52.607891"
+    },
+    {
+      "creator": "Krypticjade",
+      "email": "krypticjade@gmail.com",
+      "date": "2026-07-15T02:17:08.817620"
+    },
+    {
+      "creator": "Lakwad",
+      "email": "lakwaddivyendu@gmail.com",
+      "date": "2026-07-15T02:18:18.894747"
+    },
+    {
+      "creator": "Lautaro Rojas",
+      "email": "lautaro.rojas02@gmail.com",
+      "date": "2026-07-15T02:22:39.167897"
+    },
+    {
+      "creator": "Lazystudentmethod",
+      "email": "icamessertorres@gmail.com",
+      "date": "2026-07-15T02:23:53.207354"
+    },
+    {
+      "creator": "Lifecanvas",
+      "email": "support@lifecanvas.store",
+      "date": "2026-07-15T02:25:10.275320"
+    },
+    {
+      "creator": "Lilian Theresa",
+      "email": "hipp.th123@gmail.com",
+      "date": "2026-07-15T02:26:24.258433"
+    },
+    {
+      "creator": "Lumieresite",
+      "email": "lulu@wahidin.net",
+      "date": "2026-07-15T02:27:40.314979"
+    },
+    {
+      "creator": "Mahita",
+      "email": "mahita.info@gmail.com",
+      "date": "2026-07-15T02:28:57.499768"
+    },
+    {
+      "creator": "Mainura",
+      "email": "sitimainurra97@gmail.com",
+      "date": "2026-07-15T02:30:06.768728"
+    },
+    {
+      "creator": "Majd Alsurihi",
+      "email": "majd.g.alsurihi@gmail.com",
+      "date": "2026-07-15T02:31:25.321535"
+    },
+    {
+      "creator": "Marie28",
+      "email": "marie_notion@outlook.com",
+      "date": "2026-07-15T02:32:42.741946"
+    },
+    {
+      "creator": "Marocreations222",
+      "email": "msmariam97532306@gmail.com",
+      "date": "2026-07-15T02:34:01.166548"
+    },
+    {
+      "creator": "Mh Templates",
+      "email": "mh.notiontemplate@gmail.com",
+      "date": "2026-07-15T02:35:09.574662"
+    },
+    {
+      "creator": "Michaelhudsonjr",
+      "email": "michael@missionaccomplished.io",
+      "date": "2026-07-15T02:36:21.864328"
+    },
+    {
+      "creator": "Mikalking",
+      "email": "info@rawgai.com",
+      "date": "2026-07-15T02:37:31.297743"
+    },
+    {
+      "creator": "Mikegross",
+      "email": "mike@newstate.io",
+      "date": "2026-07-15T02:38:52.387236"
+    },
+    {
+      "creator": "Modra Studio",
+      "email": "modrastudio@proton.me",
+      "date": "2026-07-15T02:40:12.684764"
+    },
+    {
+      "creator": "Moducura",
+      "email": "moducura@outlook.de",
+      "date": "2026-07-15T02:41:23.947514"
+    },
+    {
+      "creator": "Monna",
+      "email": "emanalshazly@gmail.com",
+      "date": "2026-07-15T02:42:36.838881"
+    },
+    {
+      "creator": "Mrhaques01",
+      "email": "mrhaque991@gmail.com",
+      "date": "2026-07-15T02:43:55.219210"
+    },
+    {
+      "creator": "Naiaraambrosio",
+      "email": "naiaraambrosios@gmail.com",
+      "date": "2026-07-15T02:45:04.374023"
+    },
+    {
+      "creator": "Nation4Business",
+      "email": "contact.notion4business@gmail.com",
+      "date": "2026-07-15T02:46:14.972623"
+    },
+    {
+      "creator": "Newblocs",
+      "email": "ian@newblocs.co",
+      "date": "2026-07-15T02:47:25.921205"
+    },
+    {
+      "creator": "Ninisdesk",
+      "email": "ninis.desk@gmail.com",
+      "date": "2026-07-15T02:48:46.285287"
+    },
+    {
+      "creator": "Nodi",
+      "email": "admin@nodi.so",
+      "date": "2026-07-15T02:49:55.858900"
+    },
+    {
+      "creator": "Nolesy Noles",
+      "email": "alex@alexnoles.com",
+      "date": "2026-07-15T02:51:11.926671"
+    },
+    {
+      "creator": "Nomen",
+      "email": "wiredinwonder@gmail.com",
+      "date": "2026-07-15T02:52:31.099413"
+    },
+    {
+      "creator": "Norean",
+      "email": "hello@norean.co",
+      "date": "2026-07-15T02:56:52.593475"
+    },
+    {
+      "creator": "Notioners",
+      "email": "welcome@notioners.com",
+      "date": "2026-07-15T02:58:04.736272"
+    },
+    {
+      "creator": "NotMatthew",
+      "email": "matt@heycomma.co",
+      "date": "2026-07-15T02:59:21.965253"
+    },
+    {
+      "creator": "Novalife",
+      "email": "novalife.studio@gmail.com",
+      "date": "2026-07-15T03:00:35.269441"
+    },
+    {
+      "creator": "Nstation",
+      "email": "notionstations@gmail.com",
+      "date": "2026-07-15T03:01:47.839390"
+    },
+    {
+      "creator": "Oliviacaitlyn",
+      "email": "oliviacaitlyn.contact@gmail.com",
+      "date": "2026-07-15T03:03:05.300508"
+    },
+    {
+      "creator": "Orioncrest",
+      "email": "orioncrest18@gmail.com",
+      "date": "2026-07-15T03:04:13.404510"
+    },
+    {
+      "creator": "Pablo",
+      "email": "digitalsetco@gmail.com",
+      "date": "2026-07-15T03:05:33.562373"
+    },
+    {
+      "creator": "Pamori Leaflings",
+      "email": "pamori.tree@gmail.com",
+      "date": "2026-07-15T03:06:50.537869"
+    },
+    {
+      "creator": "Papermark",
+      "email": "support@papermark.com",
+      "date": "2026-07-15T03:08:00.903985"
+    },
+    {
+      "creator": "Paulfleury",
+      "email": "hello@paulfleury.fr",
+      "date": "2026-07-15T03:09:15.120629"
+    },
+    {
+      "creator": "Plandigital Hub",
+      "email": "jeddys270@gmail.com",
+      "date": "2026-07-15T03:10:27.385456"
+    },
+    {
+      "creator": "Plannoralab",
+      "email": "tidybyfeb@gmail.com",
+      "date": "2026-07-15T03:11:35.858403"
+    },
+    {
+      "creator": "Planoralayouts",
+      "email": "rajlaxmimadundi97611@gmail.com",
+      "date": "2026-07-15T03:12:50.143209"
+    },
+    {
+      "creator": "Plox",
+      "email": "start@useplox.life",
+      "date": "2026-07-15T03:14:07.354765"
+    },
+    {
+      "creator": "Powerofhabits",
+      "email": "powerofhabits.mail@gmail.com",
+      "date": "2026-07-15T03:15:23.891784"
+    },
+    {
+      "creator": "Productivity HQ",
+      "email": "theproductivityhq@gmail.com",
+      "date": "2026-07-15T03:16:35.057973"
+    },
+    {
+      "creator": "Quillandsteel",
+      "email": "hello@quillandsteel.com",
+      "date": "2026-07-15T03:17:52.218117"
+    },
+    {
+      "creator": "Redcapecounselling",
+      "email": "hayley@redcapecounselling.com",
+      "date": "2026-07-15T03:19:00.369097"
+    },
+    {
+      "creator": "Ricosuavemusic",
+      "email": "ricosuavemusica@gmail.com",
+      "date": "2026-07-15T03:20:10.615923"
+    },
+    {
+      "creator": "Rosyruby",
+      "email": "nene.henearkrxern.919@gmail.com",
+      "date": "2026-07-15T03:21:29.878073"
+    },
+    {
+      "creator": "Sarinotes",
+      "email": "arianaholder.med@gmail.com",
+      "date": "2026-07-15T03:22:46.133595"
+    },
+    {
+      "creator": "Sarwarazam",
+      "email": "support@sarwarazam.com",
+      "date": "2026-07-15T03:23:57.165316"
+    },
+    {
+      "creator": "Seannahaynes",
+      "email": "seawal61@gmail.com",
+      "date": "2026-07-15T03:25:12.257659"
+    },
+    {
+      "creator": "Sectorops",
+      "email": "contact@sectorops.com",
+      "date": "2026-07-15T03:26:23.355925"
+    },
+    {
+      "creator": "Sentele",
+      "email": "support@sentele.co",
+      "date": "2026-07-15T03:30:34.534688"
+    },
+    {
+      "creator": "Shafeen81",
+      "email": "shafayet.hossain@zaitunigroup.com",
+      "date": "2026-07-15T03:31:44.082419"
+    },
+    {
+      "creator": "Silastoma",
+      "email": "toma@silastoma.com",
+      "date": "2026-07-15T03:32:54.205738"
+    },
+    {
+      "creator": "Simondr",
+      "email": "s01237586@gmail.com",
+      "date": "2026-07-15T03:34:11.535075"
+    },
+    {
+      "creator": "Sinchana Creations",
+      "email": "sinchxnx24sr@gmail.com",
+      "date": "2026-07-15T03:35:29.873063"
+    },
+    {
+      "creator": "Sofiarr",
+      "email": "sofia.arraiza@gmail.com",
+      "date": "2026-07-15T03:36:51.041823"
+    },
+    {
+      "creator": "Sophiatemplates",
+      "email": "sophiatemplates1@gmail.com",
+      "date": "2026-07-15T03:38:00.715792"
+    },
+    {
+      "creator": "Sou",
+      "email": "1024ittyan@gmail.com",
+      "date": "2026-07-15T03:39:14.031078"
+    },
+    {
+      "creator": "Soulfulspace",
+      "email": "soulfulspaceco@gmail.com",
+      "date": "2026-07-15T03:40:24.310493"
+    },
+    {
+      "creator": "Sprk",
+      "email": "hello@sprkit.co",
+      "date": "2026-07-15T03:41:41.800515"
+    },
+    {
+      "creator": "Starringmoon",
+      "email": "starringmoon8@gmail.com",
+      "date": "2026-07-15T03:42:54.015599"
+    },
+    {
+      "creator": "Studioclarify",
+      "email": "studioclarify@gmail.com",
+      "date": "2026-07-15T03:44:13.337016"
+    },
+    {
+      "creator": "Sueru",
+      "email": "sudeozcan1205@gmail.com",
+      "date": "2026-07-15T03:45:30.454596"
+    },
+    {
+      "creator": "Systembycarlo",
+      "email": "lorenzana.carlo@outlook.com",
+      "date": "2026-07-15T03:46:48.746368"
+    },
+    {
+      "creator": "Systemd",
+      "email": "heymaro.co@gmail.com",
+      "date": "2026-07-15T04:04:28.611460"
+    },
+    {
+      "creator": "Systemswitherika",
+      "email": "systemswitherika@gmail.com",
+      "date": "2026-07-15T04:20:46.724432"
+    },
+    {
+      "creator": "Tcodestudio",
+      "email": "connect.tcodestudio@gmail.com",
+      "date": "2026-07-15T04:38:18.292660"
+    },
+    {
+      "creator": "Temini 0X",
+      "email": "femyzon@gmail.com",
+      "date": "2026-07-15T04:39:31.376176"
+    },
+    {
+      "creator": "Templatemusealchemy",
+      "email": "misslialove21@gmail.com",
+      "date": "2026-07-15T04:40:41.735370"
+    },
+    {
+      "creator": "Templatesforbusiness",
+      "email": "yrachad08@gmail.com",
+      "date": "2026-07-15T04:41:56.951774"
+    },
+    {
+      "creator": "Tempsol",
+      "email": "qaseamai98@hotmail.com",
+      "date": "2026-07-15T04:43:05.128660"
+    },
+    {
+      "creator": "Thatvibecoder",
+      "email": "thatvibecoder@gmail.com",
+      "date": "2026-07-15T04:44:20.247753"
+    },
+    {
+      "creator": "Thebudgetpurse",
+      "email": "djangonaire@gmail.com",
+      "date": "2026-07-15T04:45:35.419188"
+    },
+    {
+      "creator": "Thecozytome",
+      "email": "mshuecodev@gmail.com",
+      "date": "2026-07-15T04:46:55.726276"
+    },
+    {
+      "creator": "Theericaoconnor",
+      "email": "notion@ericaoconnor.com",
+      "date": "2026-07-15T04:48:16.800825"
+    },
+    {
+      "creator": "Thesiddheshh",
+      "email": "siddhwagawad@gmail.com",
+      "date": "2026-07-15T04:52:29.213751"
+    },
+    {
+      "creator": "Tomas Vysny",
+      "email": "tvysny@gmail.com",
+      "date": "2026-07-15T04:53:39.413702"
+    },
+    {
+      "creator": "Tristardigital",
+      "email": "support@tristargymdigital.com",
+      "date": "2026-07-15T04:54:58.571436"
+    },
+    {
+      "creator": "Utkarsh Singh",
+      "email": "singh.utkarsh.aps@gmail.com",
+      "date": "2026-07-15T04:56:19.005044"
+    },
+    {
+      "creator": "Vascoworkspace",
+      "email": "arda.12.2016@gmail.com",
+      "date": "2026-07-15T04:57:31.099124"
+    },
+    {
+      "creator": "Veadesigns",
+      "email": "veacruz.contact@gmail.com",
+      "date": "2026-07-15T04:58:50.269911"
+    },
+    {
+      "creator": "Vladimir Burn",
+      "email": "vladimirmarshal108@gmail.com",
+      "date": "2026-07-15T05:00:02.553965"
+    },
+    {
+      "creator": "Vpmproductivity",
+      "email": "vpmproductivity@gmail.com",
+      "date": "2026-07-15T05:01:12.768324"
+    },
+    {
+      "creator": "Withdajo",
+      "email": "danieljschwarz.contact@gmail.com",
+      "date": "2026-07-15T05:02:31.029340"
+    },
+    {
+      "creator": "Worldbuilderscavern",
+      "email": "worldbuilderscavern@gmail.com",
+      "date": "2026-07-15T05:03:50.392138"
+    },
+    {
+      "creator": "Ympact",
+      "email": "hello@ympact.agency",
+      "date": "2026-07-15T05:05:09.751760"
+    },
+    {
+      "creator": "Your Leadmap",
+      "email": "yourleadmap@gmail.com",
+      "date": "2026-07-15T05:06:30.938893"
+    },
+    {
+      "creator": "Ziadwaleed08",
+      "email": "ziad.waleedeg07@gmail.com",
+      "date": "2026-07-15T05:07:46.009203"
+    },
+    {
+      "creator": "Zikotemplates",
+      "email": "zakaria.taoussi03@gmail.com",
+      "date": "2026-07-15T05:09:03.203109"
+    },
+    {
+      "creator": "Haris Notion",
+      "email": "harrisonsnotions@gmail.com",
+      "date": "2026-07-15T05:10:20.443537"
+    },
+    {
+      "creator": "Made by Jacob",
+      "email": "jakub.miovsky@gmail.com",
+      "date": "2026-07-15T05:11:28.745172"
+    },
+    {
+      "creator": "Nyteo",
+      "email": "camille@nyteo.fr",
+      "date": "2026-07-15T05:12:37.564723"
+    },
+    {
+      "creator": "Sanchana Selvaraj",
+      "email": "sanchana@streamaline.com",
+      "date": "2026-07-15T05:13:49.757144"
+    },
+    {
+      "creator": "Solt Wagner",
+      "email": "soltwagner@gmail.com",
+      "date": "2026-07-15T05:15:05.021559"
+    },
+    {
+      "creator": "Iris Cozy Corner",
+      "email": "dicosdice4@gmail.com",
+      "date": "2026-07-15T05:16:23.274769"
+    },
+    {
+      "creator": "Lihito",
+      "email": "salsasource31@gmail.com",
+      "date": "2026-07-15T05:17:41.589792"
+    },
+    {
+      "creator": "Marina Quiet Mode",
+      "email": "marina@quietmode.co",
+      "date": "2026-07-15T05:18:52.833926"
+    },
+    {
+      "creator": "Natascha Buck",
+      "email": "template@nataschabuck.com",
+      "date": "2026-07-15T05:20:06.088564"
+    },
+    {
+      "creator": "Nick Janes",
+      "email": "support@igeekuplay.com",
+      "date": "2026-07-15T05:21:20.893336"
+    },
+    {
+      "creator": "Nosion",
+      "email": "nosion.0000@gmail.com",
+      "date": "2026-07-15T05:22:33.355096"
+    },
+    {
+      "creator": "The Matcha Vibe",
+      "email": "heymatchavibe@gmail.com",
+      "date": "2026-07-15T05:26:46.678381"
+    },
+    {
+      "creator": "Edrians Notes",
+      "email": "heyedrian@gmail.com",
+      "date": "2026-07-15T05:27:56.011753"
+    },
+    {
+      "creator": "Lou Attal",
+      "email": "hello@louattal.studio",
+      "date": "2026-07-15T05:29:07.175268"
+    },
+    {
+      "creator": "Nofi",
+      "email": "support@nofi.so",
+      "date": "2026-07-15T05:30:24.565636"
+    },
+    {
+      "creator": "Rosidssoy",
+      "email": "rosidssoy@gmail.com",
+      "date": "2026-07-15T05:31:45.790064"
+    },
+    {
+      "creator": "Mostafa Yasser",
+      "email": "contact@mostafayasser.com",
+      "date": "2026-07-15T05:33:05.047803"
+    },
+    {
+      "creator": "Notion Hive",
+      "email": "hello@notionhive.com",
+      "date": "2026-07-15T05:34:23.416648"
+    },
+    {
+      "creator": "Sondos Yasser",
+      "email": "sondos@sondosyasser.com",
+      "date": "2026-07-15T05:35:41.602763"
+    },
+    {
+      "creator": "navhtur",
+      "email": "navhturnotes@gmail.com",
+      "date": "2026-07-15T05:36:57.746048"
+    },
+    {
+      "creator": "Chris Wynn",
+      "email": "christopher.john.wynn@gmail.com",
+      "date": "2026-07-15T05:38:12.838265"
+    },
+    {
+      "creator": "aNotioneer",
+      "email": "alex@anotioneer.com",
+      "date": "2026-07-15T05:56:30.711197"
+    },
+    {
+      "creator": "ADDchieve",
+      "email": "jim@addchieve.com",
+      "date": "2026-07-15T05:57:45.980413"
+    },
+    {
+      "creator": "ADHD Advantage",
+      "email": "roxana.cardos@gmail.com",
+      "date": "2026-07-15T05:59:07.662495"
+    },
+    {
+      "creator": "ADHD Coach Australia",
+      "email": "jack@adhdcoach.com.au",
+      "date": "2026-07-15T06:00:20.941742"
+    },
+    {
+      "creator": "ADHD Coach CT",
+      "email": "adhdcoachct@gmail.com",
+      "date": "2026-07-15T06:01:40.025120"
+    },
+    {
+      "creator": "ADHD Coach Jacquie",
+      "email": "duprasjacquelyn@gmail.com",
+      "date": "2026-07-15T06:02:52.497211"
+    },
+    {
+      "creator": "ADHD for Smart Ass Women",
+      "email": "tracy@tracyotsuka.com",
+      "date": "2026-07-15T06:04:01.779978"
+    },
+    {
+      "creator": "ADHD Nurse",
+      "email": "hello@adhdnurse.ca",
+      "date": "2026-07-15T06:05:18.187283"
+    },
+    {
+      "creator": "ADHD With Ally",
+      "email": "info@adhdwithally.com",
+      "date": "2026-07-15T06:06:31.404271"
+    },
+    {
+      "creator": "Adhdcoachme ADHD Coaching",
+      "email": "Rachel@ADHDCoachMe.com",
+      "date": "2026-07-15T06:07:50.562070"
+    },
+    {
+      "creator": "Adventura Coaching",
+      "email": "brave@adventcoach.com",
+      "date": "2026-07-15T06:09:01.835363"
+    },
+    {
+      "creator": "Allison Kirsch Coaching",
+      "email": "allison@allisonkirschcoaching.com",
+      "date": "2026-07-15T06:10:13.514227"
+    },
+    {
+      "creator": "Along Their Way",
+      "email": "jamie@alongtheirway.com",
+      "date": "2026-07-15T06:11:28.165461"
+    },
+    {
+      "creator": "Bay Area ADHD Coach",
+      "email": "carlos@bayareaadhdcoach.com",
+      "date": "2026-07-15T06:12:41.548661"
+    },
+    {
+      "creator": "Berkeley Gardner Coaching",
+      "email": "berkeley@berkeleygardnercoaching.com",
+      "date": "2026-07-15T06:13:55.623152"
+    },
+    {
+      "creator": "Beth Marsh Coaching",
+      "email": "beth@bethmarshcoaching.com",
+      "date": "2026-07-15T06:18:15.333156"
+    },
+    {
+      "creator": "Better Creating Templates",
+      "email": "notion@bettercreating.com",
+      "date": "2026-07-15T06:19:23.718486"
+    },
+    {
+      "creator": "Brighter Coach",
+      "email": "brightercoach@gmail.com",
+      "date": "2026-07-15T06:20:38.908492"
+    },
+    {
+      "creator": "Busy Brain Coach",
+      "email": "irena@busybrain.coach",
+      "date": "2026-07-15T06:21:47.169454"
+    },
+    {
+      "creator": "Candice Lim Coaching",
+      "email": "theunorthodoxcoach@gmail.com",
+      "date": "2026-07-15T06:22:56.412101"
+    },
+    {
+      "creator": "Charlotte Moore Coaching",
+      "email": "charlotte@adhdcoachldn.com",
+      "date": "2026-07-15T06:24:17.919126"
+    },
+    {
+      "creator": "Coach With Sally",
+      "email": "sally@coachwithsally.com",
+      "date": "2026-07-15T06:25:37.097586"
+    },
+    {
+      "creator": "Coachlindawalker ADHD Coaching",
+      "email": "Linda@coachlindawalker.com",
+      "date": "2026-07-15T06:26:57.473356"
+    },
+    {
+      "creator": "Compass Coaching Seattle",
+      "email": "bethany@compasscoachingseattle.com",
+      "date": "2026-07-15T06:28:10.985089"
+    },
+    {
+      "creator": "Dana Maher Coaching",
+      "email": "dmaher@danamahercoaching.com",
+      "date": "2026-07-15T06:29:22.259231"
+    },
+    {
+      "creator": "Darren Boyd-Annells Coaching",
+      "email": "moveforward@adhdsuccess.co.uk",
+      "date": "2026-07-15T06:30:37.443857"
+    },
+    {
+      "creator": "E3 Focus Coaching",
+      "email": "coach@e3focuscoaching.com",
+      "date": "2026-07-15T06:31:54.785436"
+    },
+    {
+      "creator": "Gridfiti",
+      "email": "hello@gridfiti.com",
+      "date": "2026-07-15T06:33:09.977068"
+    },
+    {
+      "creator": "Happy Place Organizing",
+      "email": "deirdre@happyplaceorganizing.com",
+      "date": "2026-07-15T06:34:24.245187"
+    },
+    {
+      "creator": "Intentional ADHD",
+      "email": "kelly@intentionaladhd.com",
+      "date": "2026-07-15T06:35:33.723724"
+    },
+    {
+      "creator": "Jane Schwartz ADHD Coach",
+      "email": "jane.d.schwartz@gmail.com",
+      "date": "2026-07-15T06:36:50.781472"
+    },
+    {
+      "creator": "John Gassner Coaching",
+      "email": "john@zeroincoaching.com",
+      "date": "2026-07-15T06:38:06.864732"
+    },
+    {
+      "creator": "Jonathan French ADHD Coaching",
+      "email": "jonathan@jonathanfrench.ca",
+      "date": "2026-07-15T06:39:17.134228"
+    },
+    {
+      "creator": "Joyofgtd ADHD Coaching",
+      "email": "Linda@JoyofGTD.com",
+      "date": "2026-07-15T06:40:26.336042"
+    },
+    {
+      "creator": "Julia Margolis Coaching",
+      "email": "julia@trustinyou.ca",
+      "date": "2026-07-15T06:41:40.781498"
+    },
+    {
+      "creator": "Julie Kliers Coaching",
+      "email": "julie@jadhdcoach.com",
+      "date": "2026-07-15T06:43:01.840959"
+    },
+    {
+      "creator": "Karly Ward Coaching",
+      "email": "Karly@altogetheradhd.com",
+      "date": "2026-07-15T06:44:13.046496"
+    },
+    {
+      "creator": "Kirsten Donaghey Coaching",
+      "email": "info@kirstendonaghey.com",
+      "date": "2026-07-15T06:45:23.147265"
+    },
+    {
+      "creator": "LeapADHD",
+      "email": "karla.adhdcoach@gmail.com",
+      "date": "2026-07-15T06:46:33.283527"
+    },
+    {
+      "creator": "Live Happy ADHD Coaching",
+      "email": "dorsey@livehappyadhd.com",
+      "date": "2026-07-15T06:47:48.403735"
+    },
+    {
+      "creator": "Liz Welshman Coaching",
+      "email": "liz@lizwelshman.com",
+      "date": "2026-07-15T06:52:03.536201"
+    },
+    {
+      "creator": "LOTIS Solutions",
+      "email": "valerie@lotis.solutions",
+      "date": "2026-07-15T06:53:15.678076"
+    },
+    {
+      "creator": "Lynn Shumaker Coaching",
+      "email": "ADDgiftscoach@verizon.net",
+      "date": "2026-07-15T06:54:31.042688"
+    },
+    {
+      "creator": "Marie-Pier Rochon",
+      "email": "hello@mariepierrochon.com",
+      "date": "2026-07-15T06:55:41.312340"
+    },
+    {
+      "creator": "Mayhem Management Coaching",
+      "email": "nicola@mayhemmanagementcoaching.ca",
+      "date": "2026-07-15T06:56:53.698847"
+    },
+    {
+      "creator": "Michele Toner Coaching",
+      "email": "coach@micheletoner.com",
+      "date": "2026-07-15T06:58:09.101117"
+    },
+    {
+      "creator": "My Refocus Coach",
+      "email": "myrefocuscoach@gmail.com",
+      "date": "2026-07-15T06:59:28.132811"
+    },
+    {
+      "creator": "Naturally Paul",
+      "email": "enquiries@naturallypaul.com",
+      "date": "2026-07-15T07:00:47.372891"
+    },
+    {
+      "creator": "Neuroinclusive Coach",
+      "email": "neuroinclusivecoach@gmail.com",
+      "date": "2026-07-15T07:01:57.437618"
+    },
+    {
+      "creator": "NoMadd Coach",
+      "email": "tony@nomadd.coach",
+      "date": "2026-07-15T07:03:14.012112"
+    },
+    {
+      "creator": "Notion Providers",
+      "email": "info@notionproviders.com",
+      "date": "2026-07-15T07:04:25.490859"
+    },
+    {
+      "creator": "Notion Roots",
+      "email": "hyphenslash123@gmail.com",
+      "date": "2026-07-15T07:05:35.580833"
+    },
+    {
+      "creator": "Notion Things",
+      "email": "jamie@notionthings.com",
+      "date": "2026-07-15T07:06:47.586034"
+    },
+    {
+      "creator": "Notion Tour",
+      "email": "editor@notiontour.com",
+      "date": "2026-07-15T07:08:06.711442"
+    },
+    {
+      "creator": "Notionology",
+      "email": "molly@notionology.com",
+      "date": "2026-07-15T07:09:18.004970"
+    },
+    {
+      "creator": "Octopus ADHD Coaching",
+      "email": "kristin@octopusadhdcoaching.com",
+      "date": "2026-07-15T07:10:34.235445"
+    },
+    {
+      "creator": "Paige Herman Coaching",
+      "email": "TurnthePaigeADHD@gmail.com",
+      "date": "2026-07-15T07:11:45.216140"
+    },
+    {
+      "creator": "Pathpages",
+      "email": "hello@pathpages.com",
+      "date": "2026-07-15T07:12:53.307770"
+    },
+    {
+      "creator": "Positive Focus ADHD",
+      "email": "patty@addpositivefocus.com",
+      "date": "2026-07-15T07:14:04.371256"
+    },
+    {
+      "creator": "Pressley ADHD Coaching",
+      "email": "pressleyadhdcoaching@gmail.com",
+      "date": "2026-07-15T07:15:13.490722"
+    },
+    {
+      "creator": "Rachel Young Coaching",
+      "email": "rachelyoung.mba@gmail.com",
+      "date": "2026-07-15T07:16:23.641679"
+    },
+    {
+      "creator": "Ready Set Choose Coaching",
+      "email": "coachcathy@readysetchoose.com",
+      "date": "2026-07-15T07:17:38.693789"
+    },
+    {
+      "creator": "Riverwalk Counseling",
+      "email": "aphrodite@riverwalkcounseling.com",
+      "date": "2026-07-15T07:18:51.294558"
+    },
+    {
+      "creator": "Siun Prochazka Coaching",
+      "email": "siun@uniquelywiredcoaching.com",
+      "date": "2026-07-15T07:20:04.510544"
+    },
+    {
+      "creator": "Skip Coaching",
+      "email": "emily@skipcoaching.com",
+      "date": "2026-07-15T07:21:19.742389"
+    },
+    {
+      "creator": "Speak Y'all",
+      "email": "sammie@speakyall.com",
+      "date": "2026-07-15T07:25:33.234782"
+    },
+    {
+      "creator": "Taylor Allbright Coaching",
+      "email": "taylor@taylorallbright.com",
+      "date": "2026-07-15T07:26:44.534619"
+    },
+    {
+      "creator": "The Functional Family",
+      "email": "sharon@thefunctionalfamily.com",
+      "date": "2026-07-15T07:28:01.683029"
+    },
+    {
+      "creator": "Thewavybrain ADHD Coaching",
+      "email": "lindsay@TheWavyBrain.com",
+      "date": "2026-07-15T07:29:15.945913"
+    },
+    {
+      "creator": "Tzofiya Morris Coaching",
+      "email": "tzofiyamorris@gmail.com",
+      "date": "2026-07-15T07:30:24.256240"
+    },
+    {
+      "creator": "Ukadhdcoaching ADHD Coaching",
+      "email": "jihan@UKADHDCoaching.com",
+      "date": "2026-07-15T07:31:37.462057"
+    },
+    {
+      "creator": "Uniquely Wired",
+      "email": "audrey@audreybutters.com",
+      "date": "2026-07-15T07:32:53.637039"
+    },
+    {
+      "creator": "Vickie Smith Coaching",
+      "email": "vickie@focusedmindstrategies.com",
+      "date": "2026-07-15T07:34:10.728252"
+    },
+    {
+      "creator": "Walk With Christina",
+      "email": "hello@walkwithchristina.com",
+      "date": "2026-07-15T07:35:18.781492"
+    },
+    {
+      "creator": "Withertynes ADHD Coaching",
+      "email": "donna@withertynes.com",
+      "date": "2026-07-15T07:36:27.979648"
+    },
+    {
+      "creator": "Yehuda Grunhut Coaching",
+      "email": "rebyehuda.g@gmail.com",
+      "date": "2026-07-15T07:37:44.243073"
+    },
+    {
+      "creator": "Your ADHD Coach",
+      "email": "info@youradhdcoach.online",
+      "date": "2026-07-15T07:39:00.299910"
+    },
+    {
+      "creator": "Ruri Ohama",
+      "email": "support@ohamaruri.com",
+      "date": "2026-07-15T07:40:18.465711"
+    },
+    {
+      "creator": "Notion Affiliates",
+      "email": "affiliates@makenotion.com",
+      "date": "2026-07-15T07:41:28.694969"
+    },
+    {
+      "creator": "ADDitude Magazine",
+      "email": "anni@additude.com",
+      "date": "2026-07-15T07:42:38.934463"
+    },
+    {
+      "creator": "Understood.org",
+      "email": "app@understood.org",
+      "date": "2026-07-15T07:43:54.148414"
+    },
+    {
+      "creator": "Tool Finder",
+      "email": "tools@keepproductive.com",
+      "date": "2026-07-15T07:45:12.581009"
+    },
+    {
+      "creator": "CHADD",
+      "email": "customer_service@chadd.org",
+      "date": "2026-07-15T07:46:20.750958"
+    },
+    {
+      "creator": "Craft Docs",
+      "email": "feedback@craft.do",
+      "date": "2026-07-15T07:47:42.064154"
+    },
+    {
+      "creator": "RescueTime",
+      "email": "contact@rescuetime.com",
+      "date": "2026-07-15T07:48:50.189219"
+    },
+    {
+      "creator": "Understood",
+      "email": "media@understood.org",
+      "date": "2026-07-15T07:50:06.782743"
+    },
+    {
+      "creator": "Inflow ADHD",
+      "email": "hello@getinflow.io",
+      "date": "2026-07-15T07:51:15.392336"
+    },
+    {
+      "creator": "Anytype",
+      "email": "anylab@anytype.io",
+      "date": "2026-07-15T07:52:31.941327"
+    },
+    {
+      "creator": "Lunatask",
+      "email": "marketing@lunatask.app",
+      "date": "2026-07-15T07:53:42.396699"
+    },
+    {
+      "creator": "Scrintal",
+      "email": "hello@scrintal.com",
+      "date": "2026-07-15T07:55:01.536082"
+    },
+    {
+      "creator": "Ananyaa Verma",
+      "email": "ananyaa.verma2@gmail.com",
+      "date": "2026-07-15T07:59:14.762039"
+    },
+    {
+      "creator": "D",
+      "email": "dilrubaey@gmail.com",
+      "date": "2026-07-15T08:00:24.022527"
+    },
+    {
+      "creator": "Diana Lunzer",
+      "email": "hello@dianalunzer.com",
+      "date": "2026-07-15T08:01:39.482063"
+    },
+    {
+      "creator": "heyismail",
+      "email": "heyelgarouri@gmail.com",
+      "date": "2026-07-15T08:02:55.619740"
+    },
+    {
+      "creator": "Konduit Operations",
+      "email": "katie@Konduitoperations.com",
+      "date": "2026-07-15T08:04:12.092231"
+    },
+    {
+      "creator": "Nocto Solutions",
+      "email": "contact@nocto-solutions.fr",
+      "date": "2026-07-15T08:05:23.155814"
+    },
+    {
+      "creator": "Notion Base",
+      "email": "contact@thenotionbase.com",
+      "date": "2026-07-15T08:06:31.125492"
+    },
+    {
+      "creator": "Notion Labs",
+      "email": "ecaterina_sirbu@yahoo.com",
+      "date": "2026-07-15T08:07:39.220289"
+    },
+    {
+      "creator": "Notion Pro",
+      "email": "saloni.iitd@gmail.com",
+      "date": "2026-07-15T08:08:49.326895"
+    },
+    {
+      "creator": "Notion Zen",
+      "email": "support@notionzen.com",
+      "date": "2026-07-15T08:09:58.736666"
+    },
+    {
+      "creator": "Opptymizer",
+      "email": "enquiry@opptymizer.com",
+      "date": "2026-07-15T08:11:10.020693"
+    },
+    {
+      "creator": "ST | HAY studio",
+      "email": "hello@haystudio.space",
+      "date": "2026-07-15T08:12:22.048789"
+    },
+    {
+      "creator": "UNMUTE",
+      "email": "hi@unmutework.com",
+      "date": "2026-07-15T08:13:35.371469"
+    },
+    {
+      "creator": "Aethr.",
+      "email": "borysenkosviat@gmail.com",
+      "date": "2026-07-15T12:44:02.394648"
+    },
+    {
+      "creator": "ahmadhzark",
+      "email": "ahmadhzarkwork@gmail.com",
+      "date": "2026-07-15T12:45:22.858845"
+    },
+    {
+      "creator": "Airo",
+      "email": "Aironotion@gmail.com",
+      "date": "2026-07-15T12:48:49.057305"
+    },
+    {
+      "creator": "Alireza Mirzadeh",
+      "email": "rexalirz72@gmail.com",
+      "date": "2026-07-15T12:51:41.273981"
+    },
+    {
+      "creator": "AMIIC Studio",
+      "email": "amiic.dev@gmail.com",
+      "date": "2026-07-15T12:54:54.370135"
+    },
+    {
+      "creator": "Anastasiia Firsova",
+      "email": "afirsova.design@gmail.com",
+      "date": "2026-07-15T12:58:17.565511"
+    },
+    {
+      "creator": "AnaTemplates",
+      "email": "analouridofernandez4@gmail.com",
+      "date": "2026-07-15T12:59:57.688492"
+    },
+    {
+      "creator": "Anmar",
+      "email": "anmar727@gmail.com",
+      "date": "2026-07-15T13:04:50.968752"
+    },
+    {
+      "creator": "Anny",
+      "email": "annycrosses@outlook.com",
+      "date": "2026-07-15T13:07:06.264329"
+    },
+    {
+      "creator": "anusha",
+      "email": "anusha.dazed@gmail.com",
+      "date": "2026-07-15T13:08:25.322554"
+    },
+    {
+      "creator": "Arthur S",
+      "email": "arthursantana99@gmail.com",
+      "date": "2026-07-15T13:09:44.331952"
+    },
+    {
+      "creator": "Ashee Lee",
+      "email": "ashdiamond1727@gmail.com",
+      "date": "2026-07-15T13:11:02.401986"
+    },
+    {
+      "creator": "askgranie templates",
+      "email": "askgranie@gmail.com",
+      "date": "2026-07-15T13:12:12.400793"
+    },
+    {
+      "creator": "asmita \ud83c\udf80",
+      "email": "asmitavinod9@gmail.com",
+      "date": "2026-07-15T13:13:26.499306"
+    },
+    {
+      "creator": "Audrey Goddard",
+      "email": "audreyannagoddard@gmail.com",
+      "date": "2026-07-15T13:14:46.634373"
+    },
+    {
+      "creator": "Averra",
+      "email": "averra.workplace@gmail.com",
+      "date": "2026-07-15T13:16:07.733872"
+    },
+    {
+      "creator": "avery's kitchen studio",
+      "email": "averyskitchenstudio@gmail.com",
+      "date": "2026-07-15T13:17:16.717963"
+    },
+    {
+      "creator": "Aya",
+      "email": "aiaruk698@gmail.com",
+      "date": "2026-07-15T13:18:37.765299"
+    },
+    {
+      "creator": "Benjamin",
+      "email": "benjaminarthur936@gmail.com",
+      "date": "2026-07-15T13:19:58.878620"
+    },
+    {
+      "creator": "Blair",
+      "email": "blair.safespace11@gmail.com",
+      "date": "2026-07-15T13:21:18.031366"
+    },
+    {
+      "creator": "BlueBone HQ",
+      "email": "hi@bluebonehq.com",
+      "date": "2026-07-15T13:22:38.075685"
+    },
+    {
+      "creator": "Brujitales by Sandra Lucia",
+      "email": "brujitalespublishing@gmail.com",
+      "date": "2026-07-15T13:23:58.199120"
+    },
+    {
+      "creator": "bymag",
+      "email": "bymag.co@gmail.com",
+      "date": "2026-07-15T13:25:14.399975"
+    },
+    {
+      "creator": "c_sana_x",
+      "email": "thatgurlchingguk@gmail.com",
+      "date": "2026-07-15T13:26:24.415385"
+    },
+    {
+      "creator": "Campus Alchemy",
+      "email": "campus.alchemy@gmail.com",
+      "date": "2026-07-15T13:27:45.419943"
+    },
+    {
+      "creator": "CanvaTreasures",
+      "email": "canvadesigns012@gmail.com",
+      "date": "2026-07-15T13:32:06.546266"
+    },
+    {
+      "creator": "chappia",
+      "email": "chappiaz@gmail.com",
+      "date": "2026-07-15T13:33:27.556330"
+    },
+    {
+      "creator": "Cherry Studio",
+      "email": "lallamon64@gmail.com",
+      "date": "2026-07-15T13:34:44.768547"
+    },
+    {
+      "creator": "chicatea",
+      "email": "chicatea00@gmail.com",
+      "date": "2026-07-15T13:36:05.746430"
+    },
+    {
+      "creator": "Chicharon Lover",
+      "email": "verdeblooms1021@gmail.com",
+      "date": "2026-07-15T13:37:22.871793"
+    },
+    {
+      "creator": "Cia",
+      "email": "dearcia.co@gmail.com",
+      "date": "2026-07-15T13:38:37.008596"
+    },
+    {
+      "creator": "Cienne Kassado",
+      "email": "ciennekassado6@gmail.com",
+      "date": "2026-07-15T13:39:47.052923"
+    },
+    {
+      "creator": "Claude Andrew",
+      "email": "claudeandrew312@gmail.com",
+      "date": "2026-07-15T13:41:04.674963"
+    },
+    {
+      "creator": "Content Planner & Creator",
+      "email": "ariphossain365day@gmail.com",
+      "date": "2026-07-15T13:42:24.783577"
+    },
+    {
+      "creator": "Creative Blocks",
+      "email": "sushmita040997@gmail.com",
+      "date": "2026-07-15T13:43:33.155280"
+    },
+    {
+      "creator": "Curated Digital Canvas",
+      "email": "curateddigitalcanvas@gmail.com",
+      "date": "2026-07-15T13:44:49.126184"
+    },
+    {
+      "creator": "CY digitals",
+      "email": "cydigitals.co@gmail.com",
+      "date": "2026-07-15T13:46:07.202226"
+    },
+    {
+      "creator": "Daily Inspire",
+      "email": "Onskm@proton.me",
+      "date": "2026-07-15T13:47:21.612683"
+    },
+    {
+      "creator": "Daniel Marcinkowski",
+      "email": "hey@meetdaniel.me",
+      "date": "2026-07-15T13:50:24.385591"
+    },
+    {
+      "creator": "Debugging My Brain",
+      "email": "debugging.my.brain727@gmail.com",
+      "date": "2026-07-15T13:56:35.200124"
+    },
+    {
+      "creator": "Dee Caulcrick",
+      "email": "deecaulcrick@gmail.com",
+      "date": "2026-07-15T13:59:32.862015"
+    },
+    {
+      "creator": "Easy Flow Digital",
+      "email": "serolad9080@gmail.com",
+      "date": "2026-07-15T14:00:58.288992"
+    },
+    {
+      "creator": "Einfach's Side Project",
+      "email": "hellowayne38here@gmail.com",
+      "date": "2026-07-15T14:04:36.686898"
+    },
+    {
+      "creator": "EnginBee",
+      "email": "Yapruiees@gmail.com",
+      "date": "2026-07-15T14:05:48.474206"
+    },
+    {
+      "creator": "Erick Massey",
+      "email": "Erickmassey1@gmail.com",
+      "date": "2026-07-15T14:14:39.841426"
+    },
+    {
+      "creator": "faatima",
+      "email": "faatimaomair@gmail.com",
+      "date": "2026-07-15T14:17:26.964290"
+    },
+    {
+      "creator": "Fikri Framudiya",
+      "email": "fikriframudiya@gmail.com",
+      "date": "2026-07-15T14:33:37.273021"
+    },
+    {
+      "creator": "Firebrick Studio",
+      "email": "studio.firebrick@gmail.com",
+      "date": "2026-07-15T14:49:59.845160"
+    },
+    {
+      "creator": "Flo'",
+      "email": "karmahks@proton.me",
+      "date": "2026-07-15T14:51:19.536132"
+    },
+    {
+      "creator": "Gabi | Templates by Gabi",
+      "email": "templatesbygabi@gmail.com",
+      "date": "2026-07-15T14:59:30.329731"
+    },
+    {
+      "creator": "GB Templates",
+      "email": "gzcb2uk@gmail.com",
+      "date": "2026-07-15T15:03:40.955898"
+    },
+    {
+      "creator": "Ghivi",
+      "email": "cask.23.poses@icloud.com",
+      "date": "2026-07-15T15:04:57.257938"
+    },
+    {
+      "creator": "Giddy",
+      "email": "gideon@toptonmedia.com",
+      "date": "2026-07-15T15:06:18.723967"
+    },
+    {
+      "creator": "GirlBossDigit",
+      "email": "alix.peyraud@orange.fr",
+      "date": "2026-07-15T15:07:34.039993"
+    },
+    {
+      "creator": "God Led Co",
+      "email": "godledco@gmail.com",
+      "date": "2026-07-15T15:08:51.311299"
+    },
+    {
+      "creator": "Goze Design",
+      "email": "gozedesign@gmail.com",
+      "date": "2026-07-15T15:10:08.425166"
+    },
+    {
+      "creator": "Haley Villena",
+      "email": "haleyvillena@gmail.com",
+      "date": "2026-07-15T15:11:19.697952"
+    },
+    {
+      "creator": "HANGURU",
+      "email": "hankeuru@gmail.com",
+      "date": "2026-07-15T15:12:33.309894"
+    },
+    {
+      "creator": "hayden claire",
+      "email": "haydencvold@gmail.com",
+      "date": "2026-07-15T15:13:51.484077"
+    },
+    {
+      "creator": "Hey Gloria",
+      "email": "hello@contentbyglo.com",
+      "date": "2026-07-15T15:15:09.882537"
+    },
+    {
+      "creator": "heyrin's life",
+      "email": "heyrinslife@gmail.com",
+      "date": "2026-07-15T15:16:26.073352"
+    },
+    {
+      "creator": "HitaNotion",
+      "email": "hitanotion@gmail.com",
+      "date": "2026-07-15T15:17:36.323252"
+    },
+    {
+      "creator": "HoumaN0tion",
+      "email": "omarhoumhoum17@gmail.com",
+      "date": "2026-07-15T15:18:44.625472"
+    },
+    {
+      "creator": "Hugo Chinchilla",
+      "email": "hugochinchilla@gmail.com",
+      "date": "2026-07-15T15:19:57.949509"
+    },
+    {
+      "creator": "HyperG",
+      "email": "hypergnotion@gmail.com",
+      "date": "2026-07-15T15:21:17.446831"
+    },
+    {
+      "creator": "Ibad Pribadi",
+      "email": "ezapribadi23@gmail.com",
+      "date": "2026-07-15T15:22:38.606142"
+    },
+    {
+      "creator": "indify.co",
+      "email": "templates@indify.co",
+      "date": "2026-07-15T15:23:59.670046"
+    },
+    {
+      "creator": "Infinity Blocks",
+      "email": "infinityblockshq@gmail.com",
+      "date": "2026-07-15T15:25:11.218531"
+    },
+    {
+      "creator": "isobel",
+      "email": "izzdgls07@gmail.com",
+      "date": "2026-07-15T15:26:29.408866"
+    },
+    {
+      "creator": "jackson reid",
+      "email": "investothemoon@gmail.com",
+      "date": "2026-07-15T15:27:44.694807"
+    },
+    {
+      "creator": "Jenna Plans",
+      "email": "dzena.omanovic10@gmail.com",
+      "date": "2026-07-15T15:29:00.152797"
+    },
+    {
+      "creator": "jess | jddesignonline",
+      "email": "jddesignnz@gmail.com",
+      "date": "2026-07-15T15:30:09.357129"
+    },
+    {
+      "creator": "Jess_Struck",
+      "email": "Struckmanjessica@gmail.com",
+      "date": "2026-07-15T15:31:17.425622"
+    },
+    {
+      "creator": "joanna",
+      "email": "lswjoanna@gmail.com",
+      "date": "2026-07-15T15:32:26.599916"
+    },
+    {
+      "creator": "Jobbyo",
+      "email": "hello@jobbyo.ai",
+      "date": "2026-07-15T15:33:35.683633"
+    },
+    {
+      "creator": "jocelyn",
+      "email": "jocelyn.blueberry88@gmail.com",
+      "date": "2026-07-15T15:37:45.888242"
+    },
+    {
+      "creator": "Johann Jad\u00e1n",
+      "email": "jijadan@gmail.com",
+      "date": "2026-07-15T15:39:01.254560"
+    },
+    {
+      "creator": "John Liew TY",
+      "email": "johnliew79@gmail.com",
+      "date": "2026-07-15T15:40:13.245483"
+    },
+    {
+      "creator": "juliana",
+      "email": "j33uli@gmail.com",
+      "date": "2026-07-15T15:41:30.436893"
+    },
+    {
+      "creator": "Juliet | Systems Expert",
+      "email": "julietnwachukwu620@gmail.com",
+      "date": "2026-07-15T15:42:46.543704"
+    },
+    {
+      "creator": "Kaia",
+      "email": "kaiabo1@outlook.com",
+      "date": "2026-07-15T15:43:55.763176"
+    },
+    {
+      "creator": "Kanpeki Universe",
+      "email": "kanpekiuniverse@gmail.com",
+      "date": "2026-07-15T15:45:04.831164"
+    },
+    {
+      "creator": "karohalik",
+      "email": "notion@karohalik.pl",
+      "date": "2026-07-15T15:46:15.947523"
+    },
+    {
+      "creator": "kay studio",
+      "email": "kaystudio.notion@gmail.com",
+      "date": "2026-07-15T15:47:31.012781"
+    },
+    {
+      "creator": "Kayleigh K.",
+      "email": "kayleighannamaria@gmail.com",
+      "date": "2026-07-15T15:48:47.197870"
+    },
+    {
+      "creator": "KN NOTE",
+      "email": "kn.note.contact@gmail.com",
+      "date": "2026-07-15T15:50:01.257720"
+    },
+    {
+      "creator": "Krish Ahlawat",
+      "email": "hellokrishahlawat@gmail.com",
+      "date": "2026-07-15T15:51:10.367126"
+    }
+  ],
   "skipped": []
 }
