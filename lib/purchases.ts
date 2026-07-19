@@ -50,30 +50,49 @@ export async function logPurchase(
 }
 
 export async function getPurchases(): Promise<PurchaseRecord[]> {
-  if (process.env.BLOB_READ_WRITE_TOKEN) {
-    const { blobs } = await list({ prefix: "purchases/" });
-    const records = await Promise.all(
-      blobs.map(async (blob) => {
-        const res = await fetch(blob.url);
-        if (!res.ok) return null;
-        return (await res.json()) as PurchaseRecord;
-      })
-    );
-    return records
-      .filter((r): r is PurchaseRecord => r !== null)
-      .sort((a, b) => b.purchasedAt.localeCompare(a.purchasedAt));
+  const byId = new Map<string, PurchaseRecord>();
+
+  // Live source of truth: recent paid sessions straight from Stripe.
+  // Works even if the webhook never fired for a sale.
+  try {
+    const stripe = getStripe();
+    const sessions = await stripe.checkout.sessions.list({
+      limit: 100,
+      status: "complete",
+    });
+    for (const session of sessions.data) {
+      if (session.payment_status === "paid") {
+        byId.set(session.id, recordFromSession(session));
+      }
+    }
+  } catch (err) {
+    console.error("[purchases] Stripe list failed:", err);
   }
 
-  const stripe = getStripe();
-  const sessions = await stripe.checkout.sessions.list({
-    limit: 100,
-    status: "complete",
-  });
+  // Durable webhook log — retains history beyond Stripe's recent-100 window.
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    try {
+      const { blobs } = await list({ prefix: "purchases/" });
+      const records = await Promise.all(
+        blobs.map(async (blob) => {
+          const res = await fetch(blob.url);
+          if (!res.ok) return null;
+          return (await res.json()) as PurchaseRecord;
+        })
+      );
+      for (const record of records) {
+        if (record && !byId.has(record.id)) {
+          byId.set(record.id, record);
+        }
+      }
+    } catch (err) {
+      console.error("[purchases] blob list failed:", err);
+    }
+  }
 
-  return sessions.data
-    .filter((session) => session.payment_status === "paid")
-    .map(recordFromSession)
-    .sort((a, b) => b.purchasedAt.localeCompare(a.purchasedAt));
+  return [...byId.values()].sort((a, b) =>
+    b.purchasedAt.localeCompare(a.purchasedAt)
+  );
 }
 
 export function formatAmount(amount: number, currency: string) {
