@@ -51,7 +51,7 @@ Signed,
 
 **Cameron**
 Founder, Focus Dock · Black Sheep Designs
-hello@getfocusdock.com · getfocusdock.com
+blacksheepdesignscontact@gmail.com · getfocusdock.com
 
 ---
 

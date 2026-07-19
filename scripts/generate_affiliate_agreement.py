@@ -148,7 +148,7 @@ def build(affiliate_name: str, code: str, sent_date: str, out_path: Path):
     story.append(Paragraph("Cameron", st["sig_name"]))
     story.append(Spacer(1, 2))
     story.append(HRFlowable(width=2.4 * inch, thickness=0.8, color=MUTED, hAlign="LEFT", spaceAfter=4))
-    story.append(Paragraph("Founder, Focus Dock · Black Sheep Designs<br/>hello@getfocusdock.com · getfocusdock.com", st["sig_meta"]))
+    story.append(Paragraph("Founder, Focus Dock · Black Sheep Designs<br/>blacksheepdesignscontact@gmail.com · getfocusdock.com", st["sig_meta"]))
 
     doc = SimpleDocTemplate(
         str(out_path), pagesize=letter,
