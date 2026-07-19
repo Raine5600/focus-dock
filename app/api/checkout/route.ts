@@ -60,6 +60,9 @@ export async function POST(req: Request) {
         },
       ],
       metadata,
+      // Mirror onto the PaymentIntent so each payment in the Stripe
+      // dashboard shows affiliate_ref and is searchable by it.
+      payment_intent_data: { metadata },
       success_url: `${appUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${appUrl}/?canceled=1`,
       allow_promotion_codes: true,
