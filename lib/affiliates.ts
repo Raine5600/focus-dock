@@ -19,6 +19,7 @@ export type Affiliate = {
  * "unregistered" in admin) so a typo never loses a sale.
  */
 export const AFFILIATES: Affiliate[] = [
+  { code: "lakwad", name: "Lakwad" },
   { code: "launch", name: "Launch promos", notes: "Your own posts/newsletter" },
   { code: "partner-01", name: "Unassigned slot 1" },
   { code: "partner-02", name: "Unassigned slot 2" },
