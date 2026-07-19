@@ -7,7 +7,13 @@ import { PRODUCT } from "@/lib/product";
 export async function POST(req: Request) {
   try {
     const stripe = getStripe();
-    const appUrl = getAppUrl();
+    // In dev, follow the request's origin so redirects return to whatever
+    // host/port the dev server got; production always uses the canonical URL.
+    const requestOrigin = req.headers.get("origin");
+    const appUrl =
+      process.env.NODE_ENV !== "production" && requestOrigin
+        ? requestOrigin
+        : getAppUrl();
 
     let affiliateRef: string | undefined;
     try {
