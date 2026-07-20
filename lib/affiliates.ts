@@ -20,6 +20,7 @@ export type Affiliate = {
  */
 export const AFFILIATES: Affiliate[] = [
   { code: "lakwad", name: "Lakwad" },
+  { code: "sofia", name: "Sofia" },
   { code: "launch", name: "Launch promos", notes: "Your own posts/newsletter" },
   { code: "partner-01", name: "Unassigned slot 1" },
   { code: "partner-02", name: "Unassigned slot 2" },
