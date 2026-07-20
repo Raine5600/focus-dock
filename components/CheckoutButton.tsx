@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { PRODUCT, SUMMER_DEAL } from "@/lib/product";
+import { trackEvent } from "./Track";
 
 type Props = {
   size?: "md" | "lg";
@@ -27,6 +28,7 @@ export function CheckoutButton({
   async function handleCheckout() {
     setLoading(true);
     setError(null);
+    trackEvent("checkout_click");
     try {
       const ref = new URLSearchParams(window.location.search).get("ref");
       const res = await fetch("/api/checkout", {

@@ -1,5 +1,6 @@
 import { list, put } from "@vercel/blob";
 import Stripe from "stripe";
+import { fetchBlobJson } from "./blob";
 import { getStripe } from "@/lib/stripe";
 
 export type PurchaseRecord = {
@@ -74,11 +75,7 @@ export async function getPurchases(): Promise<PurchaseRecord[]> {
     try {
       const { blobs } = await list({ prefix: "purchases/" });
       const records = await Promise.all(
-        blobs.map(async (blob) => {
-          const res = await fetch(blob.url);
-          if (!res.ok) return null;
-          return (await res.json()) as PurchaseRecord;
-        })
+        blobs.map((blob) => fetchBlobJson<PurchaseRecord>(blob.url))
       );
       for (const record of records) {
         if (record && !byId.has(record.id)) {

@@ -5,6 +5,8 @@ import { AdminLogin } from "@/components/AdminLogin";
 import { RevenueChart } from "@/components/RevenueChart";
 import { affiliateLink, getAffiliateClicks } from "@/lib/affiliates";
 import { buildAnalytics, pct } from "@/lib/analytics";
+import { getInsight } from "@/lib/insights";
+import { getTrafficStats } from "@/lib/traffic";
 import { getAppUrl } from "@/lib/stripe";
 import {
   formatAmount,
@@ -69,11 +71,13 @@ export default async function AdminPage() {
     );
   }
 
-  const [purchases, clicks] = await Promise.all([
+  const [purchases, clicks, traffic] = await Promise.all([
     getPurchases(),
     getAffiliateClicks(),
+    getTrafficStats(14),
   ]);
   const a = buildAnalytics(purchases, clicks);
+  const insight = await getInsight(traffic, a);
   const base = getAppUrl();
 
   return (
@@ -105,6 +109,91 @@ export default async function AdminPage() {
       </header>
 
       <main className="mx-auto max-w-6xl space-y-8 px-5 py-8 sm:px-8">
+        {/* AI visitor summary */}
+        <section className="rounded-2xl border border-border bg-white p-6 shadow-sm">
+          <div className="flex items-baseline justify-between">
+            <h2 className="font-display text-lg font-semibold text-navy-dark">
+              Visitor behavior
+            </h2>
+            <p className="text-xs text-ink-lt">
+              {insight.source === "claude"
+                ? `Written by Claude · ${new Date(insight.generatedAt).toLocaleString()}`
+                : "Auto summary — add ANTHROPIC_API_KEY in Vercel for Claude-written insights"}
+            </p>
+          </div>
+          <p className="mt-3 leading-relaxed text-ink">{insight.text}</p>
+        </section>
+
+        {/* Traffic tiles */}
+        <section className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <StatTile
+            label="Visitors"
+            value={String(traffic.visitors)}
+            hint={`Last ${traffic.days} days`}
+          />
+          <StatTile
+            label="Pageviews"
+            value={String(traffic.pageviews)}
+            hint={
+              traffic.pagesPerVisitor
+                ? `${traffic.pagesPerVisitor.toFixed(1)} pages per visit`
+                : "—"
+            }
+          />
+          <StatTile
+            label="Checkout clicks"
+            value={String(traffic.checkoutClicks)}
+            hint={`${pct(traffic.checkoutCtr)} of visitors`}
+          />
+          <StatTile
+            label="Devices"
+            value={
+              traffic.deviceSplit.mobile + traffic.deviceSplit.desktop > 0
+                ? `${Math.round(
+                    (traffic.deviceSplit.mobile /
+                      (traffic.deviceSplit.mobile + traffic.deviceSplit.desktop)) *
+                      100
+                  )}% mobile`
+                : "—"
+            }
+            hint={`${traffic.deviceSplit.mobile} mobile · ${traffic.deviceSplit.desktop} desktop`}
+          />
+        </section>
+
+        {/* Where visitors go / come from */}
+        <section className="grid gap-4 lg:grid-cols-3">
+          {(
+            [
+              ["Top pages", traffic.topPages],
+              ["Traffic sources", traffic.topSources],
+              ["Countries", traffic.topCountries],
+            ] as [string, [string, number][]][]
+          ).map(([title, rows]) => (
+            <div
+              key={title}
+              className="rounded-2xl border border-border bg-white p-5 shadow-sm"
+            >
+              <h3 className="font-display text-base font-semibold text-navy-dark">
+                {title}
+              </h3>
+              {rows.length === 0 ? (
+                <p className="mt-3 text-sm text-ink-lt">No data yet.</p>
+              ) : (
+                <ul className="mt-3 space-y-2 text-sm">
+                  {rows.map(([label, n]) => (
+                    <li key={label} className="flex items-center justify-between gap-3">
+                      <span className="truncate text-ink-mid">{label}</span>
+                      <span className="tabular-nums font-semibold text-navy-dark">
+                        {n}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </section>
+
         {/* Stat tiles */}
         <section className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           <StatTile

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
+import { Track } from "@/components/Track";
 import { homeMetadata } from "@/lib/seo";
 
 const dmSans = DM_Sans({
@@ -41,7 +42,10 @@ export default function RootLayout({
       lang="en"
       className={`${dmSans.variable} ${fraunces.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-cream text-ink">{children}</body>
+      <body className="min-h-full flex flex-col bg-cream text-ink">
+        <Track />
+        {children}
+      </body>
     </html>
   );
 }
