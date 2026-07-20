@@ -28,7 +28,7 @@ export function AdminLogin() {
   return (
     <div className="mx-auto max-w-sm rounded-2xl border border-border bg-white p-8 shadow-sm">
       <h1 className="font-display text-2xl font-semibold text-navy-dark">
-        Purchase log
+        Focus Dock dashboard
       </h1>
       <p className="mt-2 text-sm text-ink-mid">Enter your admin password.</p>
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">

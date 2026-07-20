@@ -1,73 +1,49 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { AdminLogin } from "@/components/AdminLogin";
+import { RevenueChart } from "@/components/RevenueChart";
+import { affiliateLink, getAffiliateClicks } from "@/lib/affiliates";
+import { buildAnalytics, pct } from "@/lib/analytics";
+import { getAppUrl } from "@/lib/stripe";
 import {
   formatAmount,
   getPurchases,
   type PurchaseRecord,
 } from "@/lib/purchases";
-import {
-  AFFILIATES,
-  COMMISSION_RATE,
-  affiliateLink,
-  getAffiliate,
-  getAffiliateClicks,
-} from "@/lib/affiliates";
-import { getAppUrl } from "@/lib/stripe";
 import { isAdminAuthenticated, isAdminConfigured } from "@/lib/admin";
 import { buildPageMetadata } from "@/lib/seo";
-
-type AffiliateRow = {
-  code: string;
-  name: string;
-  link: string;
-  clicks: number;
-  sales: number;
-  revenue: number;
-  commission: number;
-  registered: boolean;
-};
-
-function buildAffiliateRows(
-  purchases: PurchaseRecord[],
-  clicks: Record<string, number>
-): AffiliateRow[] {
-  const codes = new Set<string>([
-    ...AFFILIATES.map((a) => a.code),
-    ...Object.keys(clicks),
-    ...purchases
-      .map((p) => p.affiliateRef)
-      .filter((r): r is string => Boolean(r)),
-  ]);
-
-  const base = getAppUrl();
-  return [...codes]
-    .map((code) => {
-      const sold = purchases.filter((p) => p.affiliateRef === code);
-      const revenue = sold.reduce((sum, p) => sum + p.amount, 0);
-      const affiliate = getAffiliate(code);
-      return {
-        code,
-        name: affiliate?.name ?? "Unregistered code",
-        link: affiliateLink(code, base),
-        clicks: clicks[code] ?? 0,
-        sales: sold.length,
-        revenue,
-        commission: Math.round(revenue * COMMISSION_RATE),
-        registered: Boolean(affiliate),
-      };
-    })
-    .sort((a, b) => b.revenue - a.revenue || b.clicks - a.clicks);
-}
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Admin",
-  description: "Focus Dock purchase log.",
+  title: "Dashboard",
+  description: "Focus Dock sales and affiliate analytics.",
   path: "/admin",
   noIndex: true,
 });
+
+function StatTile({
+  label,
+  value,
+  hint,
+}: {
+  label: string;
+  value: string;
+  hint?: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-border bg-white p-5 shadow-sm">
+      <p className="text-xs font-semibold uppercase tracking-wider text-ink-lt">
+        {label}
+      </p>
+      <p className="mt-2 font-display text-3xl font-semibold text-navy-dark">
+        {value}
+      </p>
+      {hint ? <p className="mt-1 text-xs text-ink-lt">{hint}</p> : null}
+    </div>
+  );
+}
 
 export default async function AdminPage() {
   if (!isAdminConfigured()) {
@@ -78,7 +54,7 @@ export default async function AdminPage() {
         </h1>
         <p className="mt-3 text-ink-mid">
           Set <code className="rounded bg-cream-dk px-1.5 py-0.5">ADMIN_PASSWORD</code>{" "}
-          in your environment variables to view purchase logs.
+          in your environment variables to view the dashboard.
         </p>
       </div>
     );
@@ -93,23 +69,34 @@ export default async function AdminPage() {
     );
   }
 
-  const purchases = await getPurchases();
-  const clicks = await getAffiliateClicks();
-  const affiliateRows = buildAffiliateRows(purchases, clicks);
-  const usingBlob = Boolean(process.env.BLOB_READ_WRITE_TOKEN);
+  const [purchases, clicks] = await Promise.all([
+    getPurchases(),
+    getAffiliateClicks(),
+  ]);
+  const a = buildAnalytics(purchases, clicks);
+  const base = getAppUrl();
 
   return (
     <div className="min-h-screen bg-cream">
       <header className="border-b border-border bg-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-          <div>
-            <h1 className="font-display text-xl font-semibold text-navy-dark">
-              Purchase log
-            </h1>
-            <p className="text-sm text-ink-lt">
-              {purchases.length} recorded sale{purchases.length === 1 ? "" : "s"}
-              {usingBlob ? " · stored via webhook" : " · from Stripe API"}
-            </p>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/images/logo-mark.png"
+              alt=""
+              width={36}
+              height={36}
+              className="h-9 w-9"
+            />
+            <div>
+              <h1 className="font-display text-xl font-semibold text-navy-dark">
+                Dashboard
+              </h1>
+              <p className="text-sm text-ink-lt">
+                {a.totalSales} sale{a.totalSales === 1 ? "" : "s"} ·{" "}
+                {formatAmount(a.totalRevenue, "usd")} all-time
+              </p>
+            </div>
           </div>
           <Link href="/" className="text-sm font-medium text-sage hover:underline">
             ← Back to site
@@ -117,69 +104,103 @@ export default async function AdminPage() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-5 py-8 sm:px-8">
-        {!usingBlob ? (
-          <p className="mb-6 rounded-xl border border-amber/30 bg-[#fdf6e3] px-4 py-3 text-sm text-ink-mid">
-            Add <strong>BLOB_READ_WRITE_TOKEN</strong> in Vercel Storage for
-            persistent webhook logs. Until then, this page reads from Stripe
-            directly.
-          </p>
-        ) : null}
+      <main className="mx-auto max-w-6xl space-y-8 px-5 py-8 sm:px-8">
+        {/* Stat tiles */}
+        <section className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <StatTile
+            label="Revenue"
+            value={formatAmount(a.totalRevenue, "usd")}
+            hint="All-time, paid orders"
+          />
+          <StatTile
+            label="Sales"
+            value={String(a.totalSales)}
+            hint={`${a.affiliateSales} via affiliates · ${a.organicSales} direct`}
+          />
+          <StatTile
+            label="Affiliate clicks"
+            value={String(a.totalClicks)}
+            hint="Tracked link visits, all-time"
+          />
+          <StatTile
+            label="Click → sale"
+            value={pct(a.conversion)}
+            hint="Across all affiliate links"
+          />
+        </section>
 
-        <section className="mb-10">
-          <h2 className="font-display text-lg font-semibold text-navy-dark">
-            Affiliate links
-          </h2>
-          <p className="mt-1 text-sm text-ink-lt">
-            Give a partner their link below. Clicks set a 30-day cookie;
-            purchases attribute automatically. Commission rate:{" "}
-            {Math.round(COMMISSION_RATE * 100)}%. Edit codes in{" "}
-            <code className="rounded bg-cream-dk px-1.5 py-0.5">
-              lib/affiliates.ts
-            </code>
-            .
-          </p>
-          <div className="mt-4 overflow-x-auto rounded-2xl border border-border bg-white shadow-sm">
+        {/* Revenue chart */}
+        <section className="rounded-2xl border border-border bg-white p-6 shadow-sm">
+          <div className="mb-4 flex items-baseline justify-between">
+            <h2 className="font-display text-lg font-semibold text-navy-dark">
+              Daily revenue
+            </h2>
+            <p className="text-sm text-ink-lt">Last 14 days</p>
+          </div>
+          <RevenueChart daily={a.daily} />
+        </section>
+
+        {/* Affiliate performance */}
+        <section className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+          <div className="px-6 pb-2 pt-5">
+            <div className="flex items-baseline justify-between">
+              <h2 className="font-display text-lg font-semibold text-navy-dark">
+                Affiliates
+              </h2>
+              <p className="text-sm text-ink-lt">40% commission</p>
+            </div>
+            <p className="mt-1 text-sm text-ink-lt">
+              Clicks set a 30-day cookie; purchases attribute automatically.
+              Add codes in{" "}
+              <code className="rounded bg-cream-dk px-1.5 py-0.5">
+                lib/affiliates.ts
+              </code>
+              .
+            </p>
+          </div>
+          <div className="mt-3 overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead className="bg-navy-dark text-white">
                 <tr>
-                  <th className="px-4 py-3 font-semibold">Partner</th>
+                  <th className="px-4 py-3 font-semibold">Affiliate</th>
                   <th className="px-4 py-3 font-semibold">Link</th>
                   <th className="px-4 py-3 text-right font-semibold">Clicks</th>
                   <th className="px-4 py-3 text-right font-semibold">Sales</th>
+                  <th className="px-4 py-3 text-right font-semibold">Conv.</th>
                   <th className="px-4 py-3 text-right font-semibold">Revenue</th>
-                  <th className="px-4 py-3 text-right font-semibold">
-                    Commission owed
-                  </th>
+                  <th className="px-4 py-3 text-right font-semibold">Owed (40%)</th>
                 </tr>
               </thead>
               <tbody>
-                {affiliateRows.map((row, i) => (
+                {a.affiliates.map((row, i) => (
                   <tr
                     key={row.code}
                     className={i % 2 === 0 ? "bg-white" : "bg-cream"}
                   >
                     <td className="px-4 py-3">
-                      <span className="font-medium text-ink">{row.name}</span>
+                      <span className="font-semibold text-ink">{row.name}</span>
                       {!row.registered ? (
-                        <span className="ml-2 rounded-full bg-yellow/30 px-2 py-0.5 text-xs font-semibold text-ink-mid">
+                        <span className="ml-2 rounded-full bg-yellow/25 px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-[#8a6d00]">
                           unregistered
                         </span>
                       ) : null}
                     </td>
                     <td className="px-4 py-3 font-mono text-xs text-ink-mid">
-                      {row.link}
+                      {affiliateLink(row.code, base)}
                     </td>
-                    <td className="px-4 py-3 text-right text-ink-mid">
+                    <td className="px-4 py-3 text-right tabular-nums text-ink-mid">
                       {row.clicks}
                     </td>
-                    <td className="px-4 py-3 text-right text-ink-mid">
+                    <td className="px-4 py-3 text-right tabular-nums text-ink-mid">
                       {row.sales}
                     </td>
-                    <td className="px-4 py-3 text-right font-semibold text-navy-dark">
+                    <td className="px-4 py-3 text-right tabular-nums text-ink-mid">
+                      {pct(row.conversion)}
+                    </td>
+                    <td className="px-4 py-3 text-right tabular-nums font-semibold text-navy-dark">
                       {formatAmount(row.revenue, "usd")}
                     </td>
-                    <td className="px-4 py-3 text-right font-semibold text-coral">
+                    <td className="px-4 py-3 text-right tabular-nums font-semibold text-[#1f7a6d]">
                       {formatAmount(row.commission, "usd")}
                     </td>
                   </tr>
@@ -189,60 +210,63 @@ export default async function AdminPage() {
           </div>
         </section>
 
-        {purchases.length === 0 ? (
-          <div className="rounded-2xl border border-border bg-white p-10 text-center">
-            <p className="text-ink-mid">No purchases logged yet.</p>
-            <p className="mt-2 text-sm text-ink-lt">
-              Sales appear here after Stripe sends a{" "}
-              <code className="rounded bg-cream px-1">checkout.session.completed</code>{" "}
-              webhook event.
+        {/* Recent purchases */}
+        <section className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+          <div className="flex items-baseline justify-between px-6 pb-2 pt-5">
+            <h2 className="font-display text-lg font-semibold text-navy-dark">
+              Recent purchases
+            </h2>
+            <p className="text-sm text-ink-lt">{purchases.length} recorded</p>
+          </div>
+          {purchases.length === 0 ? (
+            <p className="px-6 pb-6 pt-2 text-sm text-ink-mid">
+              No purchases yet. Sales appear here the moment a checkout
+              completes — webhook or not.
             </p>
-          </div>
-        ) : (
-          <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
-            <table className="w-full text-left text-sm">
-              <thead className="bg-navy-dark text-white">
-                <tr>
-                  <th className="px-4 py-3 font-semibold">Date</th>
-                  <th className="px-4 py-3 font-semibold">Customer</th>
-                  <th className="px-4 py-3 font-semibold">Email</th>
-                  <th className="px-4 py-3 font-semibold">Amount</th>
-                  <th className="px-4 py-3 font-semibold">Ref</th>
-                  <th className="hidden px-4 py-3 font-semibold md:table-cell">
-                    Session
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {purchases.map((purchase: PurchaseRecord, i) => (
-                  <tr
-                    key={purchase.id}
-                    className={i % 2 === 0 ? "bg-white" : "bg-cream"}
-                  >
-                    <td className="px-4 py-3 text-ink-mid">
-                      {new Date(purchase.purchasedAt).toLocaleString()}
-                    </td>
-                    <td className="px-4 py-3 text-ink">
-                      {purchase.customerName ?? "—"}
-                    </td>
-                    <td className="px-4 py-3 text-ink">
-                      {purchase.email ?? "—"}
-                    </td>
-                    <td className="px-4 py-3 font-semibold text-navy-dark">
-                      {formatAmount(purchase.amount, purchase.currency)}
-                    </td>
-                    <td className="px-4 py-3 text-ink-mid">
-                      {purchase.affiliateRef ?? "—"}
-                    </td>
-                    <td className="hidden px-4 py-3 font-mono text-xs text-ink-lt md:table-cell">
-                      {purchase.id}
-                    </td>
+          ) : (
+            <div className="mt-3 overflow-x-auto">
+              <table className="w-full text-left text-sm">
+                <thead className="bg-navy-dark text-white">
+                  <tr>
+                    <th className="px-4 py-3 font-semibold">Date</th>
+                    <th className="px-4 py-3 font-semibold">Customer</th>
+                    <th className="px-4 py-3 font-semibold">Email</th>
+                    <th className="px-4 py-3 font-semibold">Affiliate</th>
+                    <th className="px-4 py-3 text-right font-semibold">Amount</th>
+                    <th className="hidden px-4 py-3 font-semibold md:table-cell">
+                      Session
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+                </thead>
+                <tbody>
+                  {purchases.slice(0, 50).map((p: PurchaseRecord, i) => (
+                    <tr
+                      key={p.id}
+                      className={i % 2 === 0 ? "bg-white" : "bg-cream"}
+                    >
+                      <td className="px-4 py-3 text-ink-mid">
+                        {new Date(p.purchasedAt).toLocaleString()}
+                      </td>
+                      <td className="px-4 py-3 text-ink">
+                        {p.customerName ?? "—"}
+                      </td>
+                      <td className="px-4 py-3 text-ink">{p.email ?? "—"}</td>
+                      <td className="px-4 py-3 text-ink-mid">
+                        {p.affiliateRef ?? "direct"}
+                      </td>
+                      <td className="px-4 py-3 text-right tabular-nums font-semibold text-navy-dark">
+                        {formatAmount(p.amount, p.currency)}
+                      </td>
+                      <td className="hidden px-4 py-3 font-mono text-xs text-ink-lt md:table-cell">
+                        {p.id}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </section>
       </main>
     </div>
   );
