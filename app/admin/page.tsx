@@ -15,6 +15,8 @@ import {
 } from "@/lib/purchases";
 import { isAdminAuthenticated, isAdminConfigured } from "@/lib/admin";
 import { list } from "@vercel/blob";
+import { CopyEmailList } from "@/components/CopyEmailList";
+import { fetchBlobJson } from "@/lib/blob";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
@@ -72,20 +74,23 @@ export default async function AdminPage() {
     );
   }
 
-  async function getSubscriberCount() {
+  async function getSubscriberEmails(): Promise<string[]> {
     try {
       const { blobs } = await list({ prefix: "subscribers/" });
-      return blobs.length;
+      const records = await Promise.all(
+        blobs.map((b) => fetchBlobJson<{ email: string }>(b.url))
+      );
+      return records.flatMap((r) => (r?.email ? [r.email] : []));
     } catch {
-      return 0;
+      return [];
     }
   }
 
-  const [purchases, clicks, traffic, subscribers] = await Promise.all([
+  const [purchases, clicks, traffic, subscriberEmails] = await Promise.all([
     getPurchases(),
     getAffiliateClicks(),
     getTrafficStats(14),
-    getSubscriberCount(),
+    getSubscriberEmails(),
   ]);
   const a = buildAnalytics(purchases, clicks);
   const insight = await getInsight(traffic, a);
@@ -229,7 +234,7 @@ export default async function AdminPage() {
           />
           <StatTile
             label="Email subscribers"
-            value={String(subscribers)}
+            value={String(subscriberEmails.length)}
             hint="Brain Dump formula opt-ins"
           />
         </section>
@@ -314,6 +319,9 @@ export default async function AdminPage() {
             </table>
           </div>
         </section>
+
+        {/* Subscriber email list */}
+        <CopyEmailList emails={subscriberEmails} />
 
         {/* Recent purchases */}
         <section className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
