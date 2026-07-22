@@ -15,6 +15,8 @@ import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { MotionProvider } from "@/components/motion";
 import { productJsonLd } from "@/lib/seo";
+import { Testimonials } from "@/components/Testimonials";
+import { EmailCapture } from "@/components/EmailCapture";
 
 export default function HomePage() {
   return (
@@ -29,9 +31,11 @@ export default function HomePage() {
         <LookInside />
         <WhatsIncluded />
         <WhoItsFor />
+        <Testimonials />
         <FounderNote />
         <Guarantee />
         <Pricing />
+        <EmailCapture />
         <FAQ />
         <FinalCTA />
       </main>

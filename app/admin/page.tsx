@@ -14,6 +14,7 @@ import {
   type PurchaseRecord,
 } from "@/lib/purchases";
 import { isAdminAuthenticated, isAdminConfigured } from "@/lib/admin";
+import { list } from "@vercel/blob";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
@@ -71,10 +72,20 @@ export default async function AdminPage() {
     );
   }
 
-  const [purchases, clicks, traffic] = await Promise.all([
+  async function getSubscriberCount() {
+    try {
+      const { blobs } = await list({ prefix: "subscribers/" });
+      return blobs.length;
+    } catch {
+      return 0;
+    }
+  }
+
+  const [purchases, clicks, traffic, subscribers] = await Promise.all([
     getPurchases(),
     getAffiliateClicks(),
     getTrafficStats(14),
+    getSubscriberCount(),
   ]);
   const a = buildAnalytics(purchases, clicks);
   const insight = await getInsight(traffic, a);
@@ -215,6 +226,11 @@ export default async function AdminPage() {
             label="Click → sale"
             value={pct(a.conversion)}
             hint="Across all affiliate links"
+          />
+          <StatTile
+            label="Email subscribers"
+            value={String(subscribers)}
+            hint="Brain Dump formula opt-ins"
           />
         </section>
 
