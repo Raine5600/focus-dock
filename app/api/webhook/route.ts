@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { sendPurchaseDeliveryEmail } from "@/lib/mail";
+import { sendPurchaseDeliveryEmail, sendOwnerSaleNotification } from "@/lib/mail";
 import { logPurchase } from "@/lib/purchases";
 import { getStripe } from "@/lib/stripe";
 
@@ -48,13 +48,23 @@ export async function POST(req: Request) {
             })
           );
         }
-        if (record.email) {
-          await sendPurchaseDeliveryEmail({
-            email: record.email,
+        await Promise.all([
+          record.email
+            ? sendPurchaseDeliveryEmail({
+                email: record.email,
+                customerName: record.customerName,
+                sessionId: session.id,
+              })
+            : Promise.resolve(),
+          sendOwnerSaleNotification({
+            email: record.email ?? "unknown",
             customerName: record.customerName,
             sessionId: session.id,
-          });
-        }
+            amount: record.amount,
+            currency: record.currency,
+            affiliateRef: record.affiliateRef,
+          }),
+        ]);
       }
     }
   } catch (err) {

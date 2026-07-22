@@ -138,6 +138,46 @@ export async function sendPurchaseDeliveryEmail(
   }
 }
 
+export async function sendOwnerSaleNotification(
+  data: PurchaseDeliveryPayload & { amount: number; currency: string; affiliateRef?: string | null }
+): Promise<void> {
+  if (!isSmtpConfigured()) return;
+  try {
+    const { user, pass } = getSmtpConfig();
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: true,
+      auth: { user, pass },
+    });
+
+    const amountStr = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: data.currency.toUpperCase(),
+    }).format(data.amount / 100);
+
+    const lines = [
+      `💸 New Focus Dock sale — ${amountStr}`,
+      ``,
+      `Customer: ${data.customerName ?? "Unknown"}`,
+      `Email: ${data.email}`,
+      `Amount: ${amountStr}`,
+      `Affiliate: ${data.affiliateRef ?? "direct"}`,
+      `Session: ${data.sessionId}`,
+      `Time: ${new Date().toLocaleString("en-US", { timeZone: "America/New_York" })} ET`,
+    ];
+
+    await transporter.sendMail({
+      from: `"Focus Dock" <${user}>`,
+      to: "blacksheepdesignscontact@gmail.com",
+      subject: `💸 Sale — ${amountStr}${data.affiliateRef ? ` via ${data.affiliateRef}` : ""}`,
+      text: lines.join("\n"),
+    });
+  } catch (err) {
+    console.error("[mail] Owner notification failed:", err);
+  }
+}
+
 export async function sendAffiliateApplicationEmail(
   data: AffiliateApplicationPayload
 ): Promise<void> {
