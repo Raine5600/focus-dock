@@ -24,7 +24,7 @@ function statsDigest(t: TrafficStats, a: Analytics): string {
   ]);
 }
 
-/** Deterministic fallback summary — used when no ANTHROPIC_API_KEY is set. */
+/** Deterministic fallback summary — used when no DEEPSEEK_API_KEY is set. */
 function ruleBasedSummary(t: TrafficStats, a: Analytics): string {
   if (t.visitors === 0) {
     return (
@@ -72,13 +72,10 @@ async function readCache(): Promise<(Insight & { digest?: string }) | null> {
   }
 }
 
-async function claudeSummary(
+async function deepseekSummary(
   t: TrafficStats,
   a: Analytics
 ): Promise<string | null> {
-  const { default: Anthropic } = await import("@anthropic-ai/sdk");
-  const client = new Anthropic();
-
   const data = {
     windowDays: t.days,
     visitors: t.visitors,
@@ -104,34 +101,42 @@ async function claudeSummary(
     },
   };
 
-  const response = await client.messages.create({
-    model: "claude-opus-4-8",
-    max_tokens: 600,
-    system:
-      "You are the analytics assistant for Focus Dock, a one-product site selling a $27 ADHD Notion guide PDF. " +
-      "Given traffic and sales stats, write a plain-English summary for the founder: what visitors typically do on the site, " +
-      "where they come from, how behavior converts toward checkout, and the single most actionable observation. " +
-      "4-6 sentences, no headings, no bullet lists, no flattery, no hedging boilerplate. " +
-      "If the numbers are small, say so plainly and avoid over-interpreting.",
-    messages: [
-      {
-        role: "user",
-        content: `Stats for the last ${t.days} days:\n${JSON.stringify(data, null, 2)}`,
-      },
-    ],
+  const res = await fetch("https://api.deepseek.com/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.DEEPSEEK_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: "deepseek-chat",
+      max_tokens: 600,
+      messages: [
+        {
+          role: "system",
+          content:
+            "You are the analytics assistant for Focus Dock, a one-product site selling a $27 ADHD Notion guide PDF. " +
+            "Given traffic and sales stats, write a plain-English summary for the founder: what visitors typically do on the site, " +
+            "where they come from, how behavior converts toward checkout, and the single most actionable observation. " +
+            "4-6 sentences, no headings, no bullet lists, no flattery, no hedging boilerplate. " +
+            "If the numbers are small, say so plainly and avoid over-interpreting.",
+        },
+        {
+          role: "user",
+          content: `Stats for the last ${t.days} days:\n${JSON.stringify(data, null, 2)}`,
+        },
+      ],
+    }),
   });
 
-  const text = response.content
-    .filter((b): b is Extract<typeof b, { type: "text" }> => b.type === "text")
-    .map((b) => b.text)
-    .join("")
-    .trim();
+  if (!res.ok) throw new Error(`DeepSeek ${res.status}`);
+  const json = await res.json();
+  const text: string = json.choices?.[0]?.message?.content?.trim() ?? "";
   return text.length > 0 ? text : null;
 }
 
 /**
  * Visitor-behavior summary for the dashboard. Uses Claude when
- * ANTHROPIC_API_KEY is configured (cached 6h in Blob), otherwise a
+ * DEEPSEEK_API_KEY is configured (cached 6h in Blob), otherwise a
  * deterministic rule-based summary.
  */
 export async function getInsight(
@@ -140,7 +145,7 @@ export async function getInsight(
 ): Promise<Insight> {
   const digest = statsDigest(t, a);
 
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (!process.env.DEEPSEEK_API_KEY) {
     return {
       text: ruleBasedSummary(t, a),
       generatedAt: new Date().toISOString(),
@@ -158,7 +163,7 @@ export async function getInsight(
   }
 
   try {
-    const text = await claudeSummary(t, a);
+    const text = await deepseekSummary(t, a);
     if (!text) throw new Error("empty summary");
     const insight: Insight = {
       text,

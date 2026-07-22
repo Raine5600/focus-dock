@@ -118,7 +118,7 @@ export default async function AdminPage() {
             <p className="text-xs text-ink-lt">
               {insight.source === "claude"
                 ? `Written by Claude · ${new Date(insight.generatedAt).toLocaleString()}`
-                : "Auto summary — add ANTHROPIC_API_KEY in Vercel for Claude-written insights"}
+                : "Auto summary — add DEEPSEEK_API_KEY in Vercel for AI-written insights"}
             </p>
           </div>
           <p className="mt-3 leading-relaxed text-ink">{insight.text}</p>
