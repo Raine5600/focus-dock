@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { PRODUCT, SUMMER_DEAL } from "@/lib/product";
 import { trackEvent } from "./Track";
+import { MagneticButton } from "./MagneticButton";
 
 type Props = {
   size?: "md" | "lg";
@@ -53,21 +54,23 @@ export function CheckoutButton({
 
   return (
     <div className={className}>
-      <button
-        type="button"
-        onClick={handleCheckout}
-        disabled={loading}
-        className={`inline-flex items-center gap-2 rounded-full bg-coral font-semibold text-white shadow-md transition hover:bg-[#e55a3a] disabled:cursor-not-allowed disabled:opacity-70 ${sizeClasses}`}
-      >
-        {loading ? (
-          <>
-            <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
-            Redirecting…
-          </>
-        ) : (
-          label
-        )}
-      </button>
+      <MagneticButton>
+        <button
+          type="button"
+          onClick={handleCheckout}
+          disabled={loading}
+          className={`btn-glow inline-flex items-center gap-2 rounded-full bg-coral font-semibold text-white shadow-md transition hover:bg-[#e55a3a] disabled:cursor-not-allowed disabled:opacity-70 ${sizeClasses}`}
+        >
+          {loading ? (
+            <>
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+              Redirecting…
+            </>
+          ) : (
+            label
+          )}
+        </button>
+      </MagneticButton>
       {error ? (
         <p className="mt-2 text-sm text-rose">{error}</p>
       ) : null}

@@ -46,10 +46,10 @@ export function TaskDemo() {
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={index}
-                initial={reduced ? false : { opacity: 0, y: 26 }}
+                initial={reduced ? false : { opacity: 0, y: 32 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={reduced ? undefined : { opacity: 0, y: -26 }}
-                transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
+                exit={reduced ? undefined : { opacity: 0, y: -60, transition: { duration: 0.28, ease: [0.55, 0, 1, 0.45] } }}
+                transition={{ duration: 0.38, ease: [0.21, 0.47, 0.32, 0.98] }}
                 className="p-5"
               >
                 <p className="text-xs font-bold uppercase tracking-wider text-coral">
@@ -63,9 +63,11 @@ export function TaskDemo() {
                         : "border-white/30 text-transparent"
                     }`}
                     animate={
-                      checked && !reduced ? { scale: [1, 1.25, 1] } : undefined
+                      checked && !reduced
+                        ? { scale: [1, 1.4, 0.9, 1.1, 1] }
+                        : undefined
                     }
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.45, ease: "easeOut" }}
                     aria-hidden
                   >
                     ✓

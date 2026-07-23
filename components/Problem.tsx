@@ -1,4 +1,5 @@
 import { Reveal, Stagger, StaggerItem } from "./motion";
+import { TiltCard } from "./TiltCard";
 
 const PAINS = [
   {
@@ -48,12 +49,14 @@ export function Problem() {
         <Stagger className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {PAINS.map((item) => (
             <StaggerItem key={item.title}>
-              <article className="h-full rounded-2xl border border-border bg-cream p-6 shadow-sm transition-shadow hover:shadow-md">
-                <h3 className="font-display text-xl font-semibold text-navy-dark">
-                  {item.title}
-                </h3>
-                <p className="mt-3 leading-relaxed text-ink-mid">{item.body}</p>
-              </article>
+              <TiltCard className="h-full">
+                <article className="h-full rounded-2xl border border-border bg-cream p-6 shadow-sm transition-shadow hover:shadow-lg">
+                  <h3 className="font-display text-xl font-semibold text-navy-dark">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 leading-relaxed text-ink-mid">{item.body}</p>
+                </article>
+              </TiltCard>
             </StaggerItem>
           ))}
         </Stagger>

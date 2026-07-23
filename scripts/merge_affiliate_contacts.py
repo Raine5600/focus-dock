@@ -16,6 +16,7 @@ BATCHES = [
     MARKETING / "_batch_misc.json",
     MARKETING / "_batch_ring_expansion.json",
     MARKETING / "_batch_ring7_expansion.json",
+    MARKETING / "_batch_ring8_expansion.json",
 ]
 OUT = MARKETING / "affiliate-contacts-master.json"
 

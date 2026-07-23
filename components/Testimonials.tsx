@@ -1,4 +1,5 @@
 import { Reveal, Stagger, StaggerItem } from "./motion";
+import { TiltCard } from "./TiltCard";
 
 const TESTIMONIALS = [
   {
@@ -56,6 +57,7 @@ export function Testimonials() {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {TESTIMONIALS.map((t, i) => (
               <StaggerItem key={i}>
+                <TiltCard className="h-full">
                 <div className="flex h-full flex-col rounded-2xl border border-border bg-cream p-6 shadow-sm">
                   <span
                     className="mb-4 font-display text-5xl leading-none text-coral/25"
@@ -76,6 +78,7 @@ export function Testimonials() {
                     </div>
                   </div>
                 </div>
+                </TiltCard>
               </StaggerItem>
             ))}
           </div>

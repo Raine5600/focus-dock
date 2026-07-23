@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
 import { HERO, PRODUCT } from "@/lib/product";
 import { CheckoutButton } from "./CheckoutButton";
 import { DealBadge } from "./DealBadge";
@@ -30,14 +31,20 @@ function Entrance({
 }
 
 export function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const blobAY = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const blobBY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+
   return (
-    <section className="relative overflow-hidden bg-navy-dark text-white">
-      {/* Aurora background — calm, slow, disabled for reduced motion */}
-      <div className="aurora aurora-a -left-32 -top-40 h-[28rem] w-[28rem] bg-mint/25" />
-      <div className="aurora aurora-b -right-24 top-10 h-[24rem] w-[24rem] bg-coral/20" />
+    <section ref={ref} className="noise relative overflow-hidden bg-navy-dark text-white">
+      {/* Parallax aurora blobs */}
+      <motion.div style={{ y: blobAY }} className="aurora aurora-a pointer-events-none absolute -left-32 -top-40 h-[28rem] w-[28rem] bg-mint/25" />
+      <motion.div style={{ y: blobBY }} className="aurora aurora-b pointer-events-none absolute -right-24 top-10 h-[24rem] w-[24rem] bg-coral/20" />
       <div className="dot-grid pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_top,black_20%,transparent_70%)]" />
 
-      <div className="relative mx-auto grid max-w-6xl gap-14 px-5 pb-24 pt-16 sm:px-8 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:pt-24">
+      <motion.div style={{ y: contentY }} className="relative mx-auto grid max-w-6xl gap-14 px-5 pb-24 pt-16 sm:px-8 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:pt-24">
         <div>
           <Entrance>
             <div className="mb-5 flex flex-wrap items-center gap-2">
@@ -117,6 +124,13 @@ export function Hero() {
         <Entrance delay={0.3}>
           <TaskDemo />
         </Entrance>
+      </motion.div>
+
+      {/* Curved divider into next section */}
+      <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none">
+        <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="block w-full" preserveAspectRatio="none">
+          <path d="M0 48 C360 0 1080 0 1440 48 L1440 48 L0 48 Z" fill="rgb(255 255 255)" />
+        </svg>
       </div>
     </section>
   );

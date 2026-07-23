@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { PRODUCT, STATS } from "@/lib/product";
 import { Reveal, Stagger, StaggerItem } from "./motion";
+import { CountUp } from "./CountUp";
 
 const PAGES = [
   { src: "/images/guide/cover.png", label: "Cover" },
@@ -89,7 +90,7 @@ export function LookInside() {
             {STATS.map((stat) => (
               <div key={stat.label}>
                 <p className="font-display text-3xl font-semibold text-navy-dark">
-                  {stat.value}
+                  <CountUp to={Number(stat.value)} />
                 </p>
                 <p className="mt-1 text-sm text-ink-mid">{stat.label}</p>
               </div>

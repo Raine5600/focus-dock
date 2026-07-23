@@ -1,0 +1,52 @@
+Existing: 595 emails, 1361 profile URLs
+Target: 1000 new contacts (Ring 8)
+
+==> Notion Marketplace (deep) (need 1000)
+  fetching 2310 Notion category pages + 96 searches...
+    ...80/2406 Notion list pages | creators so far 629
+    ...160/2406 Notion list pages | creators so far 1370
+    ...240/2406 Notion list pages | creators so far 2168
+    ...320/2406 Notion list pages | creators so far 2753
+    ...400/2406 Notion list pages | creators so far 3186
+    ...480/2406 Notion list pages | creators so far 3539
+    ...560/2406 Notion list pages | creators so far 3643
+    ...640/2406 Notion list pages | creators so far 3882
+    ...720/2406 Notion list pages | creators so far 4130
+    ...800/2406 Notion list pages | creators so far 4562
+    ...880/2406 Notion list pages | creators so far 4844
+    ...960/2406 Notion list pages | creators so far 5020
+    ...1040/2406 Notion list pages | creators so far 5192
+    ...1120/2406 Notion list pages | creators so far 5283
+    ...1200/2406 Notion list pages | creators so far 5402
+    ...1280/2406 Notion list pages | creators so far 5459
+    ...1360/2406 Notion list pages | creators so far 5559
+    ...1440/2406 Notion list pages | creators so far 5971
+    ...1520/2406 Notion list pages | creators so far 6338
+    ...1600/2406 Notion list pages | creators so far 6589
+    ...1680/2406 Notion list pages | creators so far 6662
+    ...1760/2406 Notion list pages | creators so far 6746
+    ...1840/2406 Notion list pages | creators so far 6797
+    ...1920/2406 Notion list pages | creators so far 6848
+    ...2000/2406 Notion list pages | creators so far 6885
+    ...2080/2406 Notion list pages | creators so far 7055
+    ...2160/2406 Notion list pages | creators so far 7222
+    ...2240/2406 Notion list pages | creators so far 7366
+    ...2320/2406 Notion list pages | creators so far 7410
+    ...2400/2406 Notion list pages | creators so far 7410
+  unique new Notion creators from listings: 7410
+  inline emails: 1000 | profile fetch needed: 657
+    +1000 new contacts (running total 1000)
+
+Wrote 1000 contacts to /Users/cameron/focus-dock/marketing/_batch_ring8_expansion.json
+{
+  "saved": 1000,
+  "target": 1000,
+  "elapsed_sec": 178.6,
+  "existing_emails_before": 595,
+  "by_platform": {
+    "other": 1000
+  },
+  "by_priority": {
+    "medium": 1000
+  }
+}

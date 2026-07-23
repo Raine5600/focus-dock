@@ -14,7 +14,7 @@ export function Pricing() {
   const urgency = timeLeft ? getUrgentDealLabel(timeLeft) : "Limited time";
 
   return (
-    <section id="pricing" className="relative overflow-hidden bg-navy-dark py-20 text-white sm:py-24">
+    <section id="pricing" className="noise relative overflow-hidden bg-navy-dark py-20 text-white sm:py-24">
       <div className="aurora aurora-a -right-40 -top-24 h-96 w-96 bg-coral/15" />
       <div className="aurora aurora-b -left-32 bottom-0 h-80 w-80 bg-mint/15" />
 
