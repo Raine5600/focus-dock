@@ -129,17 +129,19 @@ body {
 }
 
 .shimmer-coral {
+  display: inline-block;
   background: linear-gradient(
     105deg,
-    var(--coral) 30%,
-    color-mix(in srgb, var(--coral) 60%, white) 50%,
-    var(--coral) 70%
+    var(--coral) 25%,
+    color-mix(in srgb, var(--coral) 55%, white) 50%,
+    var(--coral) 75%
   );
-  background-size: 200% auto;
+  background-size: 300% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer-sweep 4s linear infinite;
+  color: transparent;
+  animation: shimmer-sweep 3.5s linear infinite;
 }
 
 /* --- Float keyframe (CSS fallback, motion/react handles it in JS) ------- */

@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 
-const SPRING = { type: "spring", stiffness: 80, damping: 18, mass: 0.8 } as const;
+const SPRING = { type: "spring", stiffness: 260, damping: 28, mass: 1 } as const;
 
 type Props = {
   text: string;
@@ -10,7 +10,6 @@ type Props = {
   wordClassName?: string;
   delay?: number;
   stagger?: number;
-  /** Pass "word" (default) or "char" */
   split?: "word" | "char";
 };
 
@@ -30,22 +29,18 @@ export function SplitText({
   return (
     <span className={`inline ${className}`} aria-label={text}>
       {tokens.map((token, i) => (
-        <span
+        <motion.span
           key={i}
-          className="inline-block overflow-hidden align-bottom"
+          className={`inline-block ${wordClassName}`}
           aria-hidden
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ ...SPRING, delay: delay + i * stagger }}
         >
-          <motion.span
-            className={`inline-block ${wordClassName}`}
-            initial={{ y: "110%", opacity: 0 }}
-            whileInView={{ y: "0%", opacity: 1 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ ...SPRING, delay: delay + i * stagger }}
-          >
-            {token}
-            {split === "word" && i < tokens.length - 1 ? " " : ""}
-          </motion.span>
-        </span>
+          {token}
+          {split === "word" && i < tokens.length - 1 ? " " : ""}
+        </motion.span>
       ))}
     </span>
   );

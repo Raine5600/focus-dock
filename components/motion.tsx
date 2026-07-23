@@ -26,11 +26,11 @@ export function Reveal({ children, delay = 0, y = 22, className, once = true }: 
       viewport={{ once, margin: "-60px" }}
       transition={{
         type: "spring",
-        stiffness: 90,
-        damping: 20,
-        mass: 0.8,
+        stiffness: 200,
+        damping: 26,
+        mass: 1,
         delay,
-        opacity: { duration: 0.4, delay },
+        opacity: { duration: 0.35, delay },
       }}
     >
       {children}
@@ -80,7 +80,7 @@ export function StaggerItem({
         show: {
           opacity: 1,
           y: 0,
-          transition: { type: "spring", stiffness: 90, damping: 20, mass: 0.8 },
+          transition: { type: "spring", stiffness: 200, damping: 26, mass: 1 },
         },
       }}
     >

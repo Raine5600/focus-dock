@@ -60,9 +60,7 @@ export function Hero() {
           <div className="mt-1">
             <h1 className="font-display text-[2.6rem] font-semibold leading-[1.08] sm:text-5xl lg:text-[3.4rem]">
               <SplitText text="You didn't fail Notion." delay={0.08} stagger={0.055} />{" "}
-              <span className="shimmer-coral">
-                <SplitText text="Notion failed your brain." delay={0.38} stagger={0.055} />
-              </span>
+              <SplitText text="Notion failed your brain." delay={0.38} stagger={0.055} wordClassName="shimmer-coral" />
             </h1>
           </div>
 
