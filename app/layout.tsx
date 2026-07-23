@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { DM_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 import { Track } from "@/components/Track";
+import { CursorGlow } from "@/components/CursorGlow";
 import { homeMetadata } from "@/lib/seo";
 
 const dmSans = DM_Sans({
@@ -44,6 +45,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-cream text-ink">
         <Track />
+        <CursorGlow />
         {children}
       </body>
     </html>

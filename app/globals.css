@@ -121,6 +121,34 @@ body {
   background-size: 24px 24px;
 }
 
+/* --- Shimmer gradient on coral hero headline ---------------------------- */
+
+@keyframes shimmer-sweep {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-coral {
+  background: linear-gradient(
+    105deg,
+    var(--coral) 30%,
+    color-mix(in srgb, var(--coral) 60%, white) 50%,
+    var(--coral) 70%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep 4s linear infinite;
+}
+
+/* --- Float keyframe (CSS fallback, motion/react handles it in JS) ------- */
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
 /* --- Noise texture overlay on dark sections ----------------------------- */
 
 .noise::after {

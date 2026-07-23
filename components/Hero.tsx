@@ -6,6 +6,8 @@ import { HERO, PRODUCT } from "@/lib/product";
 import { CheckoutButton } from "./CheckoutButton";
 import { DealBadge } from "./DealBadge";
 import { TaskDemo } from "./TaskDemo";
+import { SplitText } from "./SplitText";
+import { Float } from "./Float";
 
 const EASE = [0.21, 0.47, 0.32, 0.98] as const;
 
@@ -55,12 +57,14 @@ export function Hero() {
             </div>
           </Entrance>
 
-          <Entrance delay={0.08}>
+          <div className="mt-1">
             <h1 className="font-display text-[2.6rem] font-semibold leading-[1.08] sm:text-5xl lg:text-[3.4rem]">
-              You didn&apos;t fail Notion.{" "}
-              <span className="text-coral">Notion failed your brain.</span>
+              <SplitText text="You didn't fail Notion." delay={0.08} stagger={0.055} />{" "}
+              <span className="shimmer-coral">
+                <SplitText text="Notion failed your brain." delay={0.38} stagger={0.055} />
+              </span>
             </h1>
-          </Entrance>
+          </div>
 
           <Entrance delay={0.16}>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
@@ -80,24 +84,19 @@ export function Hero() {
               </p>
             </div>
             <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/60">
-              {HERO.trustBar.map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <svg
-                    className="h-3.5 w-3.5 text-mint"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    aria-hidden
-                  >
-                    <path
-                      d="M4 8.5 6.5 11 12 5.5"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
+              {HERO.trustBar.map((item, i) => (
+                <motion.li
+                  key={item}
+                  className="flex items-center gap-2"
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ type: "spring", stiffness: 100, damping: 18, delay: 0.5 + i * 0.07 }}
+                >
+                  <svg className="h-3.5 w-3.5 text-mint" viewBox="0 0 16 16" fill="none" aria-hidden>
+                    <path d="M4 8.5 6.5 11 12 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                   {item}
-                </li>
+                </motion.li>
               ))}
             </ul>
           </Entrance>
@@ -122,7 +121,9 @@ export function Hero() {
         </div>
 
         <Entrance delay={0.3}>
-          <TaskDemo />
+          <Float amplitude={8} duration={5}>
+            <TaskDemo />
+          </Float>
         </Entrance>
       </motion.div>
 

@@ -1,5 +1,6 @@
 import { Reveal, Stagger, StaggerItem } from "./motion";
 import { TiltCard } from "./TiltCard";
+import { SplitText } from "./SplitText";
 
 const PAINS = [
   {
@@ -37,7 +38,7 @@ export function Problem() {
             Sound familiar?
           </p>
           <h2 className="mt-3 font-display text-3xl font-semibold text-navy-dark sm:text-4xl">
-            You&apos;re not broken. You&apos;ve been stuck in the setup spiral.
+            <SplitText text="You're not broken. You've been stuck in the setup spiral." stagger={0.04} />
           </h2>
           <p className="mt-4 text-lg text-ink-mid">
             Building Notion systems releases dopamine. Using them requires

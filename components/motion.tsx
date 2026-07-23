@@ -8,8 +8,6 @@ export function MotionProvider({ children }: { children: ReactNode }) {
   return <MotionConfig reducedMotion="user">{children}</MotionConfig>;
 }
 
-const EASE = [0.21, 0.47, 0.32, 0.98] as const;
-
 type RevealProps = {
   children: ReactNode;
   delay?: number;
@@ -18,15 +16,22 @@ type RevealProps = {
   once?: boolean;
 };
 
-/** Fade-up entrance when the element scrolls into view. Calm by design: 0.5s, small offset. */
-export function Reveal({ children, delay = 0, y = 18, className, once = true }: RevealProps) {
+/** Fade-up entrance driven by spring physics — feels physically connected, not timed. */
+export function Reveal({ children, delay = 0, y = 22, className, once = true }: RevealProps) {
   return (
     <motion.div
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, margin: "-80px" }}
-      transition={{ duration: 0.5, delay, ease: EASE }}
+      viewport={{ once, margin: "-60px" }}
+      transition={{
+        type: "spring",
+        stiffness: 90,
+        damping: 20,
+        mass: 0.8,
+        delay,
+        opacity: { duration: 0.4, delay },
+      }}
     >
       {children}
     </motion.div>
@@ -61,7 +66,7 @@ export function Stagger({ children, className, gap = 0.08, delay = 0 }: StaggerP
 export function StaggerItem({
   children,
   className,
-  y = 18,
+  y = 22,
 }: {
   children: ReactNode;
   className?: string;
@@ -72,7 +77,11 @@ export function StaggerItem({
       className={className}
       variants={{
         hidden: { opacity: 0, y },
-        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
+        show: {
+          opacity: 1,
+          y: 0,
+          transition: { type: "spring", stiffness: 90, damping: 20, mass: 0.8 },
+        },
       }}
     >
       {children}

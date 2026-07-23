@@ -1,5 +1,6 @@
 import { Reveal, Stagger, StaggerItem } from "./motion";
 import { TiltCard } from "./TiltCard";
+import { SplitText } from "./SplitText";
 
 const TESTIMONIALS = [
   {
@@ -48,7 +49,7 @@ export function Testimonials() {
               Real results
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold text-navy-dark sm:text-4xl">
-              From people who gave Notion one last shot
+              <SplitText text="From people who gave Notion one last shot" stagger={0.045} />
             </h2>
           </div>
         </Reveal>
