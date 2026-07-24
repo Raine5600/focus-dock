@@ -178,6 +178,31 @@ export async function sendOwnerSaleNotification(
   }
 }
 
+export async function sendBroadcastEmail(
+  to: string,
+  subject: string,
+  text: string,
+  html?: string
+): Promise<void> {
+  const { user, pass } = getSmtpConfig();
+  const transporter = nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: SMTP_PORT,
+    secure: true,
+    auth: { user, pass },
+  });
+
+  const footer = "\n\n---\nFocus Dock · getfocusdock.com\nReply STOP to unsubscribe from future emails.";
+
+  await transporter.sendMail({
+    from: `"Focus Dock" <${user}>`,
+    to,
+    subject,
+    text: text + footer,
+    html: html ? html + `<p style="margin-top:32px;font-size:11px;color:#999;">Focus Dock · <a href="https://getfocusdock.com">getfocusdock.com</a><br>Reply STOP to unsubscribe.</p>` : undefined,
+  });
+}
+
 export async function sendAffiliateApplicationEmail(
   data: AffiliateApplicationPayload
 ): Promise<void> {

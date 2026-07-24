@@ -16,6 +16,7 @@ import {
 import { isAdminAuthenticated, isAdminConfigured } from "@/lib/admin";
 import { list } from "@vercel/blob";
 import { CopyEmailList } from "@/components/CopyEmailList";
+import { MarketingHub } from "@/components/MarketingHub";
 import { fetchBlobJson } from "@/lib/blob";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -380,6 +381,12 @@ export default async function AdminPage() {
             </div>
           )}
         </section>
+        {/* Marketing Hub */}
+        <MarketingHub
+          subscriberCount={subscriberEmails.length}
+          totalSales={a.totalSales}
+          totalRevenue={a.totalRevenue}
+        />
       </main>
     </div>
   );
