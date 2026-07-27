@@ -67,55 +67,47 @@ def ribbon(base_y, amp, thickness, freqs, phases, color, alpha, blur, drift=0.0)
 # --- Base: deep navy gradient ------------------------------------------------
 img = vertical_gradient((w, h), NAVY_DARK, NAVY).convert("RGBA")
 
-# --- Back layers: big soft blurred washes (depth) ----------------------------
+# Tone-on-tone navy shades for depth (duotone look: navy + one coral accent)
+NAVY_L1 = lerp(NAVY, (255, 255, 255), 0.06)
+NAVY_L2 = lerp(NAVY, (255, 255, 255), 0.11)
+NAVY_L3 = lerp(NAVY, (255, 255, 255), 0.17)
+
+# --- Back: broad, soft tone-on-tone swells (subtle topography) ---------------
 back = [
     # (base_y, amp, thickness, color, alpha, blur, drift)
-    (h * 0.30, 90 * SS, 300 * SS, MINT, 34, 60 * SS, 0.02),
-    (h * 0.60, 110 * SS, 300 * SS, CORAL, 36, 70 * SS, -0.03),
+    (h * 0.42, 90 * SS, 420 * SS, NAVY_L1, 160, 40 * SS, 0.015),
+    (h * 0.62, 100 * SS, 400 * SS, NAVY_L2, 130, 30 * SS, -0.02),
+    (h * 0.80, 80 * SS, 360 * SS, NAVY_L3, 110, 24 * SS, 0.01),
 ]
 for base_y, amp, th, col, alpha, blur, drift in back:
-    freqs = [(0.8, 1.0), (1.7, 0.45), (3.1, 0.18)]
+    freqs = [(0.7, 1.0), (1.6, 0.4), (2.9, 0.15)]
     phases = [random.uniform(0, 2 * math.pi) for _ in freqs]
     img = Image.alpha_composite(img, ribbon(base_y, amp, th, freqs, phases, col, alpha, blur, drift))
 
-# --- Mid layers: defined translucent ribbons ---------------------------------
-mid = [
-    (h * 0.38, 70 * SS, 140 * SS, CORAL, 100, 18 * SS, -0.02),
-    (h * 0.55, 85 * SS, 150 * SS, MINT, 85, 20 * SS, 0.03),
-]
-for base_y, amp, th, col, alpha, blur, drift in mid:
-    freqs = [(1.1, 1.0), (2.3, 0.4), (4.2, 0.15)]
-    phases = [random.uniform(0, 2 * math.pi) for _ in freqs]
-    img = Image.alpha_composite(img, ribbon(base_y, amp, th, freqs, phases, col, alpha, blur, drift))
+# --- Accent: one crisp coral line with a soft echo ---------------------------
+phases_main = [random.uniform(0, 2 * math.pi) for _ in range(3)]
+freqs_main = [(1.0, 1.0), (2.1, 0.35), (3.8, 0.12)]
+# soft wide glow under the line
+img = Image.alpha_composite(
+    img, ribbon(h * 0.52, 85 * SS, 60 * SS, freqs_main, phases_main, CORAL, 46, 26 * SS, -0.015)
+)
+# the line itself
+img = Image.alpha_composite(
+    img, ribbon(h * 0.53, 85 * SS, 9 * SS, freqs_main, phases_main, CORAL, 235, 1.5 * SS, -0.015)
+)
+# thin quiet echo below, same family
+phases_echo = [p + 0.9 for p in phases_main]
+img = Image.alpha_composite(
+    img, ribbon(h * 0.68, 70 * SS, 5 * SS, freqs_main, phases_echo, lerp(CORAL, NAVY, 0.45), 150, 1.5 * SS, -0.01)
+)
 
-# --- Front layers: crisp thin highlight ribbons ------------------------------
-front = [
-    (h * 0.42, 75 * SS, 26 * SS, CORAL, 220, 3 * SS, -0.02),
-    (h * 0.50, 80 * SS, 18 * SS, lerp(CORAL, (255, 255, 255), 0.35), 180, 2 * SS, -0.018),
-    (h * 0.60, 90 * SS, 22 * SS, MINT, 210, 3 * SS, 0.028),
-    (h * 0.66, 85 * SS, 12 * SS, lerp(MINT, (255, 255, 255), 0.3), 150, 2 * SS, 0.03),
-    (h * 0.78, 65 * SS, 14 * SS, YELLOW, 160, 2 * SS, -0.012),
-]
-for base_y, amp, th, col, alpha, blur, drift in front:
-    freqs = [(1.15, 1.0), (2.4, 0.38), (4.5, 0.12)]
-    phases = [random.uniform(0, 2 * math.pi) for _ in freqs]
-    img = Image.alpha_composite(img, ribbon(base_y, amp, th, freqs, phases, col, alpha, blur, drift))
-
-# --- Re-ground the bottom in navy so ribbons pop instead of muddying ---------
+# --- Vignette to ground the edges --------------------------------------------
 ground = Image.new("RGBA", (w, h), (0, 0, 0, 0))
 gg = ImageDraw.Draw(ground)
-for y in range(int(h * 0.55), h):
-    t = (y - h * 0.55) / (h * 0.45)
-    gg.line([(0, y), (w, y)], fill=NAVY_DARK + (int(150 * t**1.6),))
+for y in range(int(h * 0.6), h):
+    t = (y - h * 0.6) / (h * 0.4)
+    gg.line([(0, y), (w, y)], fill=NAVY_DARK + (int(120 * t**1.8),))
 img = Image.alpha_composite(img, ground)
-
-# --- Corner glow accents ------------------------------------------------------
-glow = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-gd = ImageDraw.Draw(glow)
-gd.ellipse([-w * 0.25, -h * 0.6, w * 0.35, h * 0.5], fill=MINT + (46,))
-gd.ellipse([w * 0.68, h * 0.55, w * 1.25, h * 1.6], fill=CORAL + (52,))
-glow = glow.filter(ImageFilter.GaussianBlur(120 * SS))
-img = Image.alpha_composite(img, glow)
 
 # --- Downsample + save --------------------------------------------------------
 out = img.convert("RGB").resize((W, H), Image.LANCZOS)
