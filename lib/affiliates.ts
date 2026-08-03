@@ -22,6 +22,8 @@ export const AFFILIATES: Affiliate[] = [
   { code: "lakwad", name: "Lakwad" },
   { code: "sofia", name: "Sofia" },
   { code: "ziad", name: "Ziad" },
+  { code: "isabel", name: "Isabel" },
+  { code: "chris", name: "Chris" },
   { code: "launch", name: "Launch promos", notes: "Your own posts/newsletter" },
   { code: "partner-01", name: "Unassigned slot 1" },
   { code: "partner-02", name: "Unassigned slot 2" },
